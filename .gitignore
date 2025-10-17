@@ -1,0 +1,10 @@
+# Ignorar el entorno virtual del Backend (el "juego de herramientas" del motor)
+backend/venv/
+
+# Ignorar las dependencias del Frontend (el "cableado" de la cabina)
+frontend/node_modules/
+
+# Ignorar archivos de entorno y secretos
+.env
+*.env.*
+*credentials*.json
