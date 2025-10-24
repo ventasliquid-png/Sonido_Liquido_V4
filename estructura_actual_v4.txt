@@ -1,0 +1,3558 @@
+Listado de rutas de carpetas
+El n£mero de serie del volumen es 5257-1314
+C:.
+³   .gitignore
+³   estructura_actual.txt
+³   estructura_actual_v4.txt
+³   README.md
+³   
+ÃÄÄÄbackend
+³   ³   .env.example
+³   ³   main.py
+³   ³   requirements.txt
+³   ³   
+³   ÃÄÄÄapp
+³   ³   ³   __init__.py
+³   ³   ³   
+³   ³   ÃÄÄÄmodels
+³   ³   ÃÄÄÄrouters
+³   ³   ÀÄÄÄ__pycache__
+³   ³           __init__.cpython-311.pyc
+³   ³           
+³   ÃÄÄÄvenv
+³   ³   ³   pyvenv.cfg
+³   ³   ³   
+³   ³   ÃÄÄÄInclude
+³   ³   ÃÄÄÄLib
+³   ³   ³   ÀÄÄÄsite-packages
+³   ³   ³       ³   distutils-precedence.pth
+³   ³   ³       ³   
+³   ³   ³       ÃÄÄÄpip
+³   ³   ³       ³   ³   py.typed
+³   ³   ³       ³   ³   __init__.py
+³   ³   ³       ³   ³   __main__.py
+³   ³   ³       ³   ³   __pip-runner__.py
+³   ³   ³       ³   ³   
+³   ³   ³       ³   ÃÄÄÄ_internal
+³   ³   ³       ³   ³   ³   build_env.py
+³   ³   ³       ³   ³   ³   cache.py
+³   ³   ³       ³   ³   ³   configuration.py
+³   ³   ³       ³   ³   ³   exceptions.py
+³   ³   ³       ³   ³   ³   main.py
+³   ³   ³       ³   ³   ³   pyproject.py
+³   ³   ³       ³   ³   ³   self_outdated_check.py
+³   ³   ³       ³   ³   ³   wheel_builder.py
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÃÄÄÄcli
+³   ³   ³       ³   ³   ³   ³   autocompletion.py
+³   ³   ³       ³   ³   ³   ³   base_command.py
+³   ³   ³       ³   ³   ³   ³   cmdoptions.py
+³   ³   ³       ³   ³   ³   ³   command_context.py
+³   ³   ³       ³   ³   ³   ³   main.py
+³   ³   ³       ³   ³   ³   ³   main_parser.py
+³   ³   ³       ³   ³   ³   ³   parser.py
+³   ³   ³       ³   ³   ³   ³   progress_bars.py
+³   ³   ³       ³   ³   ³   ³   req_command.py
+³   ³   ³       ³   ³   ³   ³   spinners.py
+³   ³   ³       ³   ³   ³   ³   status_codes.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           autocompletion.cpython-311.pyc
+³   ³   ³       ³   ³   ³           base_command.cpython-311.pyc
+³   ³   ³       ³   ³   ³           cmdoptions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           command_context.cpython-311.pyc
+³   ³   ³       ³   ³   ³           main.cpython-311.pyc
+³   ³   ³       ³   ³   ³           main_parser.cpython-311.pyc
+³   ³   ³       ³   ³   ³           parser.cpython-311.pyc
+³   ³   ³       ³   ³   ³           progress_bars.cpython-311.pyc
+³   ³   ³       ³   ³   ³           req_command.cpython-311.pyc
+³   ³   ³       ³   ³   ³           spinners.cpython-311.pyc
+³   ³   ³       ³   ³   ³           status_codes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄcommands
+³   ³   ³       ³   ³   ³   ³   cache.py
+³   ³   ³       ³   ³   ³   ³   check.py
+³   ³   ³       ³   ³   ³   ³   completion.py
+³   ³   ³       ³   ³   ³   ³   configuration.py
+³   ³   ³       ³   ³   ³   ³   debug.py
+³   ³   ³       ³   ³   ³   ³   download.py
+³   ³   ³       ³   ³   ³   ³   freeze.py
+³   ³   ³       ³   ³   ³   ³   hash.py
+³   ³   ³       ³   ³   ³   ³   help.py
+³   ³   ³       ³   ³   ³   ³   index.py
+³   ³   ³       ³   ³   ³   ³   inspect.py
+³   ³   ³       ³   ³   ³   ³   install.py
+³   ³   ³       ³   ³   ³   ³   list.py
+³   ³   ³       ³   ³   ³   ³   search.py
+³   ³   ³       ³   ³   ³   ³   show.py
+³   ³   ³       ³   ³   ³   ³   uninstall.py
+³   ³   ³       ³   ³   ³   ³   wheel.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           cache.cpython-311.pyc
+³   ³   ³       ³   ³   ³           check.cpython-311.pyc
+³   ³   ³       ³   ³   ³           completion.cpython-311.pyc
+³   ³   ³       ³   ³   ³           configuration.cpython-311.pyc
+³   ³   ³       ³   ³   ³           debug.cpython-311.pyc
+³   ³   ³       ³   ³   ³           download.cpython-311.pyc
+³   ³   ³       ³   ³   ³           freeze.cpython-311.pyc
+³   ³   ³       ³   ³   ³           hash.cpython-311.pyc
+³   ³   ³       ³   ³   ³           help.cpython-311.pyc
+³   ³   ³       ³   ³   ³           index.cpython-311.pyc
+³   ³   ³       ³   ³   ³           inspect.cpython-311.pyc
+³   ³   ³       ³   ³   ³           install.cpython-311.pyc
+³   ³   ³       ³   ³   ³           list.cpython-311.pyc
+³   ³   ³       ³   ³   ³           search.cpython-311.pyc
+³   ³   ³       ³   ³   ³           show.cpython-311.pyc
+³   ³   ³       ³   ³   ³           uninstall.cpython-311.pyc
+³   ³   ³       ³   ³   ³           wheel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄdistributions
+³   ³   ³       ³   ³   ³   ³   base.py
+³   ³   ³       ³   ³   ³   ³   installed.py
+³   ³   ³       ³   ³   ³   ³   sdist.py
+³   ³   ³       ³   ³   ³   ³   wheel.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           base.cpython-311.pyc
+³   ³   ³       ³   ³   ³           installed.cpython-311.pyc
+³   ³   ³       ³   ³   ³           sdist.cpython-311.pyc
+³   ³   ³       ³   ³   ³           wheel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄindex
+³   ³   ³       ³   ³   ³   ³   collector.py
+³   ³   ³       ³   ³   ³   ³   package_finder.py
+³   ³   ³       ³   ³   ³   ³   sources.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           collector.cpython-311.pyc
+³   ³   ³       ³   ³   ³           package_finder.cpython-311.pyc
+³   ³   ³       ³   ³   ³           sources.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄlocations
+³   ³   ³       ³   ³   ³   ³   base.py
+³   ³   ³       ³   ³   ³   ³   _distutils.py
+³   ³   ³       ³   ³   ³   ³   _sysconfig.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           base.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _distutils.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _sysconfig.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄmetadata
+³   ³   ³       ³   ³   ³   ³   base.py
+³   ³   ³       ³   ³   ³   ³   pkg_resources.py
+³   ³   ³       ³   ³   ³   ³   _json.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄimportlib
+³   ³   ³       ³   ³   ³   ³   ³   _compat.py
+³   ³   ³       ³   ³   ³   ³   ³   _dists.py
+³   ³   ³       ³   ³   ³   ³   ³   _envs.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           _compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           _dists.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           _envs.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           base.cpython-311.pyc
+³   ³   ³       ³   ³   ³           pkg_resources.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _json.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄmodels
+³   ³   ³       ³   ³   ³   ³   candidate.py
+³   ³   ³       ³   ³   ³   ³   direct_url.py
+³   ³   ³       ³   ³   ³   ³   format_control.py
+³   ³   ³       ³   ³   ³   ³   index.py
+³   ³   ³       ³   ³   ³   ³   installation_report.py
+³   ³   ³       ³   ³   ³   ³   link.py
+³   ³   ³       ³   ³   ³   ³   scheme.py
+³   ³   ³       ³   ³   ³   ³   search_scope.py
+³   ³   ³       ³   ³   ³   ³   selection_prefs.py
+³   ³   ³       ³   ³   ³   ³   target_python.py
+³   ³   ³       ³   ³   ³   ³   wheel.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           candidate.cpython-311.pyc
+³   ³   ³       ³   ³   ³           direct_url.cpython-311.pyc
+³   ³   ³       ³   ³   ³           format_control.cpython-311.pyc
+³   ³   ³       ³   ³   ³           index.cpython-311.pyc
+³   ³   ³       ³   ³   ³           installation_report.cpython-311.pyc
+³   ³   ³       ³   ³   ³           link.cpython-311.pyc
+³   ³   ³       ³   ³   ³           scheme.cpython-311.pyc
+³   ³   ³       ³   ³   ³           search_scope.cpython-311.pyc
+³   ³   ³       ³   ³   ³           selection_prefs.cpython-311.pyc
+³   ³   ³       ³   ³   ³           target_python.cpython-311.pyc
+³   ³   ³       ³   ³   ³           wheel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄnetwork
+³   ³   ³       ³   ³   ³   ³   auth.py
+³   ³   ³       ³   ³   ³   ³   cache.py
+³   ³   ³       ³   ³   ³   ³   download.py
+³   ³   ³       ³   ³   ³   ³   lazy_wheel.py
+³   ³   ³       ³   ³   ³   ³   session.py
+³   ³   ³       ³   ³   ³   ³   utils.py
+³   ³   ³       ³   ³   ³   ³   xmlrpc.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           auth.cpython-311.pyc
+³   ³   ³       ³   ³   ³           cache.cpython-311.pyc
+³   ³   ³       ³   ³   ³           download.cpython-311.pyc
+³   ³   ³       ³   ³   ³           lazy_wheel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           session.cpython-311.pyc
+³   ³   ³       ³   ³   ³           utils.cpython-311.pyc
+³   ³   ³       ³   ³   ³           xmlrpc.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄoperations
+³   ³   ³       ³   ³   ³   ³   check.py
+³   ³   ³       ³   ³   ³   ³   freeze.py
+³   ³   ³       ³   ³   ³   ³   prepare.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄbuild
+³   ³   ³       ³   ³   ³   ³   ³   build_tracker.py
+³   ³   ³       ³   ³   ³   ³   ³   metadata.py
+³   ³   ³       ³   ³   ³   ³   ³   metadata_editable.py
+³   ³   ³       ³   ³   ³   ³   ³   metadata_legacy.py
+³   ³   ³       ³   ³   ³   ³   ³   wheel.py
+³   ³   ³       ³   ³   ³   ³   ³   wheel_editable.py
+³   ³   ³       ³   ³   ³   ³   ³   wheel_legacy.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           build_tracker.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           metadata.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           metadata_editable.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           metadata_legacy.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           wheel.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           wheel_editable.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           wheel_legacy.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÃÄÄÄinstall
+³   ³   ³       ³   ³   ³   ³   ³   editable_legacy.py
+³   ³   ³       ³   ³   ³   ³   ³   wheel.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           editable_legacy.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           wheel.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           check.cpython-311.pyc
+³   ³   ³       ³   ³   ³           freeze.cpython-311.pyc
+³   ³   ³       ³   ³   ³           prepare.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄreq
+³   ³   ³       ³   ³   ³   ³   constructors.py
+³   ³   ³       ³   ³   ³   ³   req_file.py
+³   ³   ³       ³   ³   ³   ³   req_install.py
+³   ³   ³       ³   ³   ³   ³   req_set.py
+³   ³   ³       ³   ³   ³   ³   req_uninstall.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           constructors.cpython-311.pyc
+³   ³   ³       ³   ³   ³           req_file.cpython-311.pyc
+³   ³   ³       ³   ³   ³           req_install.cpython-311.pyc
+³   ³   ³       ³   ³   ³           req_set.cpython-311.pyc
+³   ³   ³       ³   ³   ³           req_uninstall.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄresolution
+³   ³   ³       ³   ³   ³   ³   base.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄlegacy
+³   ³   ³       ³   ³   ³   ³   ³   resolver.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           resolver.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÃÄÄÄresolvelib
+³   ³   ³       ³   ³   ³   ³   ³   base.py
+³   ³   ³       ³   ³   ³   ³   ³   candidates.py
+³   ³   ³       ³   ³   ³   ³   ³   factory.py
+³   ³   ³       ³   ³   ³   ³   ³   found_candidates.py
+³   ³   ³       ³   ³   ³   ³   ³   provider.py
+³   ³   ³       ³   ³   ³   ³   ³   reporter.py
+³   ³   ³       ³   ³   ³   ³   ³   requirements.py
+³   ³   ³       ³   ³   ³   ³   ³   resolver.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           base.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           candidates.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           factory.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           found_candidates.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           provider.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           reporter.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           requirements.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           resolver.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           base.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄutils
+³   ³   ³       ³   ³   ³   ³   appdirs.py
+³   ³   ³       ³   ³   ³   ³   compat.py
+³   ³   ³       ³   ³   ³   ³   compatibility_tags.py
+³   ³   ³       ³   ³   ³   ³   datetime.py
+³   ³   ³       ³   ³   ³   ³   deprecation.py
+³   ³   ³       ³   ³   ³   ³   direct_url_helpers.py
+³   ³   ³       ³   ³   ³   ³   egg_link.py
+³   ³   ³       ³   ³   ³   ³   encoding.py
+³   ³   ³       ³   ³   ³   ³   entrypoints.py
+³   ³   ³       ³   ³   ³   ³   filesystem.py
+³   ³   ³       ³   ³   ³   ³   filetypes.py
+³   ³   ³       ³   ³   ³   ³   glibc.py
+³   ³   ³       ³   ³   ³   ³   hashes.py
+³   ³   ³       ³   ³   ³   ³   logging.py
+³   ³   ³       ³   ³   ³   ³   misc.py
+³   ³   ³       ³   ³   ³   ³   models.py
+³   ³   ³       ³   ³   ³   ³   packaging.py
+³   ³   ³       ³   ³   ³   ³   setuptools_build.py
+³   ³   ³       ³   ³   ³   ³   subprocess.py
+³   ³   ³       ³   ³   ³   ³   temp_dir.py
+³   ³   ³       ³   ³   ³   ³   unpacking.py
+³   ³   ³       ³   ³   ³   ³   urls.py
+³   ³   ³       ³   ³   ³   ³   virtualenv.py
+³   ³   ³       ³   ³   ³   ³   wheel.py
+³   ³   ³       ³   ³   ³   ³   _jaraco_text.py
+³   ³   ³       ³   ³   ³   ³   _log.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           appdirs.cpython-311.pyc
+³   ³   ³       ³   ³   ³           compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           compatibility_tags.cpython-311.pyc
+³   ³   ³       ³   ³   ³           datetime.cpython-311.pyc
+³   ³   ³       ³   ³   ³           deprecation.cpython-311.pyc
+³   ³   ³       ³   ³   ³           direct_url_helpers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           egg_link.cpython-311.pyc
+³   ³   ³       ³   ³   ³           encoding.cpython-311.pyc
+³   ³   ³       ³   ³   ³           entrypoints.cpython-311.pyc
+³   ³   ³       ³   ³   ³           filesystem.cpython-311.pyc
+³   ³   ³       ³   ³   ³           filetypes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           glibc.cpython-311.pyc
+³   ³   ³       ³   ³   ³           hashes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           logging.cpython-311.pyc
+³   ³   ³       ³   ³   ³           misc.cpython-311.pyc
+³   ³   ³       ³   ³   ³           models.cpython-311.pyc
+³   ³   ³       ³   ³   ³           packaging.cpython-311.pyc
+³   ³   ³       ³   ³   ³           setuptools_build.cpython-311.pyc
+³   ³   ³       ³   ³   ³           subprocess.cpython-311.pyc
+³   ³   ³       ³   ³   ³           temp_dir.cpython-311.pyc
+³   ³   ³       ³   ³   ³           unpacking.cpython-311.pyc
+³   ³   ³       ³   ³   ³           urls.cpython-311.pyc
+³   ³   ³       ³   ³   ³           virtualenv.cpython-311.pyc
+³   ³   ³       ³   ³   ³           wheel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _jaraco_text.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _log.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄvcs
+³   ³   ³       ³   ³   ³   ³   bazaar.py
+³   ³   ³       ³   ³   ³   ³   git.py
+³   ³   ³       ³   ³   ³   ³   mercurial.py
+³   ³   ³       ³   ³   ³   ³   subversion.py
+³   ³   ³       ³   ³   ³   ³   versioncontrol.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           bazaar.cpython-311.pyc
+³   ³   ³       ³   ³   ³           git.cpython-311.pyc
+³   ³   ³       ³   ³   ³           mercurial.cpython-311.pyc
+³   ³   ³       ³   ³   ³           subversion.cpython-311.pyc
+³   ³   ³       ³   ³   ³           versioncontrol.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           build_env.cpython-311.pyc
+³   ³   ³       ³   ³           cache.cpython-311.pyc
+³   ³   ³       ³   ³           configuration.cpython-311.pyc
+³   ³   ³       ³   ³           exceptions.cpython-311.pyc
+³   ³   ³       ³   ³           main.cpython-311.pyc
+³   ³   ³       ³   ³           pyproject.cpython-311.pyc
+³   ³   ³       ³   ³           self_outdated_check.cpython-311.pyc
+³   ³   ³       ³   ³           wheel_builder.cpython-311.pyc
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÃÄÄÄ_vendor
+³   ³   ³       ³   ³   ³   six.py
+³   ³   ³       ³   ³   ³   typing_extensions.py
+³   ³   ³       ³   ³   ³   vendor.txt
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÃÄÄÄcachecontrol
+³   ³   ³       ³   ³   ³   ³   adapter.py
+³   ³   ³       ³   ³   ³   ³   cache.py
+³   ³   ³       ³   ³   ³   ³   controller.py
+³   ³   ³       ³   ³   ³   ³   filewrapper.py
+³   ³   ³       ³   ³   ³   ³   heuristics.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   serialize.py
+³   ³   ³       ³   ³   ³   ³   wrapper.py
+³   ³   ³       ³   ³   ³   ³   _cmd.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄcaches
+³   ³   ³       ³   ³   ³   ³   ³   file_cache.py
+³   ³   ³       ³   ³   ³   ³   ³   redis_cache.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           file_cache.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           redis_cache.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           adapter.cpython-311.pyc
+³   ³   ³       ³   ³   ³           cache.cpython-311.pyc
+³   ³   ³       ³   ³   ³           controller.cpython-311.pyc
+³   ³   ³       ³   ³   ³           filewrapper.cpython-311.pyc
+³   ³   ³       ³   ³   ³           heuristics.cpython-311.pyc
+³   ³   ³       ³   ³   ³           serialize.cpython-311.pyc
+³   ³   ³       ³   ³   ³           wrapper.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _cmd.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄcertifi
+³   ³   ³       ³   ³   ³   ³   cacert.pem
+³   ³   ³       ³   ³   ³   ³   core.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   __main__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           core.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __main__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄchardet
+³   ³   ³       ³   ³   ³   ³   big5freq.py
+³   ³   ³       ³   ³   ³   ³   big5prober.py
+³   ³   ³       ³   ³   ³   ³   chardistribution.py
+³   ³   ³       ³   ³   ³   ³   charsetgroupprober.py
+³   ³   ³       ³   ³   ³   ³   charsetprober.py
+³   ³   ³       ³   ³   ³   ³   codingstatemachine.py
+³   ³   ³       ³   ³   ³   ³   codingstatemachinedict.py
+³   ³   ³       ³   ³   ³   ³   cp949prober.py
+³   ³   ³       ³   ³   ³   ³   enums.py
+³   ³   ³       ³   ³   ³   ³   escprober.py
+³   ³   ³       ³   ³   ³   ³   escsm.py
+³   ³   ³       ³   ³   ³   ³   eucjpprober.py
+³   ³   ³       ³   ³   ³   ³   euckrfreq.py
+³   ³   ³       ³   ³   ³   ³   euckrprober.py
+³   ³   ³       ³   ³   ³   ³   euctwfreq.py
+³   ³   ³       ³   ³   ³   ³   euctwprober.py
+³   ³   ³       ³   ³   ³   ³   gb2312freq.py
+³   ³   ³       ³   ³   ³   ³   gb2312prober.py
+³   ³   ³       ³   ³   ³   ³   hebrewprober.py
+³   ³   ³       ³   ³   ³   ³   jisfreq.py
+³   ³   ³       ³   ³   ³   ³   johabfreq.py
+³   ³   ³       ³   ³   ³   ³   johabprober.py
+³   ³   ³       ³   ³   ³   ³   jpcntx.py
+³   ³   ³       ³   ³   ³   ³   langbulgarianmodel.py
+³   ³   ³       ³   ³   ³   ³   langgreekmodel.py
+³   ³   ³       ³   ³   ³   ³   langhebrewmodel.py
+³   ³   ³       ³   ³   ³   ³   langhungarianmodel.py
+³   ³   ³       ³   ³   ³   ³   langrussianmodel.py
+³   ³   ³       ³   ³   ³   ³   langthaimodel.py
+³   ³   ³       ³   ³   ³   ³   langturkishmodel.py
+³   ³   ³       ³   ³   ³   ³   latin1prober.py
+³   ³   ³       ³   ³   ³   ³   macromanprober.py
+³   ³   ³       ³   ³   ³   ³   mbcharsetprober.py
+³   ³   ³       ³   ³   ³   ³   mbcsgroupprober.py
+³   ³   ³       ³   ³   ³   ³   mbcssm.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   resultdict.py
+³   ³   ³       ³   ³   ³   ³   sbcharsetprober.py
+³   ³   ³       ³   ³   ³   ³   sbcsgroupprober.py
+³   ³   ³       ³   ³   ³   ³   sjisprober.py
+³   ³   ³       ³   ³   ³   ³   universaldetector.py
+³   ³   ³       ³   ³   ³   ³   utf1632prober.py
+³   ³   ³       ³   ³   ³   ³   utf8prober.py
+³   ³   ³       ³   ³   ³   ³   version.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄcli
+³   ³   ³       ³   ³   ³   ³   ³   chardetect.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           chardetect.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÃÄÄÄmetadata
+³   ³   ³       ³   ³   ³   ³   ³   languages.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           languages.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           big5freq.cpython-311.pyc
+³   ³   ³       ³   ³   ³           big5prober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           chardistribution.cpython-311.pyc
+³   ³   ³       ³   ³   ³           charsetgroupprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           charsetprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           codingstatemachine.cpython-311.pyc
+³   ³   ³       ³   ³   ³           codingstatemachinedict.cpython-311.pyc
+³   ³   ³       ³   ³   ³           cp949prober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           enums.cpython-311.pyc
+³   ³   ³       ³   ³   ³           escprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           escsm.cpython-311.pyc
+³   ³   ³       ³   ³   ³           eucjpprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           euckrfreq.cpython-311.pyc
+³   ³   ³       ³   ³   ³           euckrprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           euctwfreq.cpython-311.pyc
+³   ³   ³       ³   ³   ³           euctwprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           gb2312freq.cpython-311.pyc
+³   ³   ³       ³   ³   ³           gb2312prober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           hebrewprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           jisfreq.cpython-311.pyc
+³   ³   ³       ³   ³   ³           johabfreq.cpython-311.pyc
+³   ³   ³       ³   ³   ³           johabprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           jpcntx.cpython-311.pyc
+³   ³   ³       ³   ³   ³           langbulgarianmodel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           langgreekmodel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           langhebrewmodel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           langhungarianmodel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           langrussianmodel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           langthaimodel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           langturkishmodel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           latin1prober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           macromanprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           mbcharsetprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           mbcsgroupprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           mbcssm.cpython-311.pyc
+³   ³   ³       ³   ³   ³           resultdict.cpython-311.pyc
+³   ³   ³       ³   ³   ³           sbcharsetprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           sbcsgroupprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           sjisprober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           universaldetector.cpython-311.pyc
+³   ³   ³       ³   ³   ³           utf1632prober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           utf8prober.cpython-311.pyc
+³   ³   ³       ³   ³   ³           version.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄcolorama
+³   ³   ³       ³   ³   ³   ³   ansi.py
+³   ³   ³       ³   ³   ³   ³   ansitowin32.py
+³   ³   ³       ³   ³   ³   ³   initialise.py
+³   ³   ³       ³   ³   ³   ³   win32.py
+³   ³   ³       ³   ³   ³   ³   winterm.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄtests
+³   ³   ³       ³   ³   ³   ³   ³   ansitowin32_test.py
+³   ³   ³       ³   ³   ³   ³   ³   ansi_test.py
+³   ³   ³       ³   ³   ³   ³   ³   initialise_test.py
+³   ³   ³       ³   ³   ³   ³   ³   isatty_test.py
+³   ³   ³       ³   ³   ³   ³   ³   utils.py
+³   ³   ³       ³   ³   ³   ³   ³   winterm_test.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           ansitowin32_test.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           ansi_test.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           initialise_test.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           isatty_test.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           utils.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           winterm_test.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           ansi.cpython-311.pyc
+³   ³   ³       ³   ³   ³           ansitowin32.cpython-311.pyc
+³   ³   ³       ³   ³   ³           initialise.cpython-311.pyc
+³   ³   ³       ³   ³   ³           win32.cpython-311.pyc
+³   ³   ³       ³   ³   ³           winterm.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄdistlib
+³   ³   ³       ³   ³   ³   ³   compat.py
+³   ³   ³       ³   ³   ³   ³   database.py
+³   ³   ³       ³   ³   ³   ³   index.py
+³   ³   ³       ³   ³   ³   ³   locators.py
+³   ³   ³       ³   ³   ³   ³   manifest.py
+³   ³   ³       ³   ³   ³   ³   markers.py
+³   ³   ³       ³   ³   ³   ³   metadata.py
+³   ³   ³       ³   ³   ³   ³   resources.py
+³   ³   ³       ³   ³   ³   ³   scripts.py
+³   ³   ³       ³   ³   ³   ³   t32.exe
+³   ³   ³       ³   ³   ³   ³   t64-arm.exe
+³   ³   ³       ³   ³   ³   ³   t64.exe
+³   ³   ³       ³   ³   ³   ³   util.py
+³   ³   ³       ³   ³   ³   ³   version.py
+³   ³   ³       ³   ³   ³   ³   w32.exe
+³   ³   ³       ³   ³   ³   ³   w64-arm.exe
+³   ³   ³       ³   ³   ³   ³   w64.exe
+³   ³   ³       ³   ³   ³   ³   wheel.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           database.cpython-311.pyc
+³   ³   ³       ³   ³   ³           index.cpython-311.pyc
+³   ³   ³       ³   ³   ³           locators.cpython-311.pyc
+³   ³   ³       ³   ³   ³           manifest.cpython-311.pyc
+³   ³   ³       ³   ³   ³           markers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           metadata.cpython-311.pyc
+³   ³   ³       ³   ³   ³           resources.cpython-311.pyc
+³   ³   ³       ³   ³   ³           scripts.cpython-311.pyc
+³   ³   ³       ³   ³   ³           util.cpython-311.pyc
+³   ³   ³       ³   ³   ³           version.cpython-311.pyc
+³   ³   ³       ³   ³   ³           wheel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄdistro
+³   ³   ³       ³   ³   ³   ³   distro.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   __main__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           distro.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __main__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄidna
+³   ³   ³       ³   ³   ³   ³   codec.py
+³   ³   ³       ³   ³   ³   ³   compat.py
+³   ³   ³       ³   ³   ³   ³   core.py
+³   ³   ³       ³   ³   ³   ³   idnadata.py
+³   ³   ³       ³   ³   ³   ³   intranges.py
+³   ³   ³       ³   ³   ³   ³   package_data.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   uts46data.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           codec.cpython-311.pyc
+³   ³   ³       ³   ³   ³           compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           core.cpython-311.pyc
+³   ³   ³       ³   ³   ³           idnadata.cpython-311.pyc
+³   ³   ³       ³   ³   ³           intranges.cpython-311.pyc
+³   ³   ³       ³   ³   ³           package_data.cpython-311.pyc
+³   ³   ³       ³   ³   ³           uts46data.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄmsgpack
+³   ³   ³       ³   ³   ³   ³   exceptions.py
+³   ³   ³       ³   ³   ³   ³   ext.py
+³   ³   ³       ³   ³   ³   ³   fallback.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           exceptions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           ext.cpython-311.pyc
+³   ³   ³       ³   ³   ³           fallback.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpackaging
+³   ³   ³       ³   ³   ³   ³   markers.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   requirements.py
+³   ³   ³       ³   ³   ³   ³   specifiers.py
+³   ³   ³       ³   ³   ³   ³   tags.py
+³   ³   ³       ³   ³   ³   ³   utils.py
+³   ³   ³       ³   ³   ³   ³   version.py
+³   ³   ³       ³   ³   ³   ³   _manylinux.py
+³   ³   ³       ³   ³   ³   ³   _musllinux.py
+³   ³   ³       ³   ³   ³   ³   _structures.py
+³   ³   ³       ³   ³   ³   ³   __about__.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           markers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           requirements.cpython-311.pyc
+³   ³   ³       ³   ³   ³           specifiers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           tags.cpython-311.pyc
+³   ³   ³       ³   ³   ³           utils.cpython-311.pyc
+³   ³   ³       ³   ³   ³           version.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _manylinux.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _musllinux.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _structures.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __about__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpkg_resources
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄplatformdirs
+³   ³   ³       ³   ³   ³   ³   android.py
+³   ³   ³       ³   ³   ³   ³   api.py
+³   ³   ³       ³   ³   ³   ³   macos.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   unix.py
+³   ³   ³       ³   ³   ³   ³   version.py
+³   ³   ³       ³   ³   ³   ³   windows.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   __main__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           android.cpython-311.pyc
+³   ³   ³       ³   ³   ³           api.cpython-311.pyc
+³   ³   ³       ³   ³   ³           macos.cpython-311.pyc
+³   ³   ³       ³   ³   ³           unix.cpython-311.pyc
+³   ³   ³       ³   ³   ³           version.cpython-311.pyc
+³   ³   ³       ³   ³   ³           windows.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __main__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpygments
+³   ³   ³       ³   ³   ³   ³   cmdline.py
+³   ³   ³       ³   ³   ³   ³   console.py
+³   ³   ³       ³   ³   ³   ³   filter.py
+³   ³   ³       ³   ³   ³   ³   formatter.py
+³   ³   ³       ³   ³   ³   ³   lexer.py
+³   ³   ³       ³   ³   ³   ³   modeline.py
+³   ³   ³       ³   ³   ³   ³   plugin.py
+³   ³   ³       ³   ³   ³   ³   regexopt.py
+³   ³   ³       ³   ³   ³   ³   scanner.py
+³   ³   ³       ³   ³   ³   ³   sphinxext.py
+³   ³   ³       ³   ³   ³   ³   style.py
+³   ³   ³       ³   ³   ³   ³   token.py
+³   ³   ³       ³   ³   ³   ³   unistring.py
+³   ³   ³       ³   ³   ³   ³   util.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   __main__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄfilters
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÃÄÄÄformatters
+³   ³   ³       ³   ³   ³   ³   ³   bbcode.py
+³   ³   ³       ³   ³   ³   ³   ³   groff.py
+³   ³   ³       ³   ³   ³   ³   ³   html.py
+³   ³   ³       ³   ³   ³   ³   ³   img.py
+³   ³   ³       ³   ³   ³   ³   ³   irc.py
+³   ³   ³       ³   ³   ³   ³   ³   latex.py
+³   ³   ³       ³   ³   ³   ³   ³   other.py
+³   ³   ³       ³   ³   ³   ³   ³   pangomarkup.py
+³   ³   ³       ³   ³   ³   ³   ³   rtf.py
+³   ³   ³       ³   ³   ³   ³   ³   svg.py
+³   ³   ³       ³   ³   ³   ³   ³   terminal.py
+³   ³   ³       ³   ³   ³   ³   ³   terminal256.py
+³   ³   ³       ³   ³   ³   ³   ³   _mapping.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           bbcode.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           groff.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           html.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           img.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           irc.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           latex.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           other.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           pangomarkup.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           rtf.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           svg.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           terminal.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           terminal256.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           _mapping.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÃÄÄÄlexers
+³   ³   ³       ³   ³   ³   ³   ³   python.py
+³   ³   ³       ³   ³   ³   ³   ³   _mapping.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           python.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           _mapping.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÃÄÄÄstyles
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           cmdline.cpython-311.pyc
+³   ³   ³       ³   ³   ³           console.cpython-311.pyc
+³   ³   ³       ³   ³   ³           filter.cpython-311.pyc
+³   ³   ³       ³   ³   ³           formatter.cpython-311.pyc
+³   ³   ³       ³   ³   ³           lexer.cpython-311.pyc
+³   ³   ³       ³   ³   ³           modeline.cpython-311.pyc
+³   ³   ³       ³   ³   ³           plugin.cpython-311.pyc
+³   ³   ³       ³   ³   ³           regexopt.cpython-311.pyc
+³   ³   ³       ³   ³   ³           scanner.cpython-311.pyc
+³   ³   ³       ³   ³   ³           sphinxext.cpython-311.pyc
+³   ³   ³       ³   ³   ³           style.cpython-311.pyc
+³   ³   ³       ³   ³   ³           token.cpython-311.pyc
+³   ³   ³       ³   ³   ³           unistring.cpython-311.pyc
+³   ³   ³       ³   ³   ³           util.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __main__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpyparsing
+³   ³   ³       ³   ³   ³   ³   actions.py
+³   ³   ³       ³   ³   ³   ³   common.py
+³   ³   ³       ³   ³   ³   ³   core.py
+³   ³   ³       ³   ³   ³   ³   exceptions.py
+³   ³   ³       ³   ³   ³   ³   helpers.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   results.py
+³   ³   ³       ³   ³   ³   ³   testing.py
+³   ³   ³       ³   ³   ³   ³   unicode.py
+³   ³   ³       ³   ³   ³   ³   util.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄdiagram
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           actions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           common.cpython-311.pyc
+³   ³   ³       ³   ³   ³           core.cpython-311.pyc
+³   ³   ³       ³   ³   ³           exceptions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           helpers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           results.cpython-311.pyc
+³   ³   ³       ³   ³   ³           testing.cpython-311.pyc
+³   ³   ³       ³   ³   ³           unicode.cpython-311.pyc
+³   ³   ³       ³   ³   ³           util.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpyproject_hooks
+³   ³   ³       ³   ³   ³   ³   _compat.py
+³   ³   ³       ³   ³   ³   ³   _impl.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄ_in_process
+³   ³   ³       ³   ³   ³   ³   ³   _in_process.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           _in_process.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           _compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _impl.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄrequests
+³   ³   ³       ³   ³   ³   ³   adapters.py
+³   ³   ³       ³   ³   ³   ³   api.py
+³   ³   ³       ³   ³   ³   ³   auth.py
+³   ³   ³       ³   ³   ³   ³   certs.py
+³   ³   ³       ³   ³   ³   ³   compat.py
+³   ³   ³       ³   ³   ³   ³   cookies.py
+³   ³   ³       ³   ³   ³   ³   exceptions.py
+³   ³   ³       ³   ³   ³   ³   help.py
+³   ³   ³       ³   ³   ³   ³   hooks.py
+³   ³   ³       ³   ³   ³   ³   models.py
+³   ³   ³       ³   ³   ³   ³   packages.py
+³   ³   ³       ³   ³   ³   ³   sessions.py
+³   ³   ³       ³   ³   ³   ³   status_codes.py
+³   ³   ³       ³   ³   ³   ³   structures.py
+³   ³   ³       ³   ³   ³   ³   utils.py
+³   ³   ³       ³   ³   ³   ³   _internal_utils.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   __version__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           adapters.cpython-311.pyc
+³   ³   ³       ³   ³   ³           api.cpython-311.pyc
+³   ³   ³       ³   ³   ³           auth.cpython-311.pyc
+³   ³   ³       ³   ³   ³           certs.cpython-311.pyc
+³   ³   ³       ³   ³   ³           compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           cookies.cpython-311.pyc
+³   ³   ³       ³   ³   ³           exceptions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           help.cpython-311.pyc
+³   ³   ³       ³   ³   ³           hooks.cpython-311.pyc
+³   ³   ³       ³   ³   ³           models.cpython-311.pyc
+³   ³   ³       ³   ³   ³           packages.cpython-311.pyc
+³   ³   ³       ³   ³   ³           sessions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           status_codes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           structures.cpython-311.pyc
+³   ³   ³       ³   ³   ³           utils.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _internal_utils.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __version__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄresolvelib
+³   ³   ³       ³   ³   ³   ³   providers.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   reporters.py
+³   ³   ³       ³   ³   ³   ³   resolvers.py
+³   ³   ³       ³   ³   ³   ³   structs.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄcompat
+³   ³   ³       ³   ³   ³   ³   ³   collections_abc.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           collections_abc.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           providers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           reporters.cpython-311.pyc
+³   ³   ³       ³   ³   ³           resolvers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           structs.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄrich
+³   ³   ³       ³   ³   ³   ³   abc.py
+³   ³   ³       ³   ³   ³   ³   align.py
+³   ³   ³       ³   ³   ³   ³   ansi.py
+³   ³   ³       ³   ³   ³   ³   bar.py
+³   ³   ³       ³   ³   ³   ³   box.py
+³   ³   ³       ³   ³   ³   ³   cells.py
+³   ³   ³       ³   ³   ³   ³   color.py
+³   ³   ³       ³   ³   ³   ³   color_triplet.py
+³   ³   ³       ³   ³   ³   ³   columns.py
+³   ³   ³       ³   ³   ³   ³   console.py
+³   ³   ³       ³   ³   ³   ³   constrain.py
+³   ³   ³       ³   ³   ³   ³   containers.py
+³   ³   ³       ³   ³   ³   ³   control.py
+³   ³   ³       ³   ³   ³   ³   default_styles.py
+³   ³   ³       ³   ³   ³   ³   diagnose.py
+³   ³   ³       ³   ³   ³   ³   emoji.py
+³   ³   ³       ³   ³   ³   ³   errors.py
+³   ³   ³       ³   ³   ³   ³   filesize.py
+³   ³   ³       ³   ³   ³   ³   file_proxy.py
+³   ³   ³       ³   ³   ³   ³   highlighter.py
+³   ³   ³       ³   ³   ³   ³   json.py
+³   ³   ³       ³   ³   ³   ³   jupyter.py
+³   ³   ³       ³   ³   ³   ³   layout.py
+³   ³   ³       ³   ³   ³   ³   live.py
+³   ³   ³       ³   ³   ³   ³   live_render.py
+³   ³   ³       ³   ³   ³   ³   logging.py
+³   ³   ³       ³   ³   ³   ³   markup.py
+³   ³   ³       ³   ³   ³   ³   measure.py
+³   ³   ³       ³   ³   ³   ³   padding.py
+³   ³   ³       ³   ³   ³   ³   pager.py
+³   ³   ³       ³   ³   ³   ³   palette.py
+³   ³   ³       ³   ³   ³   ³   panel.py
+³   ³   ³       ³   ³   ³   ³   pretty.py
+³   ³   ³       ³   ³   ³   ³   progress.py
+³   ³   ³       ³   ³   ³   ³   progress_bar.py
+³   ³   ³       ³   ³   ³   ³   prompt.py
+³   ³   ³       ³   ³   ³   ³   protocol.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   region.py
+³   ³   ³       ³   ³   ³   ³   repr.py
+³   ³   ³       ³   ³   ³   ³   rule.py
+³   ³   ³       ³   ³   ³   ³   scope.py
+³   ³   ³       ³   ³   ³   ³   screen.py
+³   ³   ³       ³   ³   ³   ³   segment.py
+³   ³   ³       ³   ³   ³   ³   spinner.py
+³   ³   ³       ³   ³   ³   ³   status.py
+³   ³   ³       ³   ³   ³   ³   style.py
+³   ³   ³       ³   ³   ³   ³   styled.py
+³   ³   ³       ³   ³   ³   ³   syntax.py
+³   ³   ³       ³   ³   ³   ³   table.py
+³   ³   ³       ³   ³   ³   ³   terminal_theme.py
+³   ³   ³       ³   ³   ³   ³   text.py
+³   ³   ³       ³   ³   ³   ³   theme.py
+³   ³   ³       ³   ³   ³   ³   themes.py
+³   ³   ³       ³   ³   ³   ³   traceback.py
+³   ³   ³       ³   ³   ³   ³   tree.py
+³   ³   ³       ³   ³   ³   ³   _cell_widths.py
+³   ³   ³       ³   ³   ³   ³   _emoji_codes.py
+³   ³   ³       ³   ³   ³   ³   _emoji_replace.py
+³   ³   ³       ³   ³   ³   ³   _export_format.py
+³   ³   ³       ³   ³   ³   ³   _extension.py
+³   ³   ³       ³   ³   ³   ³   _fileno.py
+³   ³   ³       ³   ³   ³   ³   _inspect.py
+³   ³   ³       ³   ³   ³   ³   _log_render.py
+³   ³   ³       ³   ³   ³   ³   _loop.py
+³   ³   ³       ³   ³   ³   ³   _null_file.py
+³   ³   ³       ³   ³   ³   ³   _palettes.py
+³   ³   ³       ³   ³   ³   ³   _pick.py
+³   ³   ³       ³   ³   ³   ³   _ratio.py
+³   ³   ³       ³   ³   ³   ³   _spinners.py
+³   ³   ³       ³   ³   ³   ³   _stack.py
+³   ³   ³       ³   ³   ³   ³   _timer.py
+³   ³   ³       ³   ³   ³   ³   _win32_console.py
+³   ³   ³       ³   ³   ³   ³   _windows.py
+³   ³   ³       ³   ³   ³   ³   _windows_renderer.py
+³   ³   ³       ³   ³   ³   ³   _wrap.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   __main__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           abc.cpython-311.pyc
+³   ³   ³       ³   ³   ³           align.cpython-311.pyc
+³   ³   ³       ³   ³   ³           ansi.cpython-311.pyc
+³   ³   ³       ³   ³   ³           bar.cpython-311.pyc
+³   ³   ³       ³   ³   ³           box.cpython-311.pyc
+³   ³   ³       ³   ³   ³           cells.cpython-311.pyc
+³   ³   ³       ³   ³   ³           color.cpython-311.pyc
+³   ³   ³       ³   ³   ³           color_triplet.cpython-311.pyc
+³   ³   ³       ³   ³   ³           columns.cpython-311.pyc
+³   ³   ³       ³   ³   ³           console.cpython-311.pyc
+³   ³   ³       ³   ³   ³           constrain.cpython-311.pyc
+³   ³   ³       ³   ³   ³           containers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           control.cpython-311.pyc
+³   ³   ³       ³   ³   ³           default_styles.cpython-311.pyc
+³   ³   ³       ³   ³   ³           diagnose.cpython-311.pyc
+³   ³   ³       ³   ³   ³           emoji.cpython-311.pyc
+³   ³   ³       ³   ³   ³           errors.cpython-311.pyc
+³   ³   ³       ³   ³   ³           filesize.cpython-311.pyc
+³   ³   ³       ³   ³   ³           file_proxy.cpython-311.pyc
+³   ³   ³       ³   ³   ³           highlighter.cpython-311.pyc
+³   ³   ³       ³   ³   ³           json.cpython-311.pyc
+³   ³   ³       ³   ³   ³           jupyter.cpython-311.pyc
+³   ³   ³       ³   ³   ³           layout.cpython-311.pyc
+³   ³   ³       ³   ³   ³           live.cpython-311.pyc
+³   ³   ³       ³   ³   ³           live_render.cpython-311.pyc
+³   ³   ³       ³   ³   ³           logging.cpython-311.pyc
+³   ³   ³       ³   ³   ³           markup.cpython-311.pyc
+³   ³   ³       ³   ³   ³           measure.cpython-311.pyc
+³   ³   ³       ³   ³   ³           padding.cpython-311.pyc
+³   ³   ³       ³   ³   ³           pager.cpython-311.pyc
+³   ³   ³       ³   ³   ³           palette.cpython-311.pyc
+³   ³   ³       ³   ³   ³           panel.cpython-311.pyc
+³   ³   ³       ³   ³   ³           pretty.cpython-311.pyc
+³   ³   ³       ³   ³   ³           progress.cpython-311.pyc
+³   ³   ³       ³   ³   ³           progress_bar.cpython-311.pyc
+³   ³   ³       ³   ³   ³           prompt.cpython-311.pyc
+³   ³   ³       ³   ³   ³           protocol.cpython-311.pyc
+³   ³   ³       ³   ³   ³           region.cpython-311.pyc
+³   ³   ³       ³   ³   ³           repr.cpython-311.pyc
+³   ³   ³       ³   ³   ³           rule.cpython-311.pyc
+³   ³   ³       ³   ³   ³           scope.cpython-311.pyc
+³   ³   ³       ³   ³   ³           screen.cpython-311.pyc
+³   ³   ³       ³   ³   ³           segment.cpython-311.pyc
+³   ³   ³       ³   ³   ³           spinner.cpython-311.pyc
+³   ³   ³       ³   ³   ³           status.cpython-311.pyc
+³   ³   ³       ³   ³   ³           style.cpython-311.pyc
+³   ³   ³       ³   ³   ³           styled.cpython-311.pyc
+³   ³   ³       ³   ³   ³           syntax.cpython-311.pyc
+³   ³   ³       ³   ³   ³           table.cpython-311.pyc
+³   ³   ³       ³   ³   ³           terminal_theme.cpython-311.pyc
+³   ³   ³       ³   ³   ³           text.cpython-311.pyc
+³   ³   ³       ³   ³   ³           theme.cpython-311.pyc
+³   ³   ³       ³   ³   ³           themes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           traceback.cpython-311.pyc
+³   ³   ³       ³   ³   ³           tree.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _cell_widths.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _emoji_codes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _emoji_replace.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _export_format.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _extension.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _fileno.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _inspect.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _log_render.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _loop.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _null_file.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _palettes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _pick.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _ratio.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _spinners.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _stack.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _timer.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _win32_console.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _windows.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _windows_renderer.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _wrap.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __main__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄtenacity
+³   ³   ³       ³   ³   ³   ³   after.py
+³   ³   ³       ³   ³   ³   ³   before.py
+³   ³   ³       ³   ³   ³   ³   before_sleep.py
+³   ³   ³       ³   ³   ³   ³   nap.py
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   retry.py
+³   ³   ³       ³   ³   ³   ³   stop.py
+³   ³   ³       ³   ³   ³   ³   tornadoweb.py
+³   ³   ³       ³   ³   ³   ³   wait.py
+³   ³   ³       ³   ³   ³   ³   _asyncio.py
+³   ³   ³       ³   ³   ³   ³   _utils.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           after.cpython-311.pyc
+³   ³   ³       ³   ³   ³           before.cpython-311.pyc
+³   ³   ³       ³   ³   ³           before_sleep.cpython-311.pyc
+³   ³   ³       ³   ³   ³           nap.cpython-311.pyc
+³   ³   ³       ³   ³   ³           retry.cpython-311.pyc
+³   ³   ³       ³   ³   ³           stop.cpython-311.pyc
+³   ³   ³       ³   ³   ³           tornadoweb.cpython-311.pyc
+³   ³   ³       ³   ³   ³           wait.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _asyncio.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _utils.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄtomli
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   _parser.py
+³   ³   ³       ³   ³   ³   ³   _re.py
+³   ³   ³       ³   ³   ³   ³   _types.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           _parser.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _re.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _types.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄtruststore
+³   ³   ³       ³   ³   ³   ³   py.typed
+³   ³   ³       ³   ³   ³   ³   _api.py
+³   ³   ³       ³   ³   ³   ³   _macos.py
+³   ³   ³       ³   ³   ³   ³   _openssl.py
+³   ³   ³       ³   ³   ³   ³   _ssl_constants.py
+³   ³   ³       ³   ³   ³   ³   _windows.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           _api.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _macos.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _openssl.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _ssl_constants.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _windows.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄurllib3
+³   ³   ³       ³   ³   ³   ³   connection.py
+³   ³   ³       ³   ³   ³   ³   connectionpool.py
+³   ³   ³       ³   ³   ³   ³   exceptions.py
+³   ³   ³       ³   ³   ³   ³   fields.py
+³   ³   ³       ³   ³   ³   ³   filepost.py
+³   ³   ³       ³   ³   ³   ³   poolmanager.py
+³   ³   ³       ³   ³   ³   ³   request.py
+³   ³   ³       ³   ³   ³   ³   response.py
+³   ³   ³       ³   ³   ³   ³   _collections.py
+³   ³   ³       ³   ³   ³   ³   _version.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄcontrib
+³   ³   ³       ³   ³   ³   ³   ³   appengine.py
+³   ³   ³       ³   ³   ³   ³   ³   ntlmpool.py
+³   ³   ³       ³   ³   ³   ³   ³   pyopenssl.py
+³   ³   ³       ³   ³   ³   ³   ³   securetransport.py
+³   ³   ³       ³   ³   ³   ³   ³   socks.py
+³   ³   ³       ³   ³   ³   ³   ³   _appengine_environ.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÃÄÄÄ_securetransport
+³   ³   ³       ³   ³   ³   ³   ³   ³   bindings.py
+³   ³   ³       ³   ³   ³   ³   ³   ³   low_level.py
+³   ³   ³       ³   ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³   ³           bindings.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³   ³           low_level.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           appengine.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           ntlmpool.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           pyopenssl.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           securetransport.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           socks.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           _appengine_environ.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÃÄÄÄpackages
+³   ³   ³       ³   ³   ³   ³   ³   six.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÃÄÄÄbackports
+³   ³   ³       ³   ³   ³   ³   ³   ³   makefile.py
+³   ³   ³       ³   ³   ³   ³   ³   ³   weakref_finalize.py
+³   ³   ³       ³   ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³   ³           makefile.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³   ³           weakref_finalize.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           six.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÃÄÄÄutil
+³   ³   ³       ³   ³   ³   ³   ³   connection.py
+³   ³   ³       ³   ³   ³   ³   ³   proxy.py
+³   ³   ³       ³   ³   ³   ³   ³   queue.py
+³   ³   ³       ³   ³   ³   ³   ³   request.py
+³   ³   ³       ³   ³   ³   ³   ³   response.py
+³   ³   ³       ³   ³   ³   ³   ³   retry.py
+³   ³   ³       ³   ³   ³   ³   ³   ssltransport.py
+³   ³   ³       ³   ³   ³   ³   ³   ssl_.py
+³   ³   ³       ³   ³   ³   ³   ³   ssl_match_hostname.py
+³   ³   ³       ³   ³   ³   ³   ³   timeout.py
+³   ³   ³       ³   ³   ³   ³   ³   url.py
+³   ³   ³       ³   ³   ³   ³   ³   wait.py
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           connection.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           proxy.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           queue.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           request.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           response.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           retry.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           ssltransport.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           ssl_.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           ssl_match_hostname.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           timeout.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           url.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           wait.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           connection.cpython-311.pyc
+³   ³   ³       ³   ³   ³           connectionpool.cpython-311.pyc
+³   ³   ³       ³   ³   ³           exceptions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           fields.cpython-311.pyc
+³   ³   ³       ³   ³   ³           filepost.cpython-311.pyc
+³   ³   ³       ³   ³   ³           poolmanager.cpython-311.pyc
+³   ³   ³       ³   ³   ³           request.cpython-311.pyc
+³   ³   ³       ³   ³   ³           response.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _collections.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _version.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄwebencodings
+³   ³   ³       ³   ³   ³   ³   labels.py
+³   ³   ³       ³   ³   ³   ³   mklabels.py
+³   ³   ³       ³   ³   ³   ³   tests.py
+³   ³   ³       ³   ³   ³   ³   x_user_defined.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           labels.cpython-311.pyc
+³   ³   ³       ³   ³   ³           mklabels.cpython-311.pyc
+³   ³   ³       ³   ³   ³           tests.cpython-311.pyc
+³   ³   ³       ³   ³   ³           x_user_defined.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           six.cpython-311.pyc
+³   ³   ³       ³   ³           typing_extensions.cpython-311.pyc
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³           __init__.cpython-311.pyc
+³   ³   ³       ³           __main__.cpython-311.pyc
+³   ³   ³       ³           __pip-runner__.cpython-311.pyc
+³   ³   ³       ³           
+³   ³   ³       ÃÄÄÄpip-24.0.dist-info
+³   ³   ³       ³       AUTHORS.txt
+³   ³   ³       ³       entry_points.txt
+³   ³   ³       ³       INSTALLER
+³   ³   ³       ³       LICENSE.txt
+³   ³   ³       ³       METADATA
+³   ³   ³       ³       RECORD
+³   ³   ³       ³       REQUESTED
+³   ³   ³       ³       top_level.txt
+³   ³   ³       ³       WHEEL
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄpkg_resources
+³   ³   ³       ³   ³   __init__.py
+³   ³   ³       ³   ³   
+³   ³   ³       ³   ÃÄÄÄextern
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÃÄÄÄ_vendor
+³   ³   ³       ³   ³   ³   appdirs.py
+³   ³   ³       ³   ³   ³   zipp.py
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÃÄÄÄimportlib_resources
+³   ³   ³       ³   ³   ³   ³   abc.py
+³   ³   ³       ³   ³   ³   ³   readers.py
+³   ³   ³       ³   ³   ³   ³   simple.py
+³   ³   ³       ³   ³   ³   ³   _adapters.py
+³   ³   ³       ³   ³   ³   ³   _common.py
+³   ³   ³       ³   ³   ³   ³   _compat.py
+³   ³   ³       ³   ³   ³   ³   _itertools.py
+³   ³   ³       ³   ³   ³   ³   _legacy.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           abc.cpython-311.pyc
+³   ³   ³       ³   ³   ³           readers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           simple.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _adapters.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _common.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _itertools.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _legacy.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄjaraco
+³   ³   ³       ³   ³   ³   ³   context.py
+³   ³   ³       ³   ³   ³   ³   functools.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄtext
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           context.cpython-311.pyc
+³   ³   ³       ³   ³   ³           functools.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄmore_itertools
+³   ³   ³       ³   ³   ³   ³   more.py
+³   ³   ³       ³   ³   ³   ³   recipes.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           more.cpython-311.pyc
+³   ³   ³       ³   ³   ³           recipes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpackaging
+³   ³   ³       ³   ³   ³   ³   markers.py
+³   ³   ³       ³   ³   ³   ³   requirements.py
+³   ³   ³       ³   ³   ³   ³   specifiers.py
+³   ³   ³       ³   ³   ³   ³   tags.py
+³   ³   ³       ³   ³   ³   ³   utils.py
+³   ³   ³       ³   ³   ³   ³   version.py
+³   ³   ³       ³   ³   ³   ³   _manylinux.py
+³   ³   ³       ³   ³   ³   ³   _musllinux.py
+³   ³   ³       ³   ³   ³   ³   _structures.py
+³   ³   ³       ³   ³   ³   ³   __about__.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           markers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           requirements.cpython-311.pyc
+³   ³   ³       ³   ³   ³           specifiers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           tags.cpython-311.pyc
+³   ³   ³       ³   ³   ³           utils.cpython-311.pyc
+³   ³   ³       ³   ³   ³           version.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _manylinux.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _musllinux.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _structures.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __about__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpyparsing
+³   ³   ³       ³   ³   ³   ³   actions.py
+³   ³   ³       ³   ³   ³   ³   common.py
+³   ³   ³       ³   ³   ³   ³   core.py
+³   ³   ³       ³   ³   ³   ³   exceptions.py
+³   ³   ³       ³   ³   ³   ³   helpers.py
+³   ³   ³       ³   ³   ³   ³   results.py
+³   ³   ³       ³   ³   ³   ³   testing.py
+³   ³   ³       ³   ³   ³   ³   unicode.py
+³   ³   ³       ³   ³   ³   ³   util.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄdiagram
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           actions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           common.cpython-311.pyc
+³   ³   ³       ³   ³   ³           core.cpython-311.pyc
+³   ³   ³       ³   ³   ³           exceptions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           helpers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           results.cpython-311.pyc
+³   ³   ³       ³   ³   ³           testing.cpython-311.pyc
+³   ³   ³       ³   ³   ³           unicode.cpython-311.pyc
+³   ³   ³       ³   ³   ³           util.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           appdirs.cpython-311.pyc
+³   ³   ³       ³   ³           zipp.cpython-311.pyc
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³           __init__.cpython-311.pyc
+³   ³   ³       ³           
+³   ³   ³       ÃÄÄÄsetuptools
+³   ³   ³       ³   ³   archive_util.py
+³   ³   ³       ³   ³   build_meta.py
+³   ³   ³       ³   ³   cli-32.exe
+³   ³   ³       ³   ³   cli-64.exe
+³   ³   ³       ³   ³   cli-arm64.exe
+³   ³   ³       ³   ³   cli.exe
+³   ³   ³       ³   ³   depends.py
+³   ³   ³       ³   ³   dep_util.py
+³   ³   ³       ³   ³   discovery.py
+³   ³   ³       ³   ³   dist.py
+³   ³   ³       ³   ³   errors.py
+³   ³   ³       ³   ³   extension.py
+³   ³   ³       ³   ³   glob.py
+³   ³   ³       ³   ³   gui-32.exe
+³   ³   ³       ³   ³   gui-64.exe
+³   ³   ³       ³   ³   gui-arm64.exe
+³   ³   ³       ³   ³   gui.exe
+³   ³   ³       ³   ³   installer.py
+³   ³   ³       ³   ³   launch.py
+³   ³   ³       ³   ³   logging.py
+³   ³   ³       ³   ³   monkey.py
+³   ³   ³       ³   ³   msvc.py
+³   ³   ³       ³   ³   namespaces.py
+³   ³   ³       ³   ³   package_index.py
+³   ³   ³       ³   ³   py34compat.py
+³   ³   ³       ³   ³   sandbox.py
+³   ³   ³       ³   ³   script (dev).tmpl
+³   ³   ³       ³   ³   script.tmpl
+³   ³   ³       ³   ³   unicode_utils.py
+³   ³   ³       ³   ³   version.py
+³   ³   ³       ³   ³   wheel.py
+³   ³   ³       ³   ³   windows_support.py
+³   ³   ³       ³   ³   _deprecation_warning.py
+³   ³   ³       ³   ³   _entry_points.py
+³   ³   ³       ³   ³   _imp.py
+³   ³   ³       ³   ³   _importlib.py
+³   ³   ³       ³   ³   _itertools.py
+³   ³   ³       ³   ³   _path.py
+³   ³   ³       ³   ³   _reqs.py
+³   ³   ³       ³   ³   __init__.py
+³   ³   ³       ³   ³   
+³   ³   ³       ³   ÃÄÄÄcommand
+³   ³   ³       ³   ³   ³   alias.py
+³   ³   ³       ³   ³   ³   bdist_egg.py
+³   ³   ³       ³   ³   ³   bdist_rpm.py
+³   ³   ³       ³   ³   ³   build.py
+³   ³   ³       ³   ³   ³   build_clib.py
+³   ³   ³       ³   ³   ³   build_ext.py
+³   ³   ³       ³   ³   ³   build_py.py
+³   ³   ³       ³   ³   ³   develop.py
+³   ³   ³       ³   ³   ³   dist_info.py
+³   ³   ³       ³   ³   ³   easy_install.py
+³   ³   ³       ³   ³   ³   editable_wheel.py
+³   ³   ³       ³   ³   ³   egg_info.py
+³   ³   ³       ³   ³   ³   install.py
+³   ³   ³       ³   ³   ³   install_egg_info.py
+³   ³   ³       ³   ³   ³   install_lib.py
+³   ³   ³       ³   ³   ³   install_scripts.py
+³   ³   ³       ³   ³   ³   launcher manifest.xml
+³   ³   ³       ³   ³   ³   py36compat.py
+³   ³   ³       ³   ³   ³   register.py
+³   ³   ³       ³   ³   ³   rotate.py
+³   ³   ³       ³   ³   ³   saveopts.py
+³   ³   ³       ³   ³   ³   sdist.py
+³   ³   ³       ³   ³   ³   setopt.py
+³   ³   ³       ³   ³   ³   test.py
+³   ³   ³       ³   ³   ³   upload.py
+³   ³   ³       ³   ³   ³   upload_docs.py
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           alias.cpython-311.pyc
+³   ³   ³       ³   ³           bdist_egg.cpython-311.pyc
+³   ³   ³       ³   ³           bdist_rpm.cpython-311.pyc
+³   ³   ³       ³   ³           build.cpython-311.pyc
+³   ³   ³       ³   ³           build_clib.cpython-311.pyc
+³   ³   ³       ³   ³           build_ext.cpython-311.pyc
+³   ³   ³       ³   ³           build_py.cpython-311.pyc
+³   ³   ³       ³   ³           develop.cpython-311.pyc
+³   ³   ³       ³   ³           dist_info.cpython-311.pyc
+³   ³   ³       ³   ³           easy_install.cpython-311.pyc
+³   ³   ³       ³   ³           editable_wheel.cpython-311.pyc
+³   ³   ³       ³   ³           egg_info.cpython-311.pyc
+³   ³   ³       ³   ³           install.cpython-311.pyc
+³   ³   ³       ³   ³           install_egg_info.cpython-311.pyc
+³   ³   ³       ³   ³           install_lib.cpython-311.pyc
+³   ³   ³       ³   ³           install_scripts.cpython-311.pyc
+³   ³   ³       ³   ³           py36compat.cpython-311.pyc
+³   ³   ³       ³   ³           register.cpython-311.pyc
+³   ³   ³       ³   ³           rotate.cpython-311.pyc
+³   ³   ³       ³   ³           saveopts.cpython-311.pyc
+³   ³   ³       ³   ³           sdist.cpython-311.pyc
+³   ³   ³       ³   ³           setopt.cpython-311.pyc
+³   ³   ³       ³   ³           test.cpython-311.pyc
+³   ³   ³       ³   ³           upload.cpython-311.pyc
+³   ³   ³       ³   ³           upload_docs.cpython-311.pyc
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÃÄÄÄconfig
+³   ³   ³       ³   ³   ³   expand.py
+³   ³   ³       ³   ³   ³   pyprojecttoml.py
+³   ³   ³       ³   ³   ³   setupcfg.py
+³   ³   ³       ³   ³   ³   _apply_pyprojecttoml.py
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÃÄÄÄ_validate_pyproject
+³   ³   ³       ³   ³   ³   ³   error_reporting.py
+³   ³   ³       ³   ³   ³   ³   extra_validations.py
+³   ³   ³       ³   ³   ³   ³   fastjsonschema_exceptions.py
+³   ³   ³       ³   ³   ³   ³   fastjsonschema_validations.py
+³   ³   ³       ³   ³   ³   ³   formats.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           error_reporting.cpython-311.pyc
+³   ³   ³       ³   ³   ³           extra_validations.cpython-311.pyc
+³   ³   ³       ³   ³   ³           fastjsonschema_exceptions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           fastjsonschema_validations.cpython-311.pyc
+³   ³   ³       ³   ³   ³           formats.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           expand.cpython-311.pyc
+³   ³   ³       ³   ³           pyprojecttoml.cpython-311.pyc
+³   ³   ³       ³   ³           setupcfg.cpython-311.pyc
+³   ³   ³       ³   ³           _apply_pyprojecttoml.cpython-311.pyc
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÃÄÄÄextern
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÃÄÄÄ_distutils
+³   ³   ³       ³   ³   ³   archive_util.py
+³   ³   ³       ³   ³   ³   bcppcompiler.py
+³   ³   ³       ³   ³   ³   ccompiler.py
+³   ³   ³       ³   ³   ³   cmd.py
+³   ³   ³       ³   ³   ³   config.py
+³   ³   ³       ³   ³   ³   core.py
+³   ³   ³       ³   ³   ³   cygwinccompiler.py
+³   ³   ³       ³   ³   ³   debug.py
+³   ³   ³       ³   ³   ³   dep_util.py
+³   ³   ³       ³   ³   ³   dir_util.py
+³   ³   ³       ³   ³   ³   dist.py
+³   ³   ³       ³   ³   ³   errors.py
+³   ³   ³       ³   ³   ³   extension.py
+³   ³   ³       ³   ³   ³   fancy_getopt.py
+³   ³   ³       ³   ³   ³   filelist.py
+³   ³   ³       ³   ³   ³   file_util.py
+³   ³   ³       ³   ³   ³   log.py
+³   ³   ³       ³   ³   ³   msvc9compiler.py
+³   ³   ³       ³   ³   ³   msvccompiler.py
+³   ³   ³       ³   ³   ³   py38compat.py
+³   ³   ³       ³   ³   ³   py39compat.py
+³   ³   ³       ³   ³   ³   spawn.py
+³   ³   ³       ³   ³   ³   sysconfig.py
+³   ³   ³       ³   ³   ³   text_file.py
+³   ³   ³       ³   ³   ³   unixccompiler.py
+³   ³   ³       ³   ³   ³   util.py
+³   ³   ³       ³   ³   ³   version.py
+³   ³   ³       ³   ³   ³   versionpredicate.py
+³   ³   ³       ³   ³   ³   _collections.py
+³   ³   ³       ³   ³   ³   _functools.py
+³   ³   ³       ³   ³   ³   _macos_compat.py
+³   ³   ³       ³   ³   ³   _msvccompiler.py
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÃÄÄÄcommand
+³   ³   ³       ³   ³   ³   ³   bdist.py
+³   ³   ³       ³   ³   ³   ³   bdist_dumb.py
+³   ³   ³       ³   ³   ³   ³   bdist_rpm.py
+³   ³   ³       ³   ³   ³   ³   build.py
+³   ³   ³       ³   ³   ³   ³   build_clib.py
+³   ³   ³       ³   ³   ³   ³   build_ext.py
+³   ³   ³       ³   ³   ³   ³   build_py.py
+³   ³   ³       ³   ³   ³   ³   build_scripts.py
+³   ³   ³       ³   ³   ³   ³   check.py
+³   ³   ³       ³   ³   ³   ³   clean.py
+³   ³   ³       ³   ³   ³   ³   config.py
+³   ³   ³       ³   ³   ³   ³   install.py
+³   ³   ³       ³   ³   ³   ³   install_data.py
+³   ³   ³       ³   ³   ³   ³   install_egg_info.py
+³   ³   ³       ³   ³   ³   ³   install_headers.py
+³   ³   ³       ³   ³   ³   ³   install_lib.py
+³   ³   ³       ³   ³   ³   ³   install_scripts.py
+³   ³   ³       ³   ³   ³   ³   py37compat.py
+³   ³   ³       ³   ³   ³   ³   register.py
+³   ³   ³       ³   ³   ³   ³   sdist.py
+³   ³   ³       ³   ³   ³   ³   upload.py
+³   ³   ³       ³   ³   ³   ³   _framework_compat.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           bdist.cpython-311.pyc
+³   ³   ³       ³   ³   ³           bdist_dumb.cpython-311.pyc
+³   ³   ³       ³   ³   ³           bdist_rpm.cpython-311.pyc
+³   ³   ³       ³   ³   ³           build.cpython-311.pyc
+³   ³   ³       ³   ³   ³           build_clib.cpython-311.pyc
+³   ³   ³       ³   ³   ³           build_ext.cpython-311.pyc
+³   ³   ³       ³   ³   ³           build_py.cpython-311.pyc
+³   ³   ³       ³   ³   ³           build_scripts.cpython-311.pyc
+³   ³   ³       ³   ³   ³           check.cpython-311.pyc
+³   ³   ³       ³   ³   ³           clean.cpython-311.pyc
+³   ³   ³       ³   ³   ³           config.cpython-311.pyc
+³   ³   ³       ³   ³   ³           install.cpython-311.pyc
+³   ³   ³       ³   ³   ³           install_data.cpython-311.pyc
+³   ³   ³       ³   ³   ³           install_egg_info.cpython-311.pyc
+³   ³   ³       ³   ³   ³           install_headers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           install_lib.cpython-311.pyc
+³   ³   ³       ³   ³   ³           install_scripts.cpython-311.pyc
+³   ³   ³       ³   ³   ³           py37compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           register.cpython-311.pyc
+³   ³   ³       ³   ³   ³           sdist.cpython-311.pyc
+³   ³   ³       ³   ³   ³           upload.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _framework_compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           archive_util.cpython-311.pyc
+³   ³   ³       ³   ³           bcppcompiler.cpython-311.pyc
+³   ³   ³       ³   ³           ccompiler.cpython-311.pyc
+³   ³   ³       ³   ³           cmd.cpython-311.pyc
+³   ³   ³       ³   ³           config.cpython-311.pyc
+³   ³   ³       ³   ³           core.cpython-311.pyc
+³   ³   ³       ³   ³           cygwinccompiler.cpython-311.pyc
+³   ³   ³       ³   ³           debug.cpython-311.pyc
+³   ³   ³       ³   ³           dep_util.cpython-311.pyc
+³   ³   ³       ³   ³           dir_util.cpython-311.pyc
+³   ³   ³       ³   ³           dist.cpython-311.pyc
+³   ³   ³       ³   ³           errors.cpython-311.pyc
+³   ³   ³       ³   ³           extension.cpython-311.pyc
+³   ³   ³       ³   ³           fancy_getopt.cpython-311.pyc
+³   ³   ³       ³   ³           filelist.cpython-311.pyc
+³   ³   ³       ³   ³           file_util.cpython-311.pyc
+³   ³   ³       ³   ³           log.cpython-311.pyc
+³   ³   ³       ³   ³           msvc9compiler.cpython-311.pyc
+³   ³   ³       ³   ³           msvccompiler.cpython-311.pyc
+³   ³   ³       ³   ³           py38compat.cpython-311.pyc
+³   ³   ³       ³   ³           py39compat.cpython-311.pyc
+³   ³   ³       ³   ³           spawn.cpython-311.pyc
+³   ³   ³       ³   ³           sysconfig.cpython-311.pyc
+³   ³   ³       ³   ³           text_file.cpython-311.pyc
+³   ³   ³       ³   ³           unixccompiler.cpython-311.pyc
+³   ³   ³       ³   ³           util.cpython-311.pyc
+³   ³   ³       ³   ³           version.cpython-311.pyc
+³   ³   ³       ³   ³           versionpredicate.cpython-311.pyc
+³   ³   ³       ³   ³           _collections.cpython-311.pyc
+³   ³   ³       ³   ³           _functools.cpython-311.pyc
+³   ³   ³       ³   ³           _macos_compat.cpython-311.pyc
+³   ³   ³       ³   ³           _msvccompiler.cpython-311.pyc
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÃÄÄÄ_vendor
+³   ³   ³       ³   ³   ³   ordered_set.py
+³   ³   ³       ³   ³   ³   typing_extensions.py
+³   ³   ³       ³   ³   ³   zipp.py
+³   ³   ³       ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   
+³   ³   ³       ³   ³   ÃÄÄÄimportlib_metadata
+³   ³   ³       ³   ³   ³   ³   _adapters.py
+³   ³   ³       ³   ³   ³   ³   _collections.py
+³   ³   ³       ³   ³   ³   ³   _compat.py
+³   ³   ³       ³   ³   ³   ³   _functools.py
+³   ³   ³       ³   ³   ³   ³   _itertools.py
+³   ³   ³       ³   ³   ³   ³   _meta.py
+³   ³   ³       ³   ³   ³   ³   _text.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           _adapters.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _collections.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _functools.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _itertools.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _meta.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _text.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄimportlib_resources
+³   ³   ³       ³   ³   ³   ³   abc.py
+³   ³   ³       ³   ³   ³   ³   readers.py
+³   ³   ³       ³   ³   ³   ³   simple.py
+³   ³   ³       ³   ³   ³   ³   _adapters.py
+³   ³   ³       ³   ³   ³   ³   _common.py
+³   ³   ³       ³   ³   ³   ³   _compat.py
+³   ³   ³       ³   ³   ³   ³   _itertools.py
+³   ³   ³       ³   ³   ³   ³   _legacy.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           abc.cpython-311.pyc
+³   ³   ³       ³   ³   ³           readers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           simple.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _adapters.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _common.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _compat.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _itertools.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _legacy.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄjaraco
+³   ³   ³       ³   ³   ³   ³   context.py
+³   ³   ³       ³   ³   ³   ³   functools.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄtext
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           context.cpython-311.pyc
+³   ³   ³       ³   ³   ³           functools.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄmore_itertools
+³   ³   ³       ³   ³   ³   ³   more.py
+³   ³   ³       ³   ³   ³   ³   recipes.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           more.cpython-311.pyc
+³   ³   ³       ³   ³   ³           recipes.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpackaging
+³   ³   ³       ³   ³   ³   ³   markers.py
+³   ³   ³       ³   ³   ³   ³   requirements.py
+³   ³   ³       ³   ³   ³   ³   specifiers.py
+³   ³   ³       ³   ³   ³   ³   tags.py
+³   ³   ³       ³   ³   ³   ³   utils.py
+³   ³   ³       ³   ³   ³   ³   version.py
+³   ³   ³       ³   ³   ³   ³   _manylinux.py
+³   ³   ³       ³   ³   ³   ³   _musllinux.py
+³   ³   ³       ³   ³   ³   ³   _structures.py
+³   ³   ³       ³   ³   ³   ³   __about__.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           markers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           requirements.cpython-311.pyc
+³   ³   ³       ³   ³   ³           specifiers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           tags.cpython-311.pyc
+³   ³   ³       ³   ³   ³           utils.cpython-311.pyc
+³   ³   ³       ³   ³   ³           version.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _manylinux.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _musllinux.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _structures.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __about__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄpyparsing
+³   ³   ³       ³   ³   ³   ³   actions.py
+³   ³   ³       ³   ³   ³   ³   common.py
+³   ³   ³       ³   ³   ³   ³   core.py
+³   ³   ³       ³   ³   ³   ³   exceptions.py
+³   ³   ³       ³   ³   ³   ³   helpers.py
+³   ³   ³       ³   ³   ³   ³   results.py
+³   ³   ³       ³   ³   ³   ³   testing.py
+³   ³   ³       ³   ³   ³   ³   unicode.py
+³   ³   ³       ³   ³   ³   ³   util.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÃÄÄÄdiagram
+³   ³   ³       ³   ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³   ³           
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           actions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           common.cpython-311.pyc
+³   ³   ³       ³   ³   ³           core.cpython-311.pyc
+³   ³   ³       ³   ³   ³           exceptions.cpython-311.pyc
+³   ³   ³       ³   ³   ³           helpers.cpython-311.pyc
+³   ³   ³       ³   ³   ³           results.cpython-311.pyc
+³   ³   ³       ³   ³   ³           testing.cpython-311.pyc
+³   ³   ³       ³   ³   ³           unicode.cpython-311.pyc
+³   ³   ³       ³   ³   ³           util.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÃÄÄÄtomli
+³   ³   ³       ³   ³   ³   ³   _parser.py
+³   ³   ³       ³   ³   ³   ³   _re.py
+³   ³   ³       ³   ³   ³   ³   _types.py
+³   ³   ³       ³   ³   ³   ³   __init__.py
+³   ³   ³       ³   ³   ³   ³   
+³   ³   ³       ³   ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³   ³           _parser.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _re.cpython-311.pyc
+³   ³   ³       ³   ³   ³           _types.cpython-311.pyc
+³   ³   ³       ³   ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³   ³           
+³   ³   ³       ³   ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³   ³           ordered_set.cpython-311.pyc
+³   ³   ³       ³   ³           typing_extensions.cpython-311.pyc
+³   ³   ³       ³   ³           zipp.cpython-311.pyc
+³   ³   ³       ³   ³           __init__.cpython-311.pyc
+³   ³   ³       ³   ³           
+³   ³   ³       ³   ÀÄÄÄ__pycache__
+³   ³   ³       ³           archive_util.cpython-311.pyc
+³   ³   ³       ³           build_meta.cpython-311.pyc
+³   ³   ³       ³           depends.cpython-311.pyc
+³   ³   ³       ³           dep_util.cpython-311.pyc
+³   ³   ³       ³           discovery.cpython-311.pyc
+³   ³   ³       ³           dist.cpython-311.pyc
+³   ³   ³       ³           errors.cpython-311.pyc
+³   ³   ³       ³           extension.cpython-311.pyc
+³   ³   ³       ³           glob.cpython-311.pyc
+³   ³   ³       ³           installer.cpython-311.pyc
+³   ³   ³       ³           launch.cpython-311.pyc
+³   ³   ³       ³           logging.cpython-311.pyc
+³   ³   ³       ³           monkey.cpython-311.pyc
+³   ³   ³       ³           msvc.cpython-311.pyc
+³   ³   ³       ³           namespaces.cpython-311.pyc
+³   ³   ³       ³           package_index.cpython-311.pyc
+³   ³   ³       ³           py34compat.cpython-311.pyc
+³   ³   ³       ³           sandbox.cpython-311.pyc
+³   ³   ³       ³           unicode_utils.cpython-311.pyc
+³   ³   ³       ³           version.cpython-311.pyc
+³   ³   ³       ³           wheel.cpython-311.pyc
+³   ³   ³       ³           windows_support.cpython-311.pyc
+³   ³   ³       ³           _deprecation_warning.cpython-311.pyc
+³   ³   ³       ³           _entry_points.cpython-311.pyc
+³   ³   ³       ³           _imp.cpython-311.pyc
+³   ³   ³       ³           _importlib.cpython-311.pyc
+³   ³   ³       ³           _itertools.cpython-311.pyc
+³   ³   ³       ³           _path.cpython-311.pyc
+³   ³   ³       ³           _reqs.cpython-311.pyc
+³   ³   ³       ³           __init__.cpython-311.pyc
+³   ³   ³       ³           
+³   ³   ³       ÃÄÄÄsetuptools-65.5.0.dist-info
+³   ³   ³       ³       entry_points.txt
+³   ³   ³       ³       INSTALLER
+³   ³   ³       ³       LICENSE
+³   ³   ³       ³       METADATA
+³   ³   ³       ³       RECORD
+³   ³   ³       ³       REQUESTED
+³   ³   ³       ³       top_level.txt
+³   ³   ³       ³       WHEEL
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄ_distutils_hack
+³   ³   ³           ³   override.py
+³   ³   ³           ³   __init__.py
+³   ³   ³           ³   
+³   ³   ³           ÀÄÄÄ__pycache__
+³   ³   ³                   override.cpython-311.pyc
+³   ³   ³                   __init__.cpython-311.pyc
+³   ³   ³                   
+³   ³   ÀÄÄÄScripts
+³   ³           activate
+³   ³           activate.bat
+³   ³           Activate.ps1
+³   ³           deactivate.bat
+³   ³           pip.exe
+³   ³           pip3.11.exe
+³   ³           pip3.exe
+³   ³           python.exe
+³   ³           pythonw.exe
+³   ³           
+³   ÀÄÄÄ__pycache__
+³           main.cpython-311.pyc
+³           
+ÃÄÄÄfrontend
+³   ³   .gitignore
+³   ³   index.html
+³   ³   package-lock.json
+³   ³   package.json
+³   ³   README.md
+³   ³   tsconfig.app.json
+³   ³   tsconfig.json
+³   ³   tsconfig.node.json
+³   ³   vite.config.ts
+³   ³   
+³   ÃÄÄÄ.vscode
+³   ³       extensions.json
+³   ³       
+³   ÃÄÄÄnode_modules
+³   ³   ³   .package-lock.json
+³   ³   ³   
+³   ³   ÃÄÄÄ.bin
+³   ³   ³       esbuild
+³   ³   ³       esbuild.cmd
+³   ³   ³       esbuild.ps1
+³   ³   ³       nanoid
+³   ³   ³       nanoid.cmd
+³   ³   ³       nanoid.ps1
+³   ³   ³       parser
+³   ³   ³       parser.cmd
+³   ³   ³       parser.ps1
+³   ³   ³       rollup
+³   ³   ³       rollup.cmd
+³   ³   ³       rollup.ps1
+³   ³   ³       tsc
+³   ³   ³       tsc.cmd
+³   ³   ³       tsc.ps1
+³   ³   ³       tsserver
+³   ³   ³       tsserver.cmd
+³   ³   ³       tsserver.ps1
+³   ³   ³       vite
+³   ³   ³       vite.cmd
+³   ³   ³       vite.ps1
+³   ³   ³       vue-tsc
+³   ³   ³       vue-tsc.cmd
+³   ³   ³       vue-tsc.ps1
+³   ³   ³       
+³   ³   ÃÄÄÄ.vite
+³   ³   ³   ÀÄÄÄdeps
+³   ³   ³           package.json
+³   ³   ³           vue.js
+³   ³   ³           vue.js.map
+³   ³   ³           _metadata.json
+³   ³   ³           
+³   ³   ÃÄÄÄ.vite-temp
+³   ³   ÃÄÄÄ@babel
+³   ³   ³   ÃÄÄÄhelper-string-parser
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄlib
+³   ³   ³   ³           index.js
+³   ³   ³   ³           index.js.map
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄhelper-validator-identifier
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄlib
+³   ³   ³   ³           identifier.js
+³   ³   ³   ³           identifier.js.map
+³   ³   ³   ³           index.js
+³   ³   ³   ³           index.js.map
+³   ³   ³   ³           keyword.js
+³   ³   ³   ³           keyword.js.map
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄparser
+³   ³   ³   ³   ³   CHANGELOG.md
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³   ³       babel-parser.js
+³   ³   ³   ³   ³       
+³   ³   ³   ³   ÃÄÄÄlib
+³   ³   ³   ³   ³       index.js
+³   ³   ³   ³   ³       index.js.map
+³   ³   ³   ³   ³       
+³   ³   ³   ³   ÀÄÄÄtypings
+³   ³   ³   ³           babel-parser.d.ts
+³   ³   ³   ³           
+³   ³   ³   ÀÄÄÄtypes
+³   ³   ³       ³   LICENSE
+³   ³   ³       ³   package.json
+³   ³   ³       ³   README.md
+³   ³   ³       ³   
+³   ³   ³       ÀÄÄÄlib
+³   ³   ³           ³   index-legacy.d.ts
+³   ³   ³           ³   index.d.ts
+³   ³   ³           ³   index.js
+³   ³   ³           ³   index.js.flow
+³   ³   ³           ³   index.js.map
+³   ³   ³           ³   
+³   ³   ³           ÃÄÄÄasserts
+³   ³   ³           ³   ³   assertNode.js
+³   ³   ³           ³   ³   assertNode.js.map
+³   ³   ³           ³   ³   
+³   ³   ³           ³   ÀÄÄÄgenerated
+³   ³   ³           ³           index.js
+³   ³   ³           ³           index.js.map
+³   ³   ³           ³           
+³   ³   ³           ÃÄÄÄast-types
+³   ³   ³           ³   ÀÄÄÄgenerated
+³   ³   ³           ³           index.js
+³   ³   ³           ³           index.js.map
+³   ³   ³           ³           
+³   ³   ³           ÃÄÄÄbuilders
+³   ³   ³           ³   ³   productions.js
+³   ³   ³           ³   ³   productions.js.map
+³   ³   ³           ³   ³   validateNode.js
+³   ³   ³           ³   ³   validateNode.js.map
+³   ³   ³           ³   ³   
+³   ³   ³           ³   ÃÄÄÄflow
+³   ³   ³           ³   ³       createFlowUnionType.js
+³   ³   ³           ³   ³       createFlowUnionType.js.map
+³   ³   ³           ³   ³       createTypeAnnotationBasedOnTypeof.js
+³   ³   ³           ³   ³       createTypeAnnotationBasedOnTypeof.js.map
+³   ³   ³           ³   ³       
+³   ³   ³           ³   ÃÄÄÄgenerated
+³   ³   ³           ³   ³       index.js
+³   ³   ³           ³   ³       index.js.map
+³   ³   ³           ³   ³       lowercase.js
+³   ³   ³           ³   ³       lowercase.js.map
+³   ³   ³           ³   ³       uppercase.js
+³   ³   ³           ³   ³       uppercase.js.map
+³   ³   ³           ³   ³       
+³   ³   ³           ³   ÃÄÄÄreact
+³   ³   ³           ³   ³       buildChildren.js
+³   ³   ³           ³   ³       buildChildren.js.map
+³   ³   ³           ³   ³       
+³   ³   ³           ³   ÀÄÄÄtypescript
+³   ³   ³           ³           createTSUnionType.js
+³   ³   ³           ³           createTSUnionType.js.map
+³   ³   ³           ³           
+³   ³   ³           ÃÄÄÄclone
+³   ³   ³           ³       clone.js
+³   ³   ³           ³       clone.js.map
+³   ³   ³           ³       cloneDeep.js
+³   ³   ³           ³       cloneDeep.js.map
+³   ³   ³           ³       cloneDeepWithoutLoc.js
+³   ³   ³           ³       cloneDeepWithoutLoc.js.map
+³   ³   ³           ³       cloneNode.js
+³   ³   ³           ³       cloneNode.js.map
+³   ³   ³           ³       cloneWithoutLoc.js
+³   ³   ³           ³       cloneWithoutLoc.js.map
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄcomments
+³   ³   ³           ³       addComment.js
+³   ³   ³           ³       addComment.js.map
+³   ³   ³           ³       addComments.js
+³   ³   ³           ³       addComments.js.map
+³   ³   ³           ³       inheritInnerComments.js
+³   ³   ³           ³       inheritInnerComments.js.map
+³   ³   ³           ³       inheritLeadingComments.js
+³   ³   ³           ³       inheritLeadingComments.js.map
+³   ³   ³           ³       inheritsComments.js
+³   ³   ³           ³       inheritsComments.js.map
+³   ³   ³           ³       inheritTrailingComments.js
+³   ³   ³           ³       inheritTrailingComments.js.map
+³   ³   ³           ³       removeComments.js
+³   ³   ³           ³       removeComments.js.map
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄconstants
+³   ³   ³           ³   ³   index.js
+³   ³   ³           ³   ³   index.js.map
+³   ³   ³           ³   ³   
+³   ³   ³           ³   ÀÄÄÄgenerated
+³   ³   ³           ³           index.js
+³   ³   ³           ³           index.js.map
+³   ³   ³           ³           
+³   ³   ³           ÃÄÄÄconverters
+³   ³   ³           ³       ensureBlock.js
+³   ³   ³           ³       ensureBlock.js.map
+³   ³   ³           ³       gatherSequenceExpressions.js
+³   ³   ³           ³       gatherSequenceExpressions.js.map
+³   ³   ³           ³       toBindingIdentifierName.js
+³   ³   ³           ³       toBindingIdentifierName.js.map
+³   ³   ³           ³       toBlock.js
+³   ³   ³           ³       toBlock.js.map
+³   ³   ³           ³       toComputedKey.js
+³   ³   ³           ³       toComputedKey.js.map
+³   ³   ³           ³       toExpression.js
+³   ³   ³           ³       toExpression.js.map
+³   ³   ³           ³       toIdentifier.js
+³   ³   ³           ³       toIdentifier.js.map
+³   ³   ³           ³       toKeyAlias.js
+³   ³   ³           ³       toKeyAlias.js.map
+³   ³   ³           ³       toSequenceExpression.js
+³   ³   ³           ³       toSequenceExpression.js.map
+³   ³   ³           ³       toStatement.js
+³   ³   ³           ³       toStatement.js.map
+³   ³   ³           ³       valueToNode.js
+³   ³   ³           ³       valueToNode.js.map
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄdefinitions
+³   ³   ³           ³       core.js
+³   ³   ³           ³       core.js.map
+³   ³   ³           ³       deprecated-aliases.js
+³   ³   ³           ³       deprecated-aliases.js.map
+³   ³   ³           ³       experimental.js
+³   ³   ³           ³       experimental.js.map
+³   ³   ³           ³       flow.js
+³   ³   ³           ³       flow.js.map
+³   ³   ³           ³       index.js
+³   ³   ³           ³       index.js.map
+³   ³   ³           ³       jsx.js
+³   ³   ³           ³       jsx.js.map
+³   ³   ³           ³       misc.js
+³   ³   ³           ³       misc.js.map
+³   ³   ³           ³       placeholders.js
+³   ³   ³           ³       placeholders.js.map
+³   ³   ³           ³       typescript.js
+³   ³   ³           ³       typescript.js.map
+³   ³   ³           ³       utils.js
+³   ³   ³           ³       utils.js.map
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄmodifications
+³   ³   ³           ³   ³   appendToMemberExpression.js
+³   ³   ³           ³   ³   appendToMemberExpression.js.map
+³   ³   ³           ³   ³   inherits.js
+³   ³   ³           ³   ³   inherits.js.map
+³   ³   ³           ³   ³   prependToMemberExpression.js
+³   ³   ³           ³   ³   prependToMemberExpression.js.map
+³   ³   ³           ³   ³   removeProperties.js
+³   ³   ³           ³   ³   removeProperties.js.map
+³   ³   ³           ³   ³   removePropertiesDeep.js
+³   ³   ³           ³   ³   removePropertiesDeep.js.map
+³   ³   ³           ³   ³   
+³   ³   ³           ³   ÃÄÄÄflow
+³   ³   ³           ³   ³       removeTypeDuplicates.js
+³   ³   ³           ³   ³       removeTypeDuplicates.js.map
+³   ³   ³           ³   ³       
+³   ³   ³           ³   ÀÄÄÄtypescript
+³   ³   ³           ³           removeTypeDuplicates.js
+³   ³   ³           ³           removeTypeDuplicates.js.map
+³   ³   ³           ³           
+³   ³   ³           ÃÄÄÄretrievers
+³   ³   ³           ³       getAssignmentIdentifiers.js
+³   ³   ³           ³       getAssignmentIdentifiers.js.map
+³   ³   ³           ³       getBindingIdentifiers.js
+³   ³   ³           ³       getBindingIdentifiers.js.map
+³   ³   ³           ³       getFunctionName.js
+³   ³   ³           ³       getFunctionName.js.map
+³   ³   ³           ³       getOuterBindingIdentifiers.js
+³   ³   ³           ³       getOuterBindingIdentifiers.js.map
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄtraverse
+³   ³   ³           ³       traverse.js
+³   ³   ³           ³       traverse.js.map
+³   ³   ³           ³       traverseFast.js
+³   ³   ³           ³       traverseFast.js.map
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄutils
+³   ³   ³           ³   ³   deprecationWarning.js
+³   ³   ³           ³   ³   deprecationWarning.js.map
+³   ³   ³           ³   ³   inherit.js
+³   ³   ³           ³   ³   inherit.js.map
+³   ³   ³           ³   ³   shallowEqual.js
+³   ³   ³           ³   ³   shallowEqual.js.map
+³   ³   ³           ³   ³   
+³   ³   ³           ³   ÀÄÄÄreact
+³   ³   ³           ³           cleanJSXElementLiteralChild.js
+³   ³   ³           ³           cleanJSXElementLiteralChild.js.map
+³   ³   ³           ³           
+³   ³   ³           ÀÄÄÄvalidators
+³   ³   ³               ³   buildMatchMemberExpression.js
+³   ³   ³               ³   buildMatchMemberExpression.js.map
+³   ³   ³               ³   is.js
+³   ³   ³               ³   is.js.map
+³   ³   ³               ³   isBinding.js
+³   ³   ³               ³   isBinding.js.map
+³   ³   ³               ³   isBlockScoped.js
+³   ³   ³               ³   isBlockScoped.js.map
+³   ³   ³               ³   isImmutable.js
+³   ³   ³               ³   isImmutable.js.map
+³   ³   ³               ³   isLet.js
+³   ³   ³               ³   isLet.js.map
+³   ³   ³               ³   isNode.js
+³   ³   ³               ³   isNode.js.map
+³   ³   ³               ³   isNodesEquivalent.js
+³   ³   ³               ³   isNodesEquivalent.js.map
+³   ³   ³               ³   isPlaceholderType.js
+³   ³   ³               ³   isPlaceholderType.js.map
+³   ³   ³               ³   isReferenced.js
+³   ³   ³               ³   isReferenced.js.map
+³   ³   ³               ³   isScope.js
+³   ³   ³               ³   isScope.js.map
+³   ³   ³               ³   isSpecifierDefault.js
+³   ³   ³               ³   isSpecifierDefault.js.map
+³   ³   ³               ³   isType.js
+³   ³   ³               ³   isType.js.map
+³   ³   ³               ³   isValidES3Identifier.js
+³   ³   ³               ³   isValidES3Identifier.js.map
+³   ³   ³               ³   isValidIdentifier.js
+³   ³   ³               ³   isValidIdentifier.js.map
+³   ³   ³               ³   isVar.js
+³   ³   ³               ³   isVar.js.map
+³   ³   ³               ³   matchesPattern.js
+³   ³   ³               ³   matchesPattern.js.map
+³   ³   ³               ³   validate.js
+³   ³   ³               ³   validate.js.map
+³   ³   ³               ³   
+³   ³   ³               ÃÄÄÄgenerated
+³   ³   ³               ³       index.js
+³   ³   ³               ³       index.js.map
+³   ³   ³               ³       
+³   ³   ³               ÀÄÄÄreact
+³   ³   ³                       isCompatTag.js
+³   ³   ³                       isCompatTag.js.map
+³   ³   ³                       isReactComponent.js
+³   ³   ³                       isReactComponent.js.map
+³   ³   ³                       
+³   ³   ÃÄÄÄ@esbuild
+³   ³   ³   ÀÄÄÄwin32-x64
+³   ³   ³           esbuild.exe
+³   ³   ³           package.json
+³   ³   ³           README.md
+³   ³   ³           
+³   ³   ÃÄÄÄ@jridgewell
+³   ³   ³   ÀÄÄÄsourcemap-codec
+³   ³   ³       ³   LICENSE
+³   ³   ³       ³   package.json
+³   ³   ³       ³   README.md
+³   ³   ³       ³   
+³   ³   ³       ÃÄÄÄdist
+³   ³   ³       ³       sourcemap-codec.mjs
+³   ³   ³       ³       sourcemap-codec.mjs.map
+³   ³   ³       ³       sourcemap-codec.umd.js
+³   ³   ³       ³       sourcemap-codec.umd.js.map
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄsrc
+³   ³   ³       ³       scopes.ts
+³   ³   ³       ³       sourcemap-codec.ts
+³   ³   ³       ³       strings.ts
+³   ³   ³       ³       vlq.ts
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄtypes
+³   ³   ³               scopes.d.cts
+³   ³   ³               scopes.d.cts.map
+³   ³   ³               scopes.d.mts
+³   ³   ³               scopes.d.mts.map
+³   ³   ³               sourcemap-codec.d.cts
+³   ³   ³               sourcemap-codec.d.cts.map
+³   ³   ³               sourcemap-codec.d.mts
+³   ³   ³               sourcemap-codec.d.mts.map
+³   ³   ³               strings.d.cts
+³   ³   ³               strings.d.cts.map
+³   ³   ³               strings.d.mts
+³   ³   ³               strings.d.mts.map
+³   ³   ³               vlq.d.cts
+³   ³   ³               vlq.d.cts.map
+³   ³   ³               vlq.d.mts
+³   ³   ³               vlq.d.mts.map
+³   ³   ³               
+³   ³   ÃÄÄÄ@rolldown
+³   ³   ³   ÀÄÄÄpluginutils
+³   ³   ³       ³   LICENSE
+³   ³   ³       ³   package.json
+³   ³   ³       ³   README.md
+³   ³   ³       ³   
+³   ³   ³       ÀÄÄÄdist
+³   ³   ³               index.cjs
+³   ³   ³               index.d.cts
+³   ³   ³               index.d.ts
+³   ³   ³               index.js
+³   ³   ³               
+³   ³   ÃÄÄÄ@rollup
+³   ³   ³   ÃÄÄÄrollup-win32-x64-gnu
+³   ³   ³   ³       package.json
+³   ³   ³   ³       README.md
+³   ³   ³   ³       rollup.win32-x64-gnu.node
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄrollup-win32-x64-msvc
+³   ³   ³           package.json
+³   ³   ³           README.md
+³   ³   ³           rollup.win32-x64-msvc.node
+³   ³   ³           
+³   ³   ÃÄÄÄ@types
+³   ³   ³   ÃÄÄÄestree
+³   ³   ³   ³       flow.d.ts
+³   ³   ³   ³       index.d.ts
+³   ³   ³   ³       LICENSE
+³   ³   ³   ³       package.json
+³   ³   ³   ³       README.md
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄnode
+³   ³   ³       ³   assert.d.ts
+³   ³   ³       ³   async_hooks.d.ts
+³   ³   ³       ³   buffer.buffer.d.ts
+³   ³   ³       ³   buffer.d.ts
+³   ³   ³       ³   child_process.d.ts
+³   ³   ³       ³   cluster.d.ts
+³   ³   ³       ³   console.d.ts
+³   ³   ³       ³   constants.d.ts
+³   ³   ³       ³   crypto.d.ts
+³   ³   ³       ³   dgram.d.ts
+³   ³   ³       ³   diagnostics_channel.d.ts
+³   ³   ³       ³   dns.d.ts
+³   ³   ³       ³   domain.d.ts
+³   ³   ³       ³   events.d.ts
+³   ³   ³       ³   fs.d.ts
+³   ³   ³       ³   globals.d.ts
+³   ³   ³       ³   globals.typedarray.d.ts
+³   ³   ³       ³   http.d.ts
+³   ³   ³       ³   http2.d.ts
+³   ³   ³       ³   https.d.ts
+³   ³   ³       ³   index.d.ts
+³   ³   ³       ³   inspector.d.ts
+³   ³   ³       ³   inspector.generated.d.ts
+³   ³   ³       ³   LICENSE
+³   ³   ³       ³   module.d.ts
+³   ³   ³       ³   net.d.ts
+³   ³   ³       ³   os.d.ts
+³   ³   ³       ³   package.json
+³   ³   ³       ³   path.d.ts
+³   ³   ³       ³   perf_hooks.d.ts
+³   ³   ³       ³   process.d.ts
+³   ³   ³       ³   punycode.d.ts
+³   ³   ³       ³   querystring.d.ts
+³   ³   ³       ³   readline.d.ts
+³   ³   ³       ³   README.md
+³   ³   ³       ³   repl.d.ts
+³   ³   ³       ³   sea.d.ts
+³   ³   ³       ³   sqlite.d.ts
+³   ³   ³       ³   stream.d.ts
+³   ³   ³       ³   string_decoder.d.ts
+³   ³   ³       ³   test.d.ts
+³   ³   ³       ³   timers.d.ts
+³   ³   ³       ³   tls.d.ts
+³   ³   ³       ³   trace_events.d.ts
+³   ³   ³       ³   tty.d.ts
+³   ³   ³       ³   url.d.ts
+³   ³   ³       ³   util.d.ts
+³   ³   ³       ³   v8.d.ts
+³   ³   ³       ³   vm.d.ts
+³   ³   ³       ³   wasi.d.ts
+³   ³   ³       ³   worker_threads.d.ts
+³   ³   ³       ³   zlib.d.ts
+³   ³   ³       ³   
+³   ³   ³       ÃÄÄÄassert
+³   ³   ³       ³       strict.d.ts
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄcompatibility
+³   ³   ³       ³       iterators.d.ts
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄdns
+³   ³   ³       ³       promises.d.ts
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄfs
+³   ³   ³       ³       promises.d.ts
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄreadline
+³   ³   ³       ³       promises.d.ts
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄstream
+³   ³   ³       ³       consumers.d.ts
+³   ³   ³       ³       promises.d.ts
+³   ³   ³       ³       web.d.ts
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄtimers
+³   ³   ³       ³       promises.d.ts
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄts5.6
+³   ³   ³       ³   ³   buffer.buffer.d.ts
+³   ³   ³       ³   ³   globals.typedarray.d.ts
+³   ³   ³       ³   ³   index.d.ts
+³   ³   ³       ³   ³   
+³   ³   ³       ³   ÀÄÄÄcompatibility
+³   ³   ³       ³           float16array.d.ts
+³   ³   ³       ³           
+³   ³   ³       ÃÄÄÄts5.7
+³   ³   ³       ³   ³   index.d.ts
+³   ³   ³       ³   ³   
+³   ³   ³       ³   ÀÄÄÄcompatibility
+³   ³   ³       ³           float16array.d.ts
+³   ³   ³       ³           
+³   ³   ³       ÀÄÄÄweb-globals
+³   ³   ³               abortcontroller.d.ts
+³   ³   ³               crypto.d.ts
+³   ³   ³               domexception.d.ts
+³   ³   ³               events.d.ts
+³   ³   ³               fetch.d.ts
+³   ³   ³               navigator.d.ts
+³   ³   ³               storage.d.ts
+³   ³   ³               streams.d.ts
+³   ³   ³               
+³   ³   ÃÄÄÄ@vitejs
+³   ³   ³   ÀÄÄÄplugin-vue
+³   ³   ³       ³   LICENSE
+³   ³   ³       ³   package.json
+³   ³   ³       ³   README.md
+³   ³   ³       ³   
+³   ³   ³       ÀÄÄÄdist
+³   ³   ³               index.d.ts
+³   ³   ³               index.js
+³   ³   ³               
+³   ³   ÃÄÄÄ@volar
+³   ³   ³   ÃÄÄÄlanguage-core
+³   ³   ³   ³   ³   index.d.ts
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄlib
+³   ³   ³   ³           editor.d.ts
+³   ³   ³   ³           editor.js
+³   ³   ³   ³           linkedCodeMap.d.ts
+³   ³   ³   ³           linkedCodeMap.js
+³   ³   ³   ³           types.d.ts
+³   ³   ³   ³           types.js
+³   ³   ³   ³           utils.d.ts
+³   ³   ³   ³           utils.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄsource-map
+³   ³   ³   ³   ³   index.d.ts
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄlib
+³   ³   ³   ³           binarySearch.d.ts
+³   ³   ³   ³           binarySearch.js
+³   ³   ³   ³           sourceMap.d.ts
+³   ³   ³   ³           sourceMap.js
+³   ³   ³   ³           translateOffset.d.ts
+³   ³   ³   ³           translateOffset.js
+³   ³   ³   ³           
+³   ³   ³   ÀÄÄÄtypescript
+³   ³   ³       ³   index.d.ts
+³   ³   ³       ³   index.js
+³   ³   ³       ³   LICENSE
+³   ³   ³       ³   package.json
+³   ³   ³       ³   
+³   ³   ³       ÀÄÄÄlib
+³   ³   ³           ³   common.d.ts
+³   ³   ³           ³   common.js
+³   ³   ³           ³   resolveModuleName.d.ts
+³   ³   ³           ³   resolveModuleName.js
+³   ³   ³           ³   
+³   ³   ³           ÃÄÄÄnode
+³   ³   ³           ³       decorateLanguageServiceHost.d.ts
+³   ³   ³           ³       decorateLanguageServiceHost.js
+³   ³   ³           ³       decorateProgram.d.ts
+³   ³   ³           ³       decorateProgram.js
+³   ³   ³           ³       dedupe.d.ts
+³   ³   ³           ³       dedupe.js
+³   ³   ³           ³       proxyCreateProgram.d.ts
+³   ³   ³           ³       proxyCreateProgram.js
+³   ³   ³           ³       proxyLanguageService.d.ts
+³   ³   ³           ³       proxyLanguageService.js
+³   ³   ³           ³       transform.d.ts
+³   ³   ³           ³       transform.js
+³   ³   ³           ³       utils.d.ts
+³   ³   ³           ³       utils.js
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄprotocol
+³   ³   ³           ³       createProject.d.ts
+³   ³   ³           ³       createProject.js
+³   ³   ³           ³       createSys.d.ts
+³   ³   ³           ³       createSys.js
+³   ³   ³           ³       
+³   ³   ³           ÃÄÄÄquickstart
+³   ³   ³           ³       createAsyncLanguageServicePlugin.d.ts
+³   ³   ³           ³       createAsyncLanguageServicePlugin.js
+³   ³   ³           ³       createLanguageServicePlugin.d.ts
+³   ³   ³           ³       createLanguageServicePlugin.js
+³   ³   ³           ³       languageServicePluginCommon.d.ts
+³   ³   ³           ³       languageServicePluginCommon.js
+³   ³   ³           ³       runTsc.d.ts
+³   ³   ³           ³       runTsc.js
+³   ³   ³           ³       
+³   ³   ³           ÀÄÄÄtypescript
+³   ³   ³                   core.d.ts
+³   ³   ³                   core.js
+³   ³   ³                   corePublic.d.ts
+³   ³   ³                   corePublic.js
+³   ³   ³                   path.d.ts
+³   ³   ³                   path.js
+³   ³   ³                   types.d.ts
+³   ³   ³                   types.js
+³   ³   ³                   utilities.d.ts
+³   ³   ³                   utilities.js
+³   ³   ³                   
+³   ³   ÃÄÄÄ@vue
+³   ³   ³   ÃÄÄÄcompiler-core
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           compiler-core.cjs.js
+³   ³   ³   ³           compiler-core.cjs.prod.js
+³   ³   ³   ³           compiler-core.d.ts
+³   ³   ³   ³           compiler-core.esm-bundler.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄcompiler-dom
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           compiler-dom.cjs.js
+³   ³   ³   ³           compiler-dom.cjs.prod.js
+³   ³   ³   ³           compiler-dom.d.ts
+³   ³   ³   ³           compiler-dom.esm-browser.js
+³   ³   ³   ³           compiler-dom.esm-browser.prod.js
+³   ³   ³   ³           compiler-dom.esm-bundler.js
+³   ³   ³   ³           compiler-dom.global.js
+³   ³   ³   ³           compiler-dom.global.prod.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄcompiler-sfc
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           compiler-sfc.cjs.js
+³   ³   ³   ³           compiler-sfc.d.ts
+³   ³   ³   ³           compiler-sfc.esm-browser.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄcompiler-ssr
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           compiler-ssr.cjs.js
+³   ³   ³   ³           compiler-ssr.d.ts
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄlanguage-core
+³   ³   ³   ³   ³   index.d.ts
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄlib
+³   ³   ³   ³       ³   compilerOptions.d.ts
+³   ³   ³   ³       ³   compilerOptions.js
+³   ³   ³   ³       ³   languagePlugin.d.ts
+³   ³   ³   ³       ³   languagePlugin.js
+³   ³   ³   ³       ³   plugins.d.ts
+³   ³   ³   ³       ³   plugins.js
+³   ³   ³   ³       ³   types.d.ts
+³   ³   ³   ³       ³   types.js
+³   ³   ³   ³       ³   
+³   ³   ³   ³       ÃÄÄÄcodegen
+³   ³   ³   ³       ³   ³   codeFeatures.d.ts
+³   ³   ³   ³       ³   ³   codeFeatures.js
+³   ³   ³   ³       ³   ³   globalTypes.d.ts
+³   ³   ³   ³       ³   ³   globalTypes.js
+³   ³   ³   ³       ³   ³   inlayHints.d.ts
+³   ³   ³   ³       ³   ³   inlayHints.js
+³   ³   ³   ³       ³   ³   localTypes.d.ts
+³   ³   ³   ³       ³   ³   localTypes.js
+³   ³   ³   ³       ³   ³   
+³   ³   ³   ³       ³   ÃÄÄÄscript
+³   ³   ³   ³       ³   ³       component.d.ts
+³   ³   ³   ³       ³   ³       component.js
+³   ³   ³   ³       ³   ³       context.d.ts
+³   ³   ³   ³       ³   ³       context.js
+³   ³   ³   ³       ³   ³       index.d.ts
+³   ³   ³   ³       ³   ³       index.js
+³   ³   ³   ³       ³   ³       scriptSetup.d.ts
+³   ³   ³   ³       ³   ³       scriptSetup.js
+³   ³   ³   ³       ³   ³       src.d.ts
+³   ³   ³   ³       ³   ³       src.js
+³   ³   ³   ³       ³   ³       template.d.ts
+³   ³   ³   ³       ³   ³       template.js
+³   ³   ³   ³       ³   ³       
+³   ³   ³   ³       ³   ÃÄÄÄstyle
+³   ³   ³   ³       ³   ³       classProperty.d.ts
+³   ³   ³   ³       ³   ³       classProperty.js
+³   ³   ³   ³       ³   ³       imports.d.ts
+³   ³   ³   ³       ³   ³       imports.js
+³   ³   ³   ³       ³   ³       modules.d.ts
+³   ³   ³   ³       ³   ³       modules.js
+³   ³   ³   ³       ³   ³       scopedClasses.d.ts
+³   ³   ³   ³       ³   ³       scopedClasses.js
+³   ³   ³   ³       ³   ³       
+³   ³   ³   ³       ³   ÃÄÄÄtemplate
+³   ³   ³   ³       ³   ³       context.d.ts
+³   ³   ³   ³       ³   ³       context.js
+³   ³   ³   ³       ³   ³       element.d.ts
+³   ³   ³   ³       ³   ³       element.js
+³   ³   ³   ³       ³   ³       elementChildren.d.ts
+³   ³   ³   ³       ³   ³       elementChildren.js
+³   ³   ³   ³       ³   ³       elementDirectives.d.ts
+³   ³   ³   ³       ³   ³       elementDirectives.js
+³   ³   ³   ³       ³   ³       elementEvents.d.ts
+³   ³   ³   ³       ³   ³       elementEvents.js
+³   ³   ³   ³       ³   ³       elementProps.d.ts
+³   ³   ³   ³       ³   ³       elementProps.js
+³   ³   ³   ³       ³   ³       index.d.ts
+³   ³   ³   ³       ³   ³       index.js
+³   ³   ³   ³       ³   ³       interpolation.d.ts
+³   ³   ³   ³       ³   ³       interpolation.js
+³   ³   ³   ³       ³   ³       objectProperty.d.ts
+³   ³   ³   ³       ³   ³       objectProperty.js
+³   ³   ³   ³       ³   ³       propertyAccess.d.ts
+³   ³   ³   ³       ³   ³       propertyAccess.js
+³   ³   ³   ³       ³   ³       slotOutlet.d.ts
+³   ³   ³   ³       ³   ³       slotOutlet.js
+³   ³   ³   ³       ³   ³       styleScopedClasses.d.ts
+³   ³   ³   ³       ³   ³       styleScopedClasses.js
+³   ³   ³   ³       ³   ³       templateChild.d.ts
+³   ³   ³   ³       ³   ³       templateChild.js
+³   ³   ³   ³       ³   ³       vFor.d.ts
+³   ³   ³   ³       ³   ³       vFor.js
+³   ³   ³   ³       ³   ³       vIf.d.ts
+³   ³   ³   ³       ³   ³       vIf.js
+³   ³   ³   ³       ³   ³       vSlot.d.ts
+³   ³   ³   ³       ³   ³       vSlot.js
+³   ³   ³   ³       ³   ³       
+³   ³   ³   ³       ³   ÀÄÄÄutils
+³   ³   ³   ³       ³           camelized.d.ts
+³   ³   ³   ³       ³           camelized.js
+³   ³   ³   ³       ³           escaped.d.ts
+³   ³   ³   ³       ³           escaped.js
+³   ³   ³   ³       ³           index.d.ts
+³   ³   ³   ³       ³           index.js
+³   ³   ³   ³       ³           merge.d.ts
+³   ³   ³   ³       ³           merge.js
+³   ³   ³   ³       ³           stringLiteralKey.d.ts
+³   ³   ³   ³       ³           stringLiteralKey.js
+³   ³   ³   ³       ³           unicode.d.ts
+³   ³   ³   ³       ³           unicode.js
+³   ³   ³   ³       ³           wrapWith.d.ts
+³   ³   ³   ³       ³           wrapWith.js
+³   ³   ³   ³       ³           
+³   ³   ³   ³       ÃÄÄÄparsers
+³   ³   ³   ³       ³       scriptRanges.d.ts
+³   ³   ³   ³       ³       scriptRanges.js
+³   ³   ³   ³       ³       scriptSetupRanges.d.ts
+³   ³   ³   ³       ³       scriptSetupRanges.js
+³   ³   ³   ³       ³       utils.d.ts
+³   ³   ³   ³       ³       utils.js
+³   ³   ³   ³       ³       vueCompilerOptions.d.ts
+³   ³   ³   ³       ³       vueCompilerOptions.js
+³   ³   ³   ³       ³       
+³   ³   ³   ³       ÃÄÄÄplugins
+³   ³   ³   ³       ³       file-html.d.ts
+³   ³   ³   ³       ³       file-html.js
+³   ³   ³   ³       ³       file-md.d.ts
+³   ³   ³   ³       ³       file-md.js
+³   ³   ³   ³       ³       file-vue.d.ts
+³   ³   ³   ³       ³       file-vue.js
+³   ³   ³   ³       ³       shared.d.ts
+³   ³   ³   ³       ³       shared.js
+³   ³   ³   ³       ³       vue-root-tags.d.ts
+³   ³   ³   ³       ³       vue-root-tags.js
+³   ³   ³   ³       ³       vue-script-js.d.ts
+³   ³   ³   ³       ³       vue-script-js.js
+³   ³   ³   ³       ³       vue-sfc-customblocks.d.ts
+³   ³   ³   ³       ³       vue-sfc-customblocks.js
+³   ³   ³   ³       ³       vue-sfc-scripts.d.ts
+³   ³   ³   ³       ³       vue-sfc-scripts.js
+³   ³   ³   ³       ³       vue-sfc-styles.d.ts
+³   ³   ³   ³       ³       vue-sfc-styles.js
+³   ³   ³   ³       ³       vue-sfc-template.d.ts
+³   ³   ³   ³       ³       vue-sfc-template.js
+³   ³   ³   ³       ³       vue-style-css.d.ts
+³   ³   ³   ³       ³       vue-style-css.js
+³   ³   ³   ³       ³       vue-template-html.d.ts
+³   ³   ³   ³       ³       vue-template-html.js
+³   ³   ³   ³       ³       vue-template-inline-css.d.ts
+³   ³   ³   ³       ³       vue-template-inline-css.js
+³   ³   ³   ³       ³       vue-template-inline-ts.d.ts
+³   ³   ³   ³       ³       vue-template-inline-ts.js
+³   ³   ³   ³       ³       vue-tsx.d.ts
+³   ³   ³   ³       ³       vue-tsx.js
+³   ³   ³   ³       ³       
+³   ³   ³   ³       ÃÄÄÄutils
+³   ³   ³   ³       ³       buildMappings.d.ts
+³   ³   ³   ³       ³       buildMappings.js
+³   ³   ³   ³       ³       collectBindings.d.ts
+³   ³   ³   ³       ³       collectBindings.js
+³   ³   ³   ³       ³       parseSfc.d.ts
+³   ³   ³   ³       ³       parseSfc.js
+³   ³   ³   ³       ³       shared.d.ts
+³   ³   ³   ³       ³       shared.js
+³   ³   ³   ³       ³       signals.d.ts
+³   ³   ³   ³       ³       signals.js
+³   ³   ³   ³       ³       
+³   ³   ³   ³       ÀÄÄÄvirtualFile
+³   ³   ³   ³               computedEmbeddedCodes.d.ts
+³   ³   ³   ³               computedEmbeddedCodes.js
+³   ³   ³   ³               computedSfc.d.ts
+³   ³   ³   ³               computedSfc.js
+³   ³   ³   ³               computedVueSfc.d.ts
+³   ³   ³   ³               computedVueSfc.js
+³   ³   ³   ³               embeddedFile.d.ts
+³   ³   ³   ³               embeddedFile.js
+³   ³   ³   ³               vueFile.d.ts
+³   ³   ³   ³               vueFile.js
+³   ³   ³   ³               
+³   ³   ³   ÃÄÄÄreactivity
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           reactivity.cjs.js
+³   ³   ³   ³           reactivity.cjs.prod.js
+³   ³   ³   ³           reactivity.d.ts
+³   ³   ³   ³           reactivity.esm-browser.js
+³   ³   ³   ³           reactivity.esm-browser.prod.js
+³   ³   ³   ³           reactivity.esm-bundler.js
+³   ³   ³   ³           reactivity.global.js
+³   ³   ³   ³           reactivity.global.prod.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄruntime-core
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           runtime-core.cjs.js
+³   ³   ³   ³           runtime-core.cjs.prod.js
+³   ³   ³   ³           runtime-core.d.ts
+³   ³   ³   ³           runtime-core.esm-bundler.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄruntime-dom
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           runtime-dom.cjs.js
+³   ³   ³   ³           runtime-dom.cjs.prod.js
+³   ³   ³   ³           runtime-dom.d.ts
+³   ³   ³   ³           runtime-dom.esm-browser.js
+³   ³   ³   ³           runtime-dom.esm-browser.prod.js
+³   ³   ³   ³           runtime-dom.esm-bundler.js
+³   ³   ³   ³           runtime-dom.global.js
+³   ³   ³   ³           runtime-dom.global.prod.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄserver-renderer
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           server-renderer.cjs.js
+³   ³   ³   ³           server-renderer.cjs.prod.js
+³   ³   ³   ³           server-renderer.d.ts
+³   ³   ³   ³           server-renderer.esm-browser.js
+³   ³   ³   ³           server-renderer.esm-browser.prod.js
+³   ³   ³   ³           server-renderer.esm-bundler.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄshared
+³   ³   ³   ³   ³   index.js
+³   ³   ³   ³   ³   LICENSE
+³   ³   ³   ³   ³   package.json
+³   ³   ³   ³   ³   README.md
+³   ³   ³   ³   ³   
+³   ³   ³   ³   ÀÄÄÄdist
+³   ³   ³   ³           shared.cjs.js
+³   ³   ³   ³           shared.cjs.prod.js
+³   ³   ³   ³           shared.d.ts
+³   ³   ³   ³           shared.esm-bundler.js
+³   ³   ³   ³           
+³   ³   ³   ÀÄÄÄtsconfig
+³   ³   ³       ³   LICENSE
+³   ³   ³       ³   package.json
+³   ³   ³       ³   README.md
+³   ³   ³       ³   tsconfig.dom.json
+³   ³   ³       ³   tsconfig.json
+³   ³   ³       ³   tsconfig.lib.json
+³   ³   ³       ³   
+³   ³   ³       ÀÄÄÄ.github
+³   ³   ³           ³   MAINTENANCE.md
+³   ³   ³           ³   
+³   ³   ³           ÀÄÄÄworkflows
+³   ³   ³                   publish.yml
+³   ³   ³                   
+³   ³   ÃÄÄÄalien-signals
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄcjs
+³   ³   ³   ³       index.cjs
+³   ³   ³   ³       system.cjs
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄesm
+³   ³   ³   ³       index.mjs
+³   ³   ³   ³       system.mjs
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄtypes
+³   ³   ³           index.d.ts
+³   ³   ³           system.d.ts
+³   ³   ³           
+³   ³   ÃÄÄÄcsstype
+³   ³   ³       index.d.ts
+³   ³   ³       index.js.flow
+³   ³   ³       LICENSE
+³   ³   ³       package.json
+³   ³   ³       README.md
+³   ³   ³       
+³   ³   ÃÄÄÄentities
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   readme.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³       ³   decode.d.ts
+³   ³   ³       ³   decode.d.ts.map
+³   ³   ³       ³   decode.js
+³   ³   ³       ³   decode.js.map
+³   ³   ³       ³   decode_codepoint.d.ts
+³   ³   ³       ³   decode_codepoint.d.ts.map
+³   ³   ³       ³   decode_codepoint.js
+³   ³   ³       ³   decode_codepoint.js.map
+³   ³   ³       ³   encode.d.ts
+³   ³   ³       ³   encode.d.ts.map
+³   ³   ³       ³   encode.js
+³   ³   ³       ³   encode.js.map
+³   ³   ³       ³   escape.d.ts
+³   ³   ³       ³   escape.d.ts.map
+³   ³   ³       ³   escape.js
+³   ³   ³       ³   escape.js.map
+³   ³   ³       ³   index.d.ts
+³   ³   ³       ³   index.d.ts.map
+³   ³   ³       ³   index.js
+³   ³   ³       ³   index.js.map
+³   ³   ³       ³   
+³   ³   ³       ÃÄÄÄesm
+³   ³   ³       ³   ³   decode.d.ts
+³   ³   ³       ³   ³   decode.d.ts.map
+³   ³   ³       ³   ³   decode.js
+³   ³   ³       ³   ³   decode.js.map
+³   ³   ³       ³   ³   decode_codepoint.d.ts
+³   ³   ³       ³   ³   decode_codepoint.d.ts.map
+³   ³   ³       ³   ³   decode_codepoint.js
+³   ³   ³       ³   ³   decode_codepoint.js.map
+³   ³   ³       ³   ³   encode.d.ts
+³   ³   ³       ³   ³   encode.d.ts.map
+³   ³   ³       ³   ³   encode.js
+³   ³   ³       ³   ³   encode.js.map
+³   ³   ³       ³   ³   escape.d.ts
+³   ³   ³       ³   ³   escape.d.ts.map
+³   ³   ³       ³   ³   escape.js
+³   ³   ³       ³   ³   escape.js.map
+³   ³   ³       ³   ³   index.d.ts
+³   ³   ³       ³   ³   index.d.ts.map
+³   ³   ³       ³   ³   index.js
+³   ³   ³       ³   ³   index.js.map
+³   ³   ³       ³   ³   package.json
+³   ³   ³       ³   ³   
+³   ³   ³       ³   ÀÄÄÄgenerated
+³   ³   ³       ³           decode-data-html.d.ts
+³   ³   ³       ³           decode-data-html.d.ts.map
+³   ³   ³       ³           decode-data-html.js
+³   ³   ³       ³           decode-data-html.js.map
+³   ³   ³       ³           decode-data-xml.d.ts
+³   ³   ³       ³           decode-data-xml.d.ts.map
+³   ³   ³       ³           decode-data-xml.js
+³   ³   ³       ³           decode-data-xml.js.map
+³   ³   ³       ³           encode-html.d.ts
+³   ³   ³       ³           encode-html.d.ts.map
+³   ³   ³       ³           encode-html.js
+³   ³   ³       ³           encode-html.js.map
+³   ³   ³       ³           
+³   ³   ³       ÀÄÄÄgenerated
+³   ³   ³               decode-data-html.d.ts
+³   ³   ³               decode-data-html.d.ts.map
+³   ³   ³               decode-data-html.js
+³   ³   ³               decode-data-html.js.map
+³   ³   ³               decode-data-xml.d.ts
+³   ³   ³               decode-data-xml.d.ts.map
+³   ³   ³               decode-data-xml.js
+³   ³   ³               decode-data-xml.js.map
+³   ³   ³               encode-html.d.ts
+³   ³   ³               encode-html.d.ts.map
+³   ³   ³               encode-html.js
+³   ³   ³               encode-html.js.map
+³   ³   ³               
+³   ³   ÃÄÄÄesbuild
+³   ³   ³   ³   install.js
+³   ³   ³   ³   LICENSE.md
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³       esbuild
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³           main.d.ts
+³   ³   ³           main.js
+³   ³   ³           
+³   ³   ÃÄÄÄestree-walker
+³   ³   ³   ³   CHANGELOG.md
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄdist
+³   ³   ³   ³   ÃÄÄÄesm
+³   ³   ³   ³   ³       estree-walker.js
+³   ³   ³   ³   ³       package.json
+³   ³   ³   ³   ³       
+³   ³   ³   ³   ÀÄÄÄumd
+³   ³   ³   ³           estree-walker.js
+³   ³   ³   ³           
+³   ³   ³   ÃÄÄÄsrc
+³   ³   ³   ³       async.js
+³   ³   ³   ³       index.js
+³   ³   ³   ³       package.json
+³   ³   ³   ³       sync.js
+³   ³   ³   ³       walker.js
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄtypes
+³   ³   ³           async.d.ts
+³   ³   ³           index.d.ts
+³   ³   ³           sync.d.ts
+³   ³   ³           tsconfig.tsbuildinfo
+³   ³   ³           walker.d.ts
+³   ³   ³           
+³   ³   ÃÄÄÄfdir
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           index.cjs
+³   ³   ³           index.d.cts
+³   ³   ³           index.d.mts
+³   ³   ³           index.mjs
+³   ³   ³           
+³   ³   ÃÄÄÄmagic-string
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           magic-string.cjs.d.ts
+³   ³   ³           magic-string.cjs.js
+³   ³   ³           magic-string.cjs.js.map
+³   ³   ³           magic-string.es.d.mts
+³   ³   ³           magic-string.es.mjs
+³   ³   ³           magic-string.es.mjs.map
+³   ³   ³           magic-string.umd.js
+³   ³   ³           magic-string.umd.js.map
+³   ³   ³           
+³   ³   ÃÄÄÄmuggle-string
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄout
+³   ³   ³           base.d.ts
+³   ³   ³           base.js
+³   ³   ³           basic.d.ts
+³   ³   ³           basic.js
+³   ³   ³           binarySearch.d.ts
+³   ³   ³           binarySearch.js
+³   ³   ³           common.d.ts
+³   ³   ³           common.js
+³   ³   ³           getLength.d.ts
+³   ³   ³           getLength.js
+³   ³   ³           index.d.ts
+³   ³   ³           index.js
+³   ³   ³           map.d.ts
+³   ³   ³           map.js
+³   ³   ³           overwriteSource.d.ts
+³   ³   ³           overwriteSource.js
+³   ³   ³           replace.d.ts
+³   ³   ³           replace.js
+³   ³   ³           segment.d.ts
+³   ³   ³           segment.js
+³   ³   ³           sourceBased.d.ts
+³   ³   ³           sourceBased.js
+³   ³   ³           toString.d.ts
+³   ³   ³           toString.js
+³   ³   ³           track.d.ts
+³   ³   ³           track.js
+³   ³   ³           types.d.ts
+³   ³   ³           types.js
+³   ³   ³           
+³   ³   ÃÄÄÄnanoid
+³   ³   ³   ³   index.browser.cjs
+³   ³   ³   ³   index.browser.js
+³   ³   ³   ³   index.cjs
+³   ³   ³   ³   index.d.cts
+³   ³   ³   ³   index.d.ts
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   nanoid.js
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄasync
+³   ³   ³   ³       index.browser.cjs
+³   ³   ³   ³       index.browser.js
+³   ³   ³   ³       index.cjs
+³   ³   ³   ³       index.d.ts
+³   ³   ³   ³       index.js
+³   ³   ³   ³       index.native.js
+³   ³   ³   ³       package.json
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³       nanoid.cjs
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄnon-secure
+³   ³   ³   ³       index.cjs
+³   ³   ³   ³       index.d.ts
+³   ³   ³   ³       index.js
+³   ³   ³   ³       package.json
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄurl-alphabet
+³   ³   ³           index.cjs
+³   ³   ³           index.js
+³   ³   ³           package.json
+³   ³   ³           
+³   ³   ÃÄÄÄpath-browserify
+³   ³   ³   ³   .travis.yml
+³   ³   ³   ³   CHANGELOG.md
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   security.md
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄ.github
+³   ³   ³   ³       FUNDING.yml
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄtest
+³   ³   ³           index.js
+³   ³   ³           test-path-basename.js
+³   ³   ³           test-path-dirname.js
+³   ³   ³           test-path-extname.js
+³   ³   ³           test-path-isabsolute.js
+³   ³   ³           test-path-join.js
+³   ³   ³           test-path-parse-format.js
+³   ³   ³           test-path-relative.js
+³   ³   ³           test-path-resolve.js
+³   ³   ³           test-path-zero-length-strings.js
+³   ³   ³           test-path.js
+³   ³   ³           
+³   ³   ÃÄÄÄpicocolors
+³   ³   ³       LICENSE
+³   ³   ³       package.json
+³   ³   ³       picocolors.browser.js
+³   ³   ³       picocolors.d.ts
+³   ³   ³       picocolors.js
+³   ³   ³       README.md
+³   ³   ³       types.d.ts
+³   ³   ³       
+³   ³   ÃÄÄÄpicomatch
+³   ³   ³   ³   index.js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   posix.js
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³           constants.js
+³   ³   ³           parse.js
+³   ³   ³           picomatch.js
+³   ³   ³           scan.js
+³   ³   ³           utils.js
+³   ³   ³           
+³   ³   ÃÄÄÄpostcss
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³           at-rule.d.ts
+³   ³   ³           at-rule.js
+³   ³   ³           comment.d.ts
+³   ³   ³           comment.js
+³   ³   ³           container.d.ts
+³   ³   ³           container.js
+³   ³   ³           css-syntax-error.d.ts
+³   ³   ³           css-syntax-error.js
+³   ³   ³           declaration.d.ts
+³   ³   ³           declaration.js
+³   ³   ³           document.d.ts
+³   ³   ³           document.js
+³   ³   ³           fromJSON.d.ts
+³   ³   ³           fromJSON.js
+³   ³   ³           input.d.ts
+³   ³   ³           input.js
+³   ³   ³           lazy-result.d.ts
+³   ³   ³           lazy-result.js
+³   ³   ³           list.d.ts
+³   ³   ³           list.js
+³   ³   ³           map-generator.js
+³   ³   ³           no-work-result.d.ts
+³   ³   ³           no-work-result.js
+³   ³   ³           node.d.ts
+³   ³   ³           node.js
+³   ³   ³           parse.d.ts
+³   ³   ³           parse.js
+³   ³   ³           parser.js
+³   ³   ³           postcss.d.mts
+³   ³   ³           postcss.d.ts
+³   ³   ³           postcss.js
+³   ³   ³           postcss.mjs
+³   ³   ³           previous-map.d.ts
+³   ³   ³           previous-map.js
+³   ³   ³           processor.d.ts
+³   ³   ³           processor.js
+³   ³   ³           result.d.ts
+³   ³   ³           result.js
+³   ³   ³           root.d.ts
+³   ³   ³           root.js
+³   ³   ³           rule.d.ts
+³   ³   ³           rule.js
+³   ³   ³           stringifier.d.ts
+³   ³   ³           stringifier.js
+³   ³   ³           stringify.d.ts
+³   ³   ³           stringify.js
+³   ³   ³           symbols.js
+³   ³   ³           terminal-highlight.js
+³   ³   ³           tokenize.js
+³   ³   ³           warn-once.js
+³   ³   ³           warning.d.ts
+³   ³   ³           warning.js
+³   ³   ³           
+³   ³   ÃÄÄÄrollup
+³   ³   ³   ³   LICENSE.md
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³       ³   getLogFilter.d.ts
+³   ³   ³       ³   getLogFilter.js
+³   ³   ³       ³   loadConfigFile.d.ts
+³   ³   ³       ³   loadConfigFile.js
+³   ³   ³       ³   native.js
+³   ³   ³       ³   parseAst.d.ts
+³   ³   ³       ³   parseAst.js
+³   ³   ³       ³   rollup.d.ts
+³   ³   ³       ³   rollup.js
+³   ³   ³       ³   
+³   ³   ³       ÃÄÄÄbin
+³   ³   ³       ³       rollup
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄes
+³   ³   ³       ³   ³   getLogFilter.js
+³   ³   ³       ³   ³   package.json
+³   ³   ³       ³   ³   parseAst.js
+³   ³   ³       ³   ³   rollup.js
+³   ³   ³       ³   ³   
+³   ³   ³       ³   ÀÄÄÄshared
+³   ³   ³       ³           node-entry.js
+³   ³   ³       ³           parseAst.js
+³   ³   ³       ³           watch.js
+³   ³   ³       ³           
+³   ³   ³       ÀÄÄÄshared
+³   ³   ³               fsevents-importer.js
+³   ³   ³               index.js
+³   ³   ³               loadConfigFile.js
+³   ³   ³               parseAst.js
+³   ³   ³               rollup.js
+³   ³   ³               watch-cli.js
+³   ³   ³               watch.js
+³   ³   ³               
+³   ³   ÃÄÄÄsource-map-js
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   source-map.d.ts
+³   ³   ³   ³   source-map.js
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³           array-set.js
+³   ³   ³           base64-vlq.js
+³   ³   ³           base64.js
+³   ³   ³           binary-search.js
+³   ³   ³           mapping-list.js
+³   ³   ³           quick-sort.js
+³   ³   ³           source-map-consumer.d.ts
+³   ³   ³           source-map-consumer.js
+³   ³   ³           source-map-generator.d.ts
+³   ³   ³           source-map-generator.js
+³   ³   ³           source-node.d.ts
+³   ³   ³           source-node.js
+³   ³   ³           util.js
+³   ³   ³           
+³   ³   ÃÄÄÄtinyglobby
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄdist
+³   ³   ³           index.cjs
+³   ³   ³           index.d.cts
+³   ³   ³           index.d.mts
+³   ³   ³           index.mjs
+³   ³   ³           
+³   ³   ÃÄÄÄtypescript
+³   ³   ³   ³   LICENSE.txt
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   SECURITY.md
+³   ³   ³   ³   ThirdPartyNoticeText.txt
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³       tsc
+³   ³   ³   ³       tsserver
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³       ³   lib.d.ts
+³   ³   ³       ³   lib.decorators.d.ts
+³   ³   ³       ³   lib.decorators.legacy.d.ts
+³   ³   ³       ³   lib.dom.asynciterable.d.ts
+³   ³   ³       ³   lib.dom.d.ts
+³   ³   ³       ³   lib.dom.iterable.d.ts
+³   ³   ³       ³   lib.es2015.collection.d.ts
+³   ³   ³       ³   lib.es2015.core.d.ts
+³   ³   ³       ³   lib.es2015.d.ts
+³   ³   ³       ³   lib.es2015.generator.d.ts
+³   ³   ³       ³   lib.es2015.iterable.d.ts
+³   ³   ³       ³   lib.es2015.promise.d.ts
+³   ³   ³       ³   lib.es2015.proxy.d.ts
+³   ³   ³       ³   lib.es2015.reflect.d.ts
+³   ³   ³       ³   lib.es2015.symbol.d.ts
+³   ³   ³       ³   lib.es2015.symbol.wellknown.d.ts
+³   ³   ³       ³   lib.es2016.array.include.d.ts
+³   ³   ³       ³   lib.es2016.d.ts
+³   ³   ³       ³   lib.es2016.full.d.ts
+³   ³   ³       ³   lib.es2016.intl.d.ts
+³   ³   ³       ³   lib.es2017.arraybuffer.d.ts
+³   ³   ³       ³   lib.es2017.d.ts
+³   ³   ³       ³   lib.es2017.date.d.ts
+³   ³   ³       ³   lib.es2017.full.d.ts
+³   ³   ³       ³   lib.es2017.intl.d.ts
+³   ³   ³       ³   lib.es2017.object.d.ts
+³   ³   ³       ³   lib.es2017.sharedmemory.d.ts
+³   ³   ³       ³   lib.es2017.string.d.ts
+³   ³   ³       ³   lib.es2017.typedarrays.d.ts
+³   ³   ³       ³   lib.es2018.asyncgenerator.d.ts
+³   ³   ³       ³   lib.es2018.asynciterable.d.ts
+³   ³   ³       ³   lib.es2018.d.ts
+³   ³   ³       ³   lib.es2018.full.d.ts
+³   ³   ³       ³   lib.es2018.intl.d.ts
+³   ³   ³       ³   lib.es2018.promise.d.ts
+³   ³   ³       ³   lib.es2018.regexp.d.ts
+³   ³   ³       ³   lib.es2019.array.d.ts
+³   ³   ³       ³   lib.es2019.d.ts
+³   ³   ³       ³   lib.es2019.full.d.ts
+³   ³   ³       ³   lib.es2019.intl.d.ts
+³   ³   ³       ³   lib.es2019.object.d.ts
+³   ³   ³       ³   lib.es2019.string.d.ts
+³   ³   ³       ³   lib.es2019.symbol.d.ts
+³   ³   ³       ³   lib.es2020.bigint.d.ts
+³   ³   ³       ³   lib.es2020.d.ts
+³   ³   ³       ³   lib.es2020.date.d.ts
+³   ³   ³       ³   lib.es2020.full.d.ts
+³   ³   ³       ³   lib.es2020.intl.d.ts
+³   ³   ³       ³   lib.es2020.number.d.ts
+³   ³   ³       ³   lib.es2020.promise.d.ts
+³   ³   ³       ³   lib.es2020.sharedmemory.d.ts
+³   ³   ³       ³   lib.es2020.string.d.ts
+³   ³   ³       ³   lib.es2020.symbol.wellknown.d.ts
+³   ³   ³       ³   lib.es2021.d.ts
+³   ³   ³       ³   lib.es2021.full.d.ts
+³   ³   ³       ³   lib.es2021.intl.d.ts
+³   ³   ³       ³   lib.es2021.promise.d.ts
+³   ³   ³       ³   lib.es2021.string.d.ts
+³   ³   ³       ³   lib.es2021.weakref.d.ts
+³   ³   ³       ³   lib.es2022.array.d.ts
+³   ³   ³       ³   lib.es2022.d.ts
+³   ³   ³       ³   lib.es2022.error.d.ts
+³   ³   ³       ³   lib.es2022.full.d.ts
+³   ³   ³       ³   lib.es2022.intl.d.ts
+³   ³   ³       ³   lib.es2022.object.d.ts
+³   ³   ³       ³   lib.es2022.regexp.d.ts
+³   ³   ³       ³   lib.es2022.string.d.ts
+³   ³   ³       ³   lib.es2023.array.d.ts
+³   ³   ³       ³   lib.es2023.collection.d.ts
+³   ³   ³       ³   lib.es2023.d.ts
+³   ³   ³       ³   lib.es2023.full.d.ts
+³   ³   ³       ³   lib.es2023.intl.d.ts
+³   ³   ³       ³   lib.es2024.arraybuffer.d.ts
+³   ³   ³       ³   lib.es2024.collection.d.ts
+³   ³   ³       ³   lib.es2024.d.ts
+³   ³   ³       ³   lib.es2024.full.d.ts
+³   ³   ³       ³   lib.es2024.object.d.ts
+³   ³   ³       ³   lib.es2024.promise.d.ts
+³   ³   ³       ³   lib.es2024.regexp.d.ts
+³   ³   ³       ³   lib.es2024.sharedmemory.d.ts
+³   ³   ³       ³   lib.es2024.string.d.ts
+³   ³   ³       ³   lib.es5.d.ts
+³   ³   ³       ³   lib.es6.d.ts
+³   ³   ³       ³   lib.esnext.array.d.ts
+³   ³   ³       ³   lib.esnext.collection.d.ts
+³   ³   ³       ³   lib.esnext.d.ts
+³   ³   ³       ³   lib.esnext.decorators.d.ts
+³   ³   ³       ³   lib.esnext.disposable.d.ts
+³   ³   ³       ³   lib.esnext.error.d.ts
+³   ³   ³       ³   lib.esnext.float16.d.ts
+³   ³   ³       ³   lib.esnext.full.d.ts
+³   ³   ³       ³   lib.esnext.intl.d.ts
+³   ³   ³       ³   lib.esnext.iterator.d.ts
+³   ³   ³       ³   lib.esnext.promise.d.ts
+³   ³   ³       ³   lib.esnext.sharedmemory.d.ts
+³   ³   ³       ³   lib.scripthost.d.ts
+³   ³   ³       ³   lib.webworker.asynciterable.d.ts
+³   ³   ³       ³   lib.webworker.d.ts
+³   ³   ³       ³   lib.webworker.importscripts.d.ts
+³   ³   ³       ³   lib.webworker.iterable.d.ts
+³   ³   ³       ³   tsc.js
+³   ³   ³       ³   tsserver.js
+³   ³   ³       ³   tsserverlibrary.d.ts
+³   ³   ³       ³   tsserverlibrary.js
+³   ³   ³       ³   typescript.d.ts
+³   ³   ³       ³   typescript.js
+³   ³   ³       ³   typesMap.json
+³   ³   ³       ³   typingsInstaller.js
+³   ³   ³       ³   watchGuard.js
+³   ³   ³       ³   _tsc.js
+³   ³   ³       ³   _tsserver.js
+³   ³   ³       ³   _typingsInstaller.js
+³   ³   ³       ³   
+³   ³   ³       ÃÄÄÄcs
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄde
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄes
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄfr
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄit
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄja
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄko
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄpl
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄpt-br
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄru
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄtr
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÃÄÄÄzh-cn
+³   ³   ³       ³       diagnosticMessages.generated.json
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄzh-tw
+³   ³   ³               diagnosticMessages.generated.json
+³   ³   ³               
+³   ³   ÃÄÄÄundici-types
+³   ³   ³       agent.d.ts
+³   ³   ³       api.d.ts
+³   ³   ³       balanced-pool.d.ts
+³   ³   ³       cache-interceptor.d.ts
+³   ³   ³       cache.d.ts
+³   ³   ³       client-stats.d.ts
+³   ³   ³       client.d.ts
+³   ³   ³       connector.d.ts
+³   ³   ³       content-type.d.ts
+³   ³   ³       cookies.d.ts
+³   ³   ³       diagnostics-channel.d.ts
+³   ³   ³       dispatcher.d.ts
+³   ³   ³       env-http-proxy-agent.d.ts
+³   ³   ³       errors.d.ts
+³   ³   ³       eventsource.d.ts
+³   ³   ³       fetch.d.ts
+³   ³   ³       formdata.d.ts
+³   ³   ³       global-dispatcher.d.ts
+³   ³   ³       global-origin.d.ts
+³   ³   ³       h2c-client.d.ts
+³   ³   ³       handlers.d.ts
+³   ³   ³       header.d.ts
+³   ³   ³       index.d.ts
+³   ³   ³       interceptors.d.ts
+³   ³   ³       LICENSE
+³   ³   ³       mock-agent.d.ts
+³   ³   ³       mock-call-history.d.ts
+³   ³   ³       mock-client.d.ts
+³   ³   ³       mock-errors.d.ts
+³   ³   ³       mock-interceptor.d.ts
+³   ³   ³       mock-pool.d.ts
+³   ³   ³       package.json
+³   ³   ³       patch.d.ts
+³   ³   ³       pool-stats.d.ts
+³   ³   ³       pool.d.ts
+³   ³   ³       proxy-agent.d.ts
+³   ³   ³       readable.d.ts
+³   ³   ³       README.md
+³   ³   ³       retry-agent.d.ts
+³   ³   ³       retry-handler.d.ts
+³   ³   ³       snapshot-agent.d.ts
+³   ³   ³       util.d.ts
+³   ³   ³       utility.d.ts
+³   ³   ³       webidl.d.ts
+³   ³   ³       websocket.d.ts
+³   ³   ³       
+³   ³   ÃÄÄÄvite
+³   ³   ³   ³   client.d.ts
+³   ³   ³   ³   LICENSE.md
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄbin
+³   ³   ³   ³       openChrome.js
+³   ³   ³   ³       vite.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄdist
+³   ³   ³   ³   ÃÄÄÄclient
+³   ³   ³   ³   ³       client.mjs
+³   ³   ³   ³   ³       env.mjs
+³   ³   ³   ³   ³       
+³   ³   ³   ³   ÀÄÄÄnode
+³   ³   ³   ³       ³   cli.js
+³   ³   ³   ³       ³   index.d.ts
+³   ³   ³   ³       ³   index.js
+³   ³   ³   ³       ³   module-runner.d.ts
+³   ³   ³   ³       ³   module-runner.js
+³   ³   ³   ³       ³   moduleRunnerTransport-BWUZBVLX.d.ts
+³   ³   ³   ³       ³   
+³   ³   ³   ³       ÀÄÄÄchunks
+³   ³   ³   ³               dep-B0biTXWL.js
+³   ³   ³   ³               dep-B0GuR2De.js
+³   ³   ³   ³               dep-B6cO9KC8.js
+³   ³   ³   ³               dep-BhuufcWm.js
+³   ³   ³   ³               dep-BRReGxEs.js
+³   ³   ³   ³               dep-BuoK8Wda.js
+³   ³   ³   ³               dep-Cl2Q94Oy.js
+³   ³   ³   ³               dep-CwrJo3zV.js
+³   ³   ³   ³               dep-D5ktuZSi.js
+³   ³   ³   ³               dep-F8pfeHm9.js
+³   ³   ³   ³               dep-lCKrEJQm.js
+³   ³   ³   ³               dep-SmwnYDP9.js
+³   ³   ³   ³               
+³   ³   ³   ÃÄÄÄmisc
+³   ³   ³   ³       false.js
+³   ³   ³   ³       true.js
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄtypes
+³   ³   ³       ³   customEvent.d.ts
+³   ³   ³       ³   hmrPayload.d.ts
+³   ³   ³       ³   hot.d.ts
+³   ³   ³       ³   import-meta.d.ts
+³   ³   ³       ³   importGlob.d.ts
+³   ³   ³       ³   importMeta.d.ts
+³   ³   ³       ³   metadata.d.ts
+³   ³   ³       ³   package.json
+³   ³   ³       ³   
+³   ³   ³       ÀÄÄÄinternal
+³   ³   ³               cssPreprocessorOptions.d.ts
+³   ³   ³               lightningcssOptions.d.ts
+³   ³   ³               terserOptions.d.ts
+³   ³   ³               
+³   ³   ÃÄÄÄvscode-uri
+³   ³   ³   ³   LICENSE.md
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   SECURITY.md
+³   ³   ³   ³   
+³   ³   ³   ÀÄÄÄlib
+³   ³   ³       ÃÄÄÄesm
+³   ³   ³       ³       index.mjs
+³   ³   ³       ³       index.mjs.map
+³   ³   ³       ³       
+³   ³   ³       ÀÄÄÄumd
+³   ³   ³               charCode.d.ts
+³   ³   ³               charCode.js
+³   ³   ³               index.d.ts
+³   ³   ³               index.js
+³   ³   ³               index.js.map
+³   ³   ³               platform.d.ts
+³   ³   ³               platform.js
+³   ³   ³               uri.d.ts
+³   ³   ³               uri.js
+³   ³   ³               utils.d.ts
+³   ³   ³               utils.js
+³   ³   ³               
+³   ³   ÃÄÄÄvue
+³   ³   ³   ³   index.js
+³   ³   ³   ³   index.mjs
+³   ³   ³   ³   jsx.d.ts
+³   ³   ³   ³   LICENSE
+³   ³   ³   ³   package.json
+³   ³   ³   ³   README.md
+³   ³   ³   ³   
+³   ³   ³   ÃÄÄÄcompiler-sfc
+³   ³   ³   ³       index.browser.js
+³   ³   ³   ³       index.browser.mjs
+³   ³   ³   ³       index.d.mts
+³   ³   ³   ³       index.d.ts
+³   ³   ³   ³       index.js
+³   ³   ³   ³       index.mjs
+³   ³   ³   ³       package.json
+³   ³   ³   ³       register-ts.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄdist
+³   ³   ³   ³       vue.cjs.js
+³   ³   ³   ³       vue.cjs.prod.js
+³   ³   ³   ³       vue.d.mts
+³   ³   ³   ³       vue.d.ts
+³   ³   ³   ³       vue.esm-browser.js
+³   ³   ³   ³       vue.esm-browser.prod.js
+³   ³   ³   ³       vue.esm-bundler.js
+³   ³   ³   ³       vue.global.js
+³   ³   ³   ³       vue.global.prod.js
+³   ³   ³   ³       vue.runtime.esm-browser.js
+³   ³   ³   ³       vue.runtime.esm-browser.prod.js
+³   ³   ³   ³       vue.runtime.esm-bundler.js
+³   ³   ³   ³       vue.runtime.global.js
+³   ³   ³   ³       vue.runtime.global.prod.js
+³   ³   ³   ³       
+³   ³   ³   ÃÄÄÄjsx-runtime
+³   ³   ³   ³       index.d.ts
+³   ³   ³   ³       index.js
+³   ³   ³   ³       index.mjs
+³   ³   ³   ³       package.json
+³   ³   ³   ³       
+³   ³   ³   ÀÄÄÄserver-renderer
+³   ³   ³           index.d.mts
+³   ³   ³           index.d.ts
+³   ³   ³           index.js
+³   ³   ³           index.mjs
+³   ³   ³           package.json
+³   ³   ³           
+³   ³   ÀÄÄÄvue-tsc
+³   ³       ³   index.d.ts
+³   ³       ³   index.js
+³   ³       ³   LICENSE
+³   ³       ³   package.json
+³   ³       ³   README.md
+³   ³       ³   
+³   ³       ÀÄÄÄbin
+³   ³               vue-tsc.js
+³   ³               
+³   ÃÄÄÄpublic
+³   ³       vite.svg
+³   ³       
+³   ÀÄÄÄsrc
+³       ³   App.vue
+³       ³   main.ts
+³       ³   style.css
+³       ³   
+³       ÃÄÄÄassets
+³       ³       vue.svg
+³       ³       
+³       ÀÄÄÄcomponents
+³               HelloWorld.vue
+³               
+ÀÄÄÄscripts
+        activar_backend.bat
+        activar_frontend.bat
+        actualizar_nube_git.bat
+        actualizar_pc_git.bat
+        

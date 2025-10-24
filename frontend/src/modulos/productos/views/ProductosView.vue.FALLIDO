@@ -1,0 +1,106 @@
+    <template>
+      <div class="card">
+        <Toolbar class="mb-4">
+          <template #start>
+            <Button label="Nuevo Producto" icon="pi pi-plus" class="p-button-success" @click="abrirFormNuevo" />
+          </template>
+        </Toolbar>
+
+        <TablaDatos
+          :datos="store.productos"
+          :columnas="columnasProductos"
+          :cargando="store.estadoCarga"
+          @editar-item="onEditarProducto"
+          @eliminar-item="onConfirmarEliminar"
+        />
+
+        <ConfirmationModal
+          v-model:visible="mostrarModalEliminar"
+          titulo="Confirmar Eliminación"
+          :mensaje="`¿Está seguro que desea dar de baja el producto ${productoAEliminar?.nombre}?`"
+          @confirmado="ejecutarEliminacion"
+          @cancelado="cancelarEliminacion"
+        />
+
+        <ProductoForm
+          v-model:visible="mostrarFormulario"
+          :producto="store.productoSeleccionado"
+          @guardar="onGuardarProducto"
+        />
+
+      </div>
+    </template>
+
+    <script setup lang="ts">
+    import { ref, onMounted } from 'vue';
+    import { useProductoStore } from '../store/useProductoStore';
+    import type { ProductoModel } from '../models/productoModel';
+    
+    // --- LÍNEAS ELIMINADAS (AHORA GLOBALES) ---
+    // import Toolbar from 'primevue/toolbar';
+    // import Button from 'primevue/button';
+    // ---
+
+    // --- ARSENAL DEOU CANÓNICO ---
+    import TablaDatos from '@/components/TablaDatos.vue';
+    import ConfirmationModal from '@/components/modals/ConfirmationModal.vue';
+    // --- FIN ARSENAL ---
+
+    import ProductoForm from '../components/ProductoForm.vue';
+
+    // 1. EL CEREBRO (Store)
+    const store = useProductoStore();
+
+    // Definición de columnas para "La Columna Vertebral"
+    const columnasProductos = ref([
+      { field: 'sku', header: 'SKU' },
+      { field: 'nombre', header: 'Nombre' },
+      { field: 'precio_costo', header: 'Costo' },
+      { field: 'precio_base_venta', header: 'Venta Base' },
+      { field: 'baja_logica', header: 'Activo' }, // (Se puede formatear)
+    ]);
+
+    // Carga inicial de datos
+    onMounted(() => {
+      store.fetchProductos();
+    });
+
+    // 2. LÓGICA DE FORMULARIO ("El Taller")
+    const mostrarFormulario = ref(false);
+
+    const abrirFormNuevo = () => {
+      store.seleccionarProducto(null); // Limpia la selección
+      mostrarFormulario.value = true;
+    };
+
+    const onEditarProducto = (producto: ProductoModel) => {
+      store.seleccionarProducto(producto); // Carga el producto en el store
+      mostrarFormulario.value = true;
+    };
+
+    const onGuardarProducto = (productoData: any) => {
+      store.guardarProducto(productoData); // El store maneja si es 'crear' o 'actualizar'
+    };
+
+    // 3. LÓGICA DE ELIMINACIÓN ("Doble Llave")
+    const mostrarModalEliminar = ref(false);
+    const productoAEliminar = ref<ProductoModel | null>(null);
+
+    const onConfirmarEliminar = (producto: ProductoModel) => {
+      productoAEliminar.value = producto;
+      mostrarModalEliminar.value = true;
+    };
+
+    const ejecutarEliminacion = () => {
+      if (productoAEliminar.value && productoAEliminar.value.id) {
+        store.eliminarProducto(productoAEliminar.value.id);
+      }
+      cancelarEliminacion();
+    };
+
+    const cancelarEliminacion = () => {
+      productoAEliminar.value = null;
+      mostrarModalEliminar.value = false;
+    };
+    </script>
+    

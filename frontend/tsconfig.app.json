@@ -1,16 +1,27 @@
 {
+  // Hereda la configuración base recomendada para Vue en el navegador
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "types": ["vite/client"],
 
-    /* Linting */
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"]
+  // Especifica qué archivos incluir en la compilación de la app
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  // Excluye archivos de tests
+  "exclude": ["src/**/__tests__/*"],
+
+  // Opciones específicas del compilador para la app
+  "compilerOptions": {
+    // Habilita el modo "composite" para proyectos referenciados
+    "composite": true,
+    // Ubicación del archivo de información de build
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
+    // --- INICIO DE LA CONFIGURACIÓN DEL ALIAS '@' ---
+    // Define el directorio base para resolver rutas no relativas
+    "baseUrl": ".",
+    // Define los alias de ruta. Aquí le decimos a TS:
+    // Cualquier import que empiece con '@/' debe buscarse en './src/'
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+    // --- FIN DE LA CONFIGURACIÓN DEL ALIAS '@' ---
+  }
 }
