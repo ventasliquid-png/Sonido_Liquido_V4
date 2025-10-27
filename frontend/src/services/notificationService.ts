@@ -1,39 +1,55 @@
-// frontend/src/services/notificationService.ts
-import { useToast } from 'primevue/usetoast';
+// frontend/src/services/notificationService.ts (CORREGIDO PARA INICIALIZACIÓN)
+import type { ToastServiceMethods } from 'primevue/toastservice';
+import type { ToastMessageOptions } from 'primevue/toast';
 
-// Definimos una interfaz para desacoplar de la implementación exacta de PrimeVue
-interface ToastServiceMethods {
-    add(options: any): void;
-}
-
+/**
+ * Servicio centralizado para mostrar notificaciones Toast.
+ * NECESITA SER INICIALIZADO con la instancia de ToastService de PrimeVue.
+ */
 class NotificationService {
-    private toast: ToastServiceMethods | null = null;
+    private toast?: ToastServiceMethods; // Almacena la instancia de PrimeVue ToastService
 
-    public inicializar(toastInstance: ToastServiceMethods): void {
-        this.toast = toastInstance;
-    }
-
-    private verificarInicializacion(): void {
+    /**
+     * Inicializa el servicio con la instancia de ToastService de PrimeVue.
+     * DEBE llamarse en main.ts después de app.use(ToastService).
+     * @param service Instancia de ToastService obtenida con useToast() en main.ts o App.vue
+     */
+    initialize(service: ToastServiceMethods): void {
         if (!this.toast) {
-            console.error("NotificationService no ha sido inicializado. Las notificaciones no se mostrarán.");
+            console.log("NotificationService: Inicializado.");
+            this.toast = service;
+        } else {
+            console.warn("NotificationService: Ya estaba inicializado.");
         }
     }
 
-    public mostrarExito(mensaje: string, titulo: string = 'Éxito'): void {
-        this.verificarInicializacion();
-        this.toast?.add({ severity: 'success', summary: titulo, detail: mensaje, life: 3000 });
+    private show(options: ToastMessageOptions): void {
+        if (!this.toast) {
+            console.error('NotificationService no ha sido inicializado. Las notificaciones no se mostrarán.', options);
+            // Podríamos usar alert como fallback extremo, pero es mejor evitarlo.
+            // alert(`[${options.severity || 'info'}] ${options.summary}: ${options.detail}`);
+            return;
+        }
+        this.toast.add(options);
     }
 
-    public mostrarError(mensaje: string, titulo: string = 'Error'): void {
-        this.verificarInicializacion();
-        this.toast?.add({ severity: 'error', summary: titulo, detail: mensaje, life: 3000 });
+    showSuccess(summary: string, detail?: string, life: number = 3000): void {
+        this.show({ severity: 'success', summary: summary, detail: detail, life: life });
     }
 
-    public mostrarAdvertencia(mensaje: string, titulo: string = 'Advertencia'): void {
-        this.verificarInicializacion();
-        this.toast?.add({ severity: 'warn', summary: titulo, detail: mensaje, life: 3000 });
+    showInfo(summary: string, detail?: string, life: number = 3000): void {
+        this.show({ severity: 'info', summary: summary, detail: detail, life: life });
+    }
+
+    showWarn(summary: string, detail?: string, life: number = 5000): void {
+        this.show({ severity: 'warn', summary: summary, detail: detail, life: life });
+    }
+
+    showError(summary: string, detail?: string, life: number = 7000): void {
+        this.show({ severity: 'error', summary: summary, detail: detail, life: life });
     }
 }
 
+// Exportamos una única instancia (Singleton)
 const notificationService = new NotificationService();
-export default notificationService;
+export default notificationService; // Asegurar exportación por defecto

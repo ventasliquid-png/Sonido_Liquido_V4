@@ -1,15 +1,21 @@
-    <template>
-      <Toast />
-      <ProductosView />
-    </template>
+<!-- RUTA: frontend/src/App.vue (AÑADIR :key) -->
+<template>
+  <div :key="'app-root'"> <!-- AÑADIDO :key -->
+    <Toast />
+    <header>
+      <h1 class="main-title">Sonido Líquido V4</h1>
+    </header>
+    <main class="main-content">
+      <RubrosView />
+    </main>
+  </div>
+</template>
 
-    <script setup lang="ts">
-    // import Toast from 'primevue/toast'; // <-- ELIMINADO (Ahora es global)
-    import ProductosView from './modulos/productos/views/ProductosView.vue'; // Ruta directa al módulo
-    </script>
+<script setup lang="ts">
+import RubrosView from './views/RubrosView.vue';
+// Toast se asume global
+</script>
 
-    <style>
-    body { font-family: sans-serif; background-color: #f8f9fa; margin: 0; padding: 1rem; color: #495057; }
-    .p-component { font-family: inherit; }
-    </style>
-    
+<style>
+/* ... estilos globales ... */
+</style>

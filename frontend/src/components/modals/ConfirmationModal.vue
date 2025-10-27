@@ -1,14 +1,15 @@
-<!-- RUTA: frontend/src/components/modals/ConfirmationModal.vue -->
+<!-- RUTA: frontend/src/components/modals/ConfirmationModal.vue (SCRIPT CORREGIDO) -->
 <template>
   <Dialog
     v-model:visible="dialogVisible"
     modal
-    :header="titulo"
+    :header="props.titulo" <!-- Usar props.titulo -->
     :style="{ width: '25rem' }"
   >
     <div class="flex items-center gap-4">
       <i class="pi pi-exclamation-triangle text-4xl text-yellow-500"></i>
-      <p>{{ mensaje }}</p>
+      <!-- Usar props.mensaje -->
+      <p>{{ props.mensaje }}</p>
     </div>
     <template #footer>
       <Button
@@ -31,16 +32,22 @@
 
 <script setup lang="ts">
 import { computed, watch, onMounted, onUnmounted } from 'vue';
-// --- LÍNEAS ELIMINADAS (AHORA GLOBALES) ---
+// Los componentes PrimeVue se asumen globales
 // import Dialog from 'primevue/dialog';
 // import Button from 'primevue/button';
-// ---
 
-const props = defineProps<{
-  visible: { type: Boolean, required: true },
-  titulo: { type: String, default: 'Confirmar Acción' },
-  mensaje: { type: String, required: true },
-}>();
+// --- CORREGIDO: Sintaxis estándar de defineProps con TypeScript ---
+interface Props {
+  visible: boolean;
+  titulo?: string; // Hacer opcional con valor por defecto
+  mensaje: string; // Mantener requerido
+}
+
+// Define props con valores por defecto donde aplique
+const props = withDefaults(defineProps<Props>(), {
+  titulo: 'Confirmar Acción' // Valor por defecto para titulo
+});
+// --- FIN CORRECCIÓN ---
 
 const emit = defineEmits(['update:visible', 'confirmado', 'cancelado']);
 
@@ -59,6 +66,7 @@ const cancelar = () => {
   dialogVisible.value = false;
 };
 
+// Lógica de teclas (sin cambios)
 const handleKeyPress = (event: KeyboardEvent) => {
   if (props.visible) {
     if (event.key === 'F10') { event.preventDefault(); confirmar(); }
@@ -74,3 +82,10 @@ watch(() => props.visible, (newValue) => {
 onMounted(() => { if (props.visible) { document.addEventListener('keydown', handleKeyPress); } });
 onUnmounted(() => { document.removeEventListener('keydown', handleKeyPress); });
 </script>
+
+<style scoped>
+/* Añadir algún estilo si es necesario, por ejemplo, al párrafo del mensaje */
+p {
+  margin: 0; /* Asegurar que no haya márgenes extraños */
+}
+</style>

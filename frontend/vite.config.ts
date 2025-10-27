@@ -1,18 +1,16 @@
-import { fileURLToPath, URL } from 'node:url' // Mantenemos por si acaso, aunque path lo reemplaza
-import path from 'node:path' // La forma robusta de manejar rutas
+// frontend/vite.config.ts (DESACTIVAR HMR)
+import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  plugins: [
-    vue(), // Inicialización simple y estándar del plugin de Vue
-  ],
+  plugins: [ vue() ],
   resolve: {
-    alias: {
-      // La definición robusta del alias '@' que sabemos que funciona
-      '@': path.resolve(__dirname, './src'),
-    }
+    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) }
   },
-  // SIN sección 'esbuild'
-  // SIN sección 'optimizeDeps' por ahora
+  // --- AÑADIDO: Desactivar HMR ---
+  server: {
+    hmr: false // Desactiva Hot Module Replacement
+  }
+  // ---
 })
