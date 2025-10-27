@@ -1,26 +1,43 @@
-# backend/main.py
+# backend/main.py (CON CONFIGURACIÓN CORS)
+
 from fastapi import FastAPI
+# --- INICIO: Añadir importaciones CORS ---
+from fastapi.middleware.cors import CORSMiddleware
+# --- FIN: Añadir importaciones CORS ---
 
-# 1. Importar el router del nuevo módulo de productos
-#    Asegúrate de que la ruta 'app.modulos.productos.router' es correcta
-#    según la estructura que creamos.
-from app.modulos.productos.router import router as productos_router
+# Importa tus routers aquí (asegúrate que la ruta sea correcta)
+from app.modulos.rubros import router as rubros_router
+# from app.modulos.productos import router as productos_router # Ejemplo si tuvieras más
 
-# Crear la instancia de la aplicación FastAPI
-app = FastAPI()
+app = FastAPI(title="Sonido Líquido V4 API", version="0.1.0")
 
-# 2. Registrar (incluir) el router de productos en la aplicación principal
-#    Esto hace que todos los endpoints definidos en productos_router
-#    estén disponibles bajo el prefijo "/productos" (definido en el router).
-app.include_router(productos_router)
+# --- INICIO: Configuración CORS Middleware ---
+# Lista de orígenes permitidos. Para desarrollo, localhost:5173 es común.
+# En producción, deberías poner la URL real de tu frontend.
+# El asterisco '*' permite TODO origen, ÚTIL PARA DESARROLLO, pero INSEGURO para producción.
+origins = [
+    "http://localhost:5173", # Origen de tu frontend Vite
+    "http://127.0.0.1:5173", # A veces el navegador usa esta IP
+    # Podrías añadir la URL de producción aquí después:
+    # "https://tu-dominio-de-produccion.com",
+]
 
-# Endpoint raíz de ejemplo (puedes mantenerlo o quitarlo según necesites)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins, # Lista de orígenes permitidos
+    allow_credentials=True, # Permite cookies (si las usaras)
+    allow_methods=["*"],    # Permite todos los métodos (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],    # Permite todos los encabezados
+)
+# --- FIN: Configuración CORS Middleware ---
+
+# Incluye los routers de tus módulos
+app.include_router(rubros_router.router, prefix="/rubros", tags=["Rubros"])
+# app.include_router(productos_router.router, prefix="/productos", tags=["Productos"]) # Ejemplo
+
+# Ruta raíz simple (opcional)
 @app.get("/")
-def read_root():
-    """
-    Endpoint raíz para verificar que el backend está operativo.
-    """
-    return {"message": "TAX-2 Backend v4: Operativo y Listo"}
+async def root():
+    return {"message": "Bienvenido a la API de Sonido Líquido V4"}
 
-# Aquí podrías añadir más routers de otros módulos en el futuro
-# app.include_router(otro_modulo_router)
+# (Puedes tener más configuraciones o lógica aquí si es necesario)

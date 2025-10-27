@@ -1,7 +1,8 @@
 from typing import List, Optional, Tuple, Dict
 import uuid
 from fastapi import HTTPException, status
-from ..models.rubro import RubroModel, RubroUpdateModel
+# Línea CORRECTA
+from .models import RubroModel, RubroUpdateModel # Usa '.' para importar desde el directorio actual
 
 # --- Mock DB ---
 # Simulación de la colección de Firestore para Rubros

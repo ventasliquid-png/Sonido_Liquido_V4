@@ -1,10 +1,13 @@
+# backend/app/modulos/rubros/router.py (PREFIJO ELIMINADO)
+
 from fastapi import APIRouter, Depends, status, Query, Response
 from typing import List, Optional
-from ..models.rubro import RubroModel, RubroUpdateModel
-from ..services.rubro_service import RubroService
+from .models import RubroModel, RubroUpdateModel
+from .service import RubroService
 
+# --- CORRECCIÓN: Eliminar el 'prefix="/rubros"' de aquí ---
 router = APIRouter(
-    prefix="/rubros",
+    # prefix="/rubros", # <--- ELIMINADO
     tags=["Rubros"],
     responses={404: {"description": "No encontrado"}}
 )
@@ -12,11 +15,18 @@ router = APIRouter(
 # --- Dependencia ---
 def get_rubro_service():
     """Dependencia para inyectar el servicio de rubros."""
-    return RubroService()
+    # En una app real, podrías manejar dependencias más complejas aquí
+    # o usar un framework de inyección de dependencias.
+    # Por ahora, simplemente instanciarlo está bien.
+    try:
+        return RubroService()
+    except RuntimeError as e:
+        # Captura el error de inicialización de Firestore y lo reporta
+        raise HTTPException(status_code=503, detail=f"Error al conectar con la base de datos: {e}")
 
 
 @router.post(
-    "/",
+    "/", # Ahora esta ruta será POST /rubros (correcto)
     response_model=RubroModel,
     status_code=status.HTTP_201_CREATED,
     summary="Crear o Reactivar un Rubro (Doctrina ABR)"
@@ -31,19 +41,17 @@ def crear_rubro(
     - Si el 'codigo' ya existe y está inactivo (baja_logica: True),
       lo reactiva y devuelve 200 OK (Doctrina ABR).
     - Si el 'codigo' ya existe y está activo, devuelve 409 Conflict.
-    - Si es nuevo, lo crea y devuelve 201 Created.
+    - Si es nuevo, lo crea (y el contador asociado) y devuelve 201 Created.
     """
-    # El modelo RubroModel (con id=None) es recibido
     rubro_creado, estado = service.crear_rubro(rubro)
-    
+
     if estado == "reactivated":
-        # Sobrescribe el código de estado por defecto (201)
         response.status_code = status.HTTP_200_OK
-    
+
     return rubro_creado
 
 @router.get(
-    "/",
+    "/", # Ahora esta ruta será GET /rubros (correcto)
     response_model=List[RubroModel],
     summary="Listar Rubros"
 )
@@ -55,7 +63,7 @@ def listar_rubros(
     return service.listar_rubros(activos)
 
 @router.get(
-    "/{id}",
+    "/{id}", # Ahora esta ruta será GET /rubros/{id} (correcto)
     response_model=RubroModel,
     summary="Obtener Rubro por ID"
 )
@@ -67,7 +75,7 @@ def obtener_rubro_por_id(
     return service.obtener_rubro_por_id(id)
 
 @router.get(
-    "/codigo/{codigo}",
+    "/codigo/{codigo}", # Ahora esta ruta será GET /rubros/codigo/{codigo} (correcto)
     response_model=RubroModel,
     summary="Obtener Rubro por Código de Negocio"
 )
@@ -79,7 +87,7 @@ def obtener_rubro_por_codigo(
     return service.obtener_rubro_por_codigo(codigo)
 
 @router.patch(
-    "/{id}",
+    "/{id}", # Ahora esta ruta será PATCH /rubros/{id} (correcto)
     response_model=RubroModel,
     summary="Actualizar un Rubro"
 )
@@ -92,7 +100,7 @@ def actualizar_rubro(
     return service.actualizar_rubro(id, rubro_update)
 
 @router.delete(
-    "/{id}",
+    "/{id}", # Ahora esta ruta será DELETE /rubros/{id} (correcto)
     response_model=RubroModel,
     summary="Baja Lógica de un Rubro"
 )

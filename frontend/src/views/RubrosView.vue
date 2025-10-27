@@ -4,14 +4,14 @@
       <template #start>
         <Button label="Nuevo Rubro (F4)" icon="pi pi-plus" class="mr-2" @click="abrirModalNuevo" />
       </template>
-    </Toolbar>
+      </Toolbar>
 
     <TablaDatos
       :datos="store.rubrosActivos"
       :columnas="columnas"
       :cargando="store.estadoCarga"
       @editar-item="abrirModalEditar"
-      @eliminar-item="abrirModalEliminar"
+      @ver-item="actualizarItemSeleccionado" @eliminar-item="abrirModalEliminar"
     >
       <template #body-baja_logica="{ data }">
         <Tag
@@ -49,10 +49,12 @@ import RubroForm from '@/components/RubroForm.vue';
 import Toolbar from 'primevue/toolbar';
 import Button from 'primevue/button';
 import Tag from 'primevue/tag';
+import notificationService from '@/services/notificationService'; // Importar para F7
 
 const store = useRubroStore();
 const formVisible = ref(false);
 const confirmVisible = ref(false);
+const itemSeleccionadoParaClonar = ref<RubroModel | null>(null); // NUEVO: Para F7
 
 const columnas = [
     { field: 'codigo', header: 'Código', sortable: true },
@@ -71,19 +73,46 @@ onUnmounted(() => {
 
 // --- Lógica de Modales ---
 function abrirModalNuevo() {
-  console.log('--- [RubrosView] Iniciando abrirModalNuevo ---'); // <-- NUEVO LOG
+  console.log('--- [RubrosView] Iniciando abrirModalNuevo ---');
+  itemSeleccionadoParaClonar.value = null; // Limpiar selección F7
   store.seleccionarRubro(null);
   formVisible.value = true;
-  console.log(`--- [RubrosView] formVisible cambiado a: ${formVisible.value} ---`); // <-- NUEVO LOG
+  console.log(`--- [RubrosView] formVisible cambiado a: ${formVisible.value} ---`);
 }
-function abrirModalEditar(rubro: RubroModel) { store.seleccionarRubro(rubro); formVisible.value = true; }
-function abrirModalEliminar(rubro: RubroModel) { store.seleccionarRubro(rubro); confirmVisible.value = true; }
+function abrirModalEditar(rubro: RubroModel) {
+  itemSeleccionadoParaClonar.value = rubro; // Guardar para posible F7
+  store.seleccionarRubro(rubro);
+  formVisible.value = true;
+}
+function abrirModalEliminar(rubro: RubroModel) {
+  itemSeleccionadoParaClonar.value = rubro; // Guardar para posible F7
+  store.seleccionarRubro(rubro);
+  confirmVisible.value = true;
+}
+// NUEVO: Función para clonar (F7)
+function abrirModalClonar() {
+  if (!itemSeleccionadoParaClonar.value) {
+    notificationService.mostrarAdvertencia("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7).");
+    return;
+  }
+  console.log('--- [RubrosView] Iniciando abrirModalClonar ---');
+  store.seleccionarParaClonar(itemSeleccionadoParaClonar.value); // Usa la nueva acción del store
+  formVisible.value = true;
+}
+// NUEVO: Actualizar item seleccionado (placeholder para selección real de TablaDatos)
+// IMPORTANTE: Asegúrate que tu componente TablaDatos emita 'ver-item' (o un evento similar)
+// cuando una fila es seleccionada, pasando el objeto de datos de esa fila.
+function actualizarItemSeleccionado(rubro: RubroModel) {
+  console.log('--- [RubrosView] Item seleccionado para posible clonación:', rubro);
+  itemSeleccionadoParaClonar.value = rubro;
+}
 
 // --- Lógica de Acciones ---
 async function manejarGuardado(rubro: RubroModel) {
     const exito = await store.guardarRubro(rubro);
     if (exito) {
         formVisible.value = false;
+        itemSeleccionadoParaClonar.value = null; // Limpiar selección F7 al guardar
     }
 }
 async function manejarEliminacion() {
@@ -91,14 +120,20 @@ async function manejarEliminacion() {
         await store.eliminarRubro(store.rubroSeleccionado.id);
     }
     confirmVisible.value = false;
+    itemSeleccionadoParaClonar.value = null; // Limpiar selección F7 al eliminar
 }
 
-// --- Manejador Global F4 ---
+// --- Manejador Global F4/F7 ---
 function handleGlobalKeyDown(event: KeyboardEvent) {
-  if (!formVisible.value && !confirmVisible.value) { // Solo si no hay modales activos
+  // Solo actuar si no hay modales de esta vista activos
+  if (!formVisible.value && !confirmVisible.value) {
     if (event.key === 'F4') {
       event.preventDefault();
       abrirModalNuevo();
+    }
+    if (event.key === 'F7') { // NUEVO: Listener F7
+      event.preventDefault();
+      abrirModalClonar();
     }
   }
 }

@@ -1,14 +1,14 @@
-<!-- RUTA: frontend/src/components/modals/ConfirmationModal.vue (SCRIPT CORREGIDO) -->
 <template>
   <Dialog
     v-model:visible="dialogVisible"
     modal
-    :header="props.titulo" <!-- Usar props.titulo -->
+    :header="props.titulo"
     :style="{ width: '25rem' }"
+    @keydown.esc.prevent="cancelar"
+    @keydown.f10.prevent="confirmar"
   >
     <div class="flex items-center gap-4">
       <i class="pi pi-exclamation-triangle text-4xl text-yellow-500"></i>
-      <!-- Usar props.mensaje -->
       <p>{{ props.mensaje }}</p>
     </div>
     <template #footer>
@@ -33,21 +33,16 @@
 <script setup lang="ts">
 import { computed, watch, onMounted, onUnmounted } from 'vue';
 // Los componentes PrimeVue se asumen globales
-// import Dialog from 'primevue/dialog';
-// import Button from 'primevue/button';
 
-// --- CORREGIDO: Sintaxis estándar de defineProps con TypeScript ---
 interface Props {
   visible: boolean;
-  titulo?: string; // Hacer opcional con valor por defecto
-  mensaje: string; // Mantener requerido
+  titulo?: string;
+  mensaje: string;
 }
 
-// Define props con valores por defecto donde aplique
 const props = withDefaults(defineProps<Props>(), {
-  titulo: 'Confirmar Acción' // Valor por defecto para titulo
+  titulo: 'Confirmar Acción'
 });
-// --- FIN CORRECCIÓN ---
 
 const emit = defineEmits(['update:visible', 'confirmado', 'cancelado']);
 
@@ -66,26 +61,32 @@ const cancelar = () => {
   dialogVisible.value = false;
 };
 
-// Lógica de teclas (sin cambios)
+// Listeners @keydown en el <Dialog> manejan F10 y Esc.
+// El código manual con watch/onMounted/onUnmounted puede eliminarse si los listeners del Dialog son suficientes.
+/*
 const handleKeyPress = (event: KeyboardEvent) => {
-  if (props.visible) {
-    if (event.key === 'F10') { event.preventDefault(); confirmar(); }
-    if (event.key === 'Escape') { event.preventDefault(); cancelar(); }
-  }
+ // ... código anterior ...
 };
-
 watch(() => props.visible, (newValue) => {
-  if (newValue) { document.addEventListener('keydown', handleKeyPress); }
-  else { document.removeEventListener('keydown', handleKeyPress); }
+  // ... código anterior ...
 });
+onMounted(() => {
+ // ... código anterior ...
+});
+onUnmounted(() => {
+  // ... código anterior ...
+});
+*/
 
-onMounted(() => { if (props.visible) { document.addEventListener('keydown', handleKeyPress); } });
-onUnmounted(() => { document.removeEventListener('keydown', handleKeyPress); });
 </script>
 
 <style scoped>
-/* Añadir algún estilo si es necesario, por ejemplo, al párrafo del mensaje */
 p {
   margin: 0; /* Asegurar que no haya márgenes extraños */
 }
-</style>
+.p-dialog .p-dialog-footer button {
+  margin-left: 0.5rem; /* Asegurar espacio entre botones del footer */
+}
+</style> ```
+
+Guarda este cambio y el servidor Vite debería compilar correctamente. 👍

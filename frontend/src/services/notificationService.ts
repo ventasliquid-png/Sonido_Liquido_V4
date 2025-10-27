@@ -1,4 +1,4 @@
-// frontend/src/services/notificationService.ts (CORREGIDO PARA INICIALIZACIÓN)
+// frontend/src/services/notificationService.ts (CORREGIDO CON NOMENCLATURA ESPAÑOL)
 import type { ToastServiceMethods } from 'primevue/toastservice';
 import type { ToastMessageOptions } from 'primevue/toast';
 
@@ -12,7 +12,7 @@ class NotificationService {
     /**
      * Inicializa el servicio con la instancia de ToastService de PrimeVue.
      * DEBE llamarse en main.ts después de app.use(ToastService).
-     * @param service Instancia de ToastService obtenida con useToast() en main.ts o App.vue
+     * @param service Instancia de ToastService obtenida globalmente en main.ts
      */
     initialize(service: ToastServiceMethods): void {
         if (!this.toast) {
@@ -23,33 +23,40 @@ class NotificationService {
         }
     }
 
-    private show(options: ToastMessageOptions): void {
+    // Método privado para mostrar el toast, verifica inicialización
+    private mostrar(options: ToastMessageOptions): void {
         if (!this.toast) {
-            console.error('NotificationService no ha sido inicializado. Las notificaciones no se mostrarán.', options);
-            // Podríamos usar alert como fallback extremo, pero es mejor evitarlo.
+            console.error('NotificationService no inicializado. Notificación perdida:', options);
+            // Fallback MUY básico si todo falla (solo para depuración extrema)
             // alert(`[${options.severity || 'info'}] ${options.summary}: ${options.detail}`);
             return;
         }
         this.toast.add(options);
     }
 
-    showSuccess(summary: string, detail?: string, life: number = 3000): void {
-        this.show({ severity: 'success', summary: summary, detail: detail, life: life });
+    // --- Métodos Públicos con Nomenclatura Canónica (Español) ---
+
+    /** Muestra una notificación de éxito. */
+    mostrarExito(titulo: string, detalle?: string, duracion: number = 3000): void {
+        this.mostrar({ severity: 'success', summary: titulo, detail: detalle, life: duracion });
     }
 
-    showInfo(summary: string, detail?: string, life: number = 3000): void {
-        this.show({ severity: 'info', summary: summary, detail: detail, life: life });
+    /** Muestra una notificación informativa. */
+    mostrarInfo(titulo: string, detalle?: string, duracion: number = 3000): void {
+        this.mostrar({ severity: 'info', summary: titulo, detail: detalle, life: duracion });
     }
 
-    showWarn(summary: string, detail?: string, life: number = 5000): void {
-        this.show({ severity: 'warn', summary: summary, detail: detail, life: life });
+    /** Muestra una notificación de advertencia. */
+    mostrarAdvertencia(titulo: string, detalle?: string, duracion: number = 5000): void {
+        this.mostrar({ severity: 'warn', summary: titulo, detail: detalle, life: duracion });
     }
 
-    showError(summary: string, detail?: string, life: number = 7000): void {
-        this.show({ severity: 'error', summary: summary, detail: detail, life: life });
+    /** Muestra una notificación de error. */
+    mostrarError(titulo: string, detalle?: string, duracion: number = 7000): void {
+        this.mostrar({ severity: 'error', summary: titulo, detail: detalle, life: duracion });
     }
 }
 
 // Exportamos una única instancia (Singleton)
 const notificationService = new NotificationService();
-export default notificationService; // Asegurar exportación por defecto
+export default notificationService;
