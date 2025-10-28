@@ -3,7 +3,7 @@ backend/venv/
 
 # Ignorar las dependencias del Frontend (el "cableado" de la cabina)
 frontend/node_modules/
-
+service-account-v4.json
 # Ignorar archivos de entorno y secretos
 .env
 *.env.*

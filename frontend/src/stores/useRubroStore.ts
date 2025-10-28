@@ -1,4 +1,4 @@
-// frontend/src/stores/useRubroStore.ts (COMPLETO CON ACCIÓN PARA F7)
+// frontend/src/stores/useRubroStore.ts (ADAPTADO PARA FILTRO)
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { RubroModel } from '@/models/rubroModel';
@@ -7,22 +7,29 @@ import notificationService from '@/services/notificationService';
 
 export const useRubroStore = defineStore('rubro', () => {
   // --- Estado ---
-  const rubros = ref<RubroModel[]>([]);
+  const rubros = ref<RubroModel[]>([]); // Almacenará TODOS los rubros (activos e inactivos)
   const rubroSeleccionado = ref<RubroModel | null>(null);
   const estadoCarga = ref<boolean>(false);
 
   // --- Getters (Computados) ---
+  // Este getter sigue siendo útil si en algún lugar solo necesitas los activos
   const rubrosActivos = computed(() =>
     rubros.value.filter(r => !r.baja_logica)
   );
 
+  // Getter para obtener TODOS los rubros (útil para el filtro 'Todos')
+  const todosLosRubros = computed(() => rubros.value);
+
   // --- Acciones ---
 
+  // MODIFICADO: fetchRubros ahora trae TODOS los rubros (activos = undefined)
   async function fetchRubros() {
     estadoCarga.value = true;
     try {
-      const { data } = await rubroApiService.getAll(true); // Asume que true trae solo activos, ajustar si es necesario
-      rubros.value = data;
+      // Llamar a getAll sin parámetro o con undefined para traer todos
+      const { data } = await rubroApiService.getAll(undefined);
+      rubros.value = data; // Guardar la lista completa
+      console.log('Store: fetchRubros ejecutado, rubros cargados:', rubros.value.length);
     } catch (error) {
       notificationService.mostrarError('Error al cargar rubros', (error as Error).message);
     } finally {
@@ -30,6 +37,8 @@ export const useRubroStore = defineStore('rubro', () => {
     }
   }
 
+  // guardarRubro y eliminarRubro no necesitan cambios mayores,
+  // pero nos aseguramos que actualicen la lista 'rubros' completa correctamente.
   async function guardarRubro(rubro: RubroModel): Promise<boolean> {
     estadoCarga.value = true;
     let success = false;
@@ -38,14 +47,13 @@ export const useRubroStore = defineStore('rubro', () => {
         // --- Actualización ---
         const { data: updatedRubro } = await rubroApiService.update(
           rubro.id,
-          { nombre: rubro.nombre, baja_logica: rubro.baja_logica } // Solo campos actualizables
+          { nombre: rubro.nombre, baja_logica: rubro.baja_logica }
         );
         const index = rubros.value.findIndex(r => r.id === updatedRubro.id);
         if (index !== -1) {
-          rubros.value[index] = updatedRubro;
+          rubros.value[index] = updatedRubro; // Actualizar en la lista completa
         } else {
-          // Si no se encuentra, podría ser mejor recargar todo
-          await fetchRubros();
+          await fetchRubros(); // Recargar todo si no se encontró
         }
         notificationService.mostrarExito('Rubro actualizado');
         success = true;
@@ -53,28 +61,25 @@ export const useRubroStore = defineStore('rubro', () => {
       } else {
         // --- Creación (Manejo ABR) ---
         const response = await rubroApiService.create(rubro);
-        if (response.status === 201) { // Creado exitosamente
-          rubros.value.push(response.data);
+        if (response.status === 201) { // Creado
+          rubros.value.push(response.data); // Añadir a la lista completa
           notificationService.mostrarExito('Rubro creado exitosamente');
           success = true;
-        } else if (response.status === 200) { // Reactivado (ABR)
-          // La API devuelve el rubro reactivado, actualizar localmente o recargar
+        } else if (response.status === 200) { // Reactivado
            const index = rubros.value.findIndex(r => r.codigo === response.data.codigo);
            if (index !== -1) {
-               rubros.value[index] = response.data; // Actualizar con datos reactivados
+               rubros.value[index] = response.data; // Actualizar en la lista completa
            } else {
-               await fetchRubros(); // Recargar si no se encontró (inesperado)
+               await fetchRubros(); // Recargar todo si no se encontró
            }
           notificationService.mostrarInfo('Rubro reactivado', 'El rubro ya existía y fue reactivado.');
           success = true;
         }
-        // Nota: El backend ahora maneja el 409 internamente en la transacción
       }
     } catch (error: any) {
       if (error.response?.status === 409) {
         notificationService.mostrarAdvertencia('Error: Código duplicado', error.response.data.detail);
       } else {
-        // Manejo genérico de otros errores (red, servidor, etc.)
         const mensajeError = error.response?.data?.detail || error.message || 'Error desconocido';
         notificationService.mostrarError('Error al guardar el rubro', mensajeError);
       }
@@ -82,7 +87,7 @@ export const useRubroStore = defineStore('rubro', () => {
     } finally {
       estadoCarga.value = false;
       if (success) {
-        seleccionarRubro(null); // Limpia selección solo si fue exitoso
+        seleccionarRubro(null);
       }
     }
     return success;
@@ -92,13 +97,12 @@ export const useRubroStore = defineStore('rubro', () => {
   async function eliminarRubro(id: string) {
     estadoCarga.value = true;
     try {
-      const { data: rubroDadoDeBaja } = await rubroApiService.delete(id); // delete ahora es baja lógica en backend
+      const { data: rubroDadoDeBaja } = await rubroApiService.delete(id);
       const index = rubros.value.findIndex(r => r.id === rubroDadoDeBaja.id);
       if (index !== -1) {
-         // Reemplazar con la data devuelta que tiene baja_logica = true
-        rubros.value[index] = rubroDadoDeBaja;
+        rubros.value[index] = rubroDadoDeBaja; // Actualizar estado en la lista completa
       } else {
-        await fetchRubros(); // Recargar si no se encontró (inesperado)
+        await fetchRubros();
       }
       notificationService.mostrarExito('Rubro dado de baja');
     } catch (error: any) {
@@ -111,32 +115,31 @@ export const useRubroStore = defineStore('rubro', () => {
   }
 
   function seleccionarRubro(rubro: RubroModel | null) {
-    // Crear una copia para evitar mutaciones accidentales del estado original
     rubroSeleccionado.value = rubro ? { ...rubro } : null;
     console.log("Store: seleccionarRubro ejecutado, valor:", rubroSeleccionado.value);
   }
 
-  // NUEVO: Acción para preparar clonación (F7)
   function seleccionarParaClonar(rubroOriginal: RubroModel) {
     const rubroClonado: RubroModel = {
-      ...rubroOriginal, // Copiar todos los datos
-      id: null,       // Borrar ID para indicar que es nuevo
-      codigo: '',     // Borrar Código para forzar al usuario a ingresar uno nuevo
-      baja_logica: false // Un clon siempre empieza activo
+      ...rubroOriginal,
+      id: null,
+      codigo: '',
+      baja_logica: false
     };
-    rubroSeleccionado.value = rubroClonado; // Establecer como selección actual
+    rubroSeleccionado.value = rubroClonado;
     console.log("Store: seleccionarParaClonar ejecutado, valor clonado:", rubroSeleccionado.value);
   }
 
   return {
-    rubros,
+    rubros, // Ahora contiene TODOS
     rubroSeleccionado,
     estadoCarga,
-    rubrosActivos,
+    // rubrosActivos, // Podríamos quitarlo si no se usa en otro lado, o mantenerlo
+    todosLosRubros, // Exportar getter de todos
     fetchRubros,
     guardarRubro,
     eliminarRubro,
     seleccionarRubro,
-    seleccionarParaClonar, // Exportar nueva acción
+    seleccionarParaClonar,
   };
 });

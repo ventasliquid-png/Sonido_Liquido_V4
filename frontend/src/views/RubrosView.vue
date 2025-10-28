@@ -4,14 +4,26 @@
       <template #start>
         <Button label="Nuevo Rubro (F4)" icon="pi pi-plus" class="mr-2" @click="abrirModalNuevo" />
       </template>
+
+      <template #end>
+        <SelectButton
+          v-model="filtroEstadoSeleccionado"
+          :options="opcionesFiltroEstado"
+          optionLabel="label"
+          optionValue="value"
+          aria-labelledby="basic"
+          @change="onFiltroChange" />
+          </template>
       </Toolbar>
 
     <TablaDatos
-      :datos="store.rubrosActivos"
+      :datos="rubrosFiltrados"
       :columnas="columnas"
       :cargando="store.estadoCarga"
+      :rowClass="getRowClass"
       @editar-item="abrirModalEditar"
-      @ver-item="actualizarItemSeleccionado" @eliminar-item="abrirModalEliminar"
+      @ver-item="actualizarItemSeleccionado"
+      @eliminar-item="abrirModalEliminar"
     >
       <template #body-baja_logica="{ data }">
         <Tag
@@ -40,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useRubroStore } from '@/stores/useRubroStore';
 import type { RubroModel } from '@/models/rubroModel';
 import TablaDatos from '@/components/TablaDatos.vue';
@@ -49,12 +61,41 @@ import RubroForm from '@/components/RubroForm.vue';
 import Toolbar from 'primevue/toolbar';
 import Button from 'primevue/button';
 import Tag from 'primevue/tag';
-import notificationService from '@/services/notificationService'; // Importar para F7
+import SelectButton from 'primevue/selectbutton';
+import notificationService from '@/services/notificationService';
 
 const store = useRubroStore();
 const formVisible = ref(false);
 const confirmVisible = ref(false);
-const itemSeleccionadoParaClonar = ref<RubroModel | null>(null); // NUEVO: Para F7
+const itemSeleccionadoParaClonar = ref<RubroModel | null>(null);
+
+type FiltroEstado = 'activos' | 'inactivos' | 'todos';
+const filtroEstadoSeleccionado = ref<FiltroEstado>('activos');
+const opcionesFiltroEstado = ref([
+    { label: 'Activos', value: 'activos' },
+    { label: 'Inactivos', value: 'inactivos' },
+    { label: 'Todos', value: 'todos' }
+]);
+
+// Log para ver cambios en el filtro
+const onFiltroChange = (event: any) => {
+    console.log('Filtro cambiado a:', event.value);
+    filtroEstadoSeleccionado.value = event.value; // Asegurar actualización
+}
+
+const rubrosFiltrados = computed(() => {
+  const todos = store.todosLosRubros;
+  console.log('Calculando rubrosFiltrados. Estado filtro:', filtroEstadoSeleccionado.value, 'Total rubros:', todos.length); // Log de depuración
+  switch (filtroEstadoSeleccionado.value) {
+    case 'activos':
+      return todos.filter(r => !r.baja_logica);
+    case 'inactivos':
+      return todos.filter(r => r.baja_logica);
+    case 'todos':
+    default:
+      return todos;
+  }
+});
 
 const columnas = [
     { field: 'codigo', header: 'Código', sortable: true },
@@ -63,6 +104,7 @@ const columnas = [
 ];
 
 onMounted(() => {
+  console.log('RubrosView Montado. Opciones Filtro:', opcionesFiltroEstado.value); // Log de depuración
   store.fetchRubros();
   document.addEventListener('keydown', handleGlobalKeyDown);
 });
@@ -71,79 +113,37 @@ onUnmounted(() => {
   document.removeEventListener('keydown', handleGlobalKeyDown);
 });
 
-// --- Lógica de Modales ---
-function abrirModalNuevo() {
-  console.log('--- [RubrosView] Iniciando abrirModalNuevo ---');
-  itemSeleccionadoParaClonar.value = null; // Limpiar selección F7
-  store.seleccionarRubro(null);
-  formVisible.value = true;
-  console.log(`--- [RubrosView] formVisible cambiado a: ${formVisible.value} ---`);
-}
-function abrirModalEditar(rubro: RubroModel) {
-  itemSeleccionadoParaClonar.value = rubro; // Guardar para posible F7
-  store.seleccionarRubro(rubro);
-  formVisible.value = true;
-}
-function abrirModalEliminar(rubro: RubroModel) {
-  itemSeleccionadoParaClonar.value = rubro; // Guardar para posible F7
-  store.seleccionarRubro(rubro);
-  confirmVisible.value = true;
-}
-// NUEVO: Función para clonar (F7)
-function abrirModalClonar() {
-  if (!itemSeleccionadoParaClonar.value) {
-    notificationService.mostrarAdvertencia("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7).");
-    return;
-  }
-  console.log('--- [RubrosView] Iniciando abrirModalClonar ---');
-  store.seleccionarParaClonar(itemSeleccionadoParaClonar.value); // Usa la nueva acción del store
-  formVisible.value = true;
-}
-// NUEVO: Actualizar item seleccionado (placeholder para selección real de TablaDatos)
-// IMPORTANTE: Asegúrate que tu componente TablaDatos emita 'ver-item' (o un evento similar)
-// cuando una fila es seleccionada, pasando el objeto de datos de esa fila.
-function actualizarItemSeleccionado(rubro: RubroModel) {
-  console.log('--- [RubrosView] Item seleccionado para posible clonación:', rubro);
-  itemSeleccionadoParaClonar.value = rubro;
-}
+function abrirModalNuevo() { /* ... sin cambios ... */ itemSeleccionadoParaClonar.value = null; store.seleccionarRubro(null); formVisible.value = true;}
+function abrirModalEditar(rubro: RubroModel) { /* ... sin cambios ... */ itemSeleccionadoParaClonar.value = rubro; store.seleccionarRubro(rubro); formVisible.value = true; }
+function abrirModalEliminar(rubro: RubroModel) { /* ... sin cambios ... */ itemSeleccionadoParaClonar.value = rubro; store.seleccionarRubro(rubro); confirmVisible.value = true; }
+function abrirModalClonar() { /* ... sin cambios ... */ if (!itemSeleccionadoParaClonar.value) { notificationService.mostrarAdvertencia("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7)."); return; } store.seleccionarParaClonar(itemSeleccionadoParaClonar.value); formVisible.value = true; }
+function actualizarItemSeleccionado(rubro: RubroModel) { /* ... sin cambios ... */ itemSeleccionadoParaClonar.value = rubro;}
+async function manejarGuardado(rubro: RubroModel) { /* ... sin cambios ... */ const exito = await store.guardarRubro(rubro); if (exito) { formVisible.value = false; itemSeleccionadoParaClonar.value = null; }}
+async function manejarEliminacion() { /* ... sin cambios ... */ if (store.rubroSeleccionado?.id) { await store.eliminarRubro(store.rubroSeleccionado.id); } confirmVisible.value = false; itemSeleccionadoParaClonar.value = null; }
+function handleGlobalKeyDown(event: KeyboardEvent) { /* ... sin cambios ... */ if (!formVisible.value && !confirmVisible.value) { if (event.key === 'F4') { event.preventDefault(); abrirModalNuevo(); } if (event.key === 'F7') { event.preventDefault(); abrirModalClonar(); } } }
 
-// --- Lógica de Acciones ---
-async function manejarGuardado(rubro: RubroModel) {
-    const exito = await store.guardarRubro(rubro);
-    if (exito) {
-        formVisible.value = false;
-        itemSeleccionadoParaClonar.value = null; // Limpiar selección F7 al guardar
-    }
-}
-async function manejarEliminacion() {
-    if (store.rubroSeleccionado?.id) {
-        await store.eliminarRubro(store.rubroSeleccionado.id);
-    }
-    confirmVisible.value = false;
-    itemSeleccionadoParaClonar.value = null; // Limpiar selección F7 al eliminar
-}
+const getRowClass = (data: RubroModel) => {
+    return data.baja_logica ? 'row-inactivo' : 'row-activo';
+};
 
-// --- Manejador Global F4/F7 ---
-function handleGlobalKeyDown(event: KeyboardEvent) {
-  // Solo actuar si no hay modales de esta vista activos
-  if (!formVisible.value && !confirmVisible.value) {
-    if (event.key === 'F4') {
-      event.preventDefault();
-      abrirModalNuevo();
-    }
-    if (event.key === 'F7') { // NUEVO: Listener F7
-      event.preventDefault();
-      abrirModalClonar();
-    }
-  }
-}
-// ---
+// Función de color eliminada temporalmente ya que no se usa el slot
+// const getColorClassForFilter = (value: FiltroEstado) => { /* ... */ };
 
 </script>
 
 <style scoped>
 .card { padding: 1rem; }
-/* Estilos botones acciones */
+/* Estilos botones acciones tabla (sin cambios) */
 :deep(.p-datatable .p-datatable-tbody > tr > td:last-child .p-button) { margin-right: 0.25rem; }
 :deep(.p-datatable .p-datatable-tbody > tr > td:last-child .p-button:last-child) { margin-right: 0; }
+
+/* --- Estilos Condicionales para Filas (sin cambios) --- */
+:deep(.p-datatable .p-datatable-tbody > tr.row-activo) { color: #1a5d2b; }
+:deep(.p-datatable .p-datatable-tbody > tr.row-inactivo) { color: #7a2a33; }
+
+/* --- Estilos para SelectButton (ELIMINADOS TEMPORALMENTE) --- */
+/* :deep(.p-selectbutton .p-button.p-highlight.filter-button-activo) { ... } */
+/* :deep(.p-selectbutton .p-button.p-highlight.filter-button-inactivo) { ... } */
+/* :deep(.p-selectbutton .p-button.p-highlight.filter-button-todos) { ... } */
+/* .filter-button-activo span, .filter-button-inactivo span, .filter-button-todos span { ... } */
 </style>
