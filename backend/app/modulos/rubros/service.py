@@ -1,9 +1,11 @@
-# backend/app/modulos/rubros/service.py (VERSIÓN 10 - Saca la transacción de la clase)
+# backend/app/modulos/rubros/service.py (VERSIÓN 12 - Lógica para "Preguntar")
 
 from typing import List, Optional, Tuple
 from fastapi import HTTPException, status # Necesario para lanzar errores HTTP
 from google.cloud import firestore
-# Importar referencias de tipo
+# --- INICIO V11: Importar FieldFilter ---
+from google.cloud.firestore_v1.base_query import FieldFilter
+# --- FIN V11 ---
 from google.cloud.firestore_v1.client import Client
 from google.cloud.firestore_v1.transaction import Transaction
 from google.cloud.firestore_v1.document import DocumentReference
@@ -22,7 +24,7 @@ logger = logging.getLogger(__name__)
 # NO debe haber importación '.service' ni línea 'Depends' aquí.
 
 
-# --- INICIO V10: FUNCIÓN HELPER TRANSACCIONAL (FUERA DE LA CLASE) ---
+# --- (Función Helper) ---
 @firestore.transactional
 def _transaccion_crear_rubro(
     transaction: Transaction, 
@@ -39,8 +41,11 @@ def _transaccion_crear_rubro(
     rubro = RubroModel.model_validate(rubro_data)
     
     logger.info(f"Transaction: Checking existence for code {rubro.codigo}")
-    # Ya no usamos 'self.'
-    query = rubros_ref.where("codigo", "==", rubro.codigo).limit(1)
+    
+    # --- INICIO V11: SINTAXIS MODERNA ---
+    query = rubros_ref.where(filter=FieldFilter("codigo", "==", rubro.codigo)).limit(1)
+    # --- FIN V11 ---
+    
     existentes = list(query.stream(transaction=transaction))
 
     if existentes:
@@ -49,19 +54,39 @@ def _transaccion_crear_rubro(
         existente_data = existente_doc.to_dict()
         logger.info(f"Transaction: Found existing document {existente_ref.id} for code {rubro.codigo}")
 
+        # --- INICIO V12: LÓGICA DE PREGUNTAR (Backend) ---
         if existente_data.get("baja_logica"): # Si está inactivo
-            logger.info(f"Transaction: Reactivating document {existente_ref.id}")
-            transaction.update(existente_ref, {
-                "baja_logica": False,
-                "nombre": rubro.nombre # Actualizar nombre al reactivar
-            })
-            return existente_ref, "reactivated"
+            # NO LO REACTIVAMOS. Lanzamos un 409 con un 'detail' especial (un JSON/dict)
+            # para que el frontend sepa qué hacer.
+            logger.warning(f"Transaction: Conflict - Code {rubro.codigo} exists but is inactive.")
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail={
+                    "status": "EXISTE_INACTIVO",
+                    "id_inactivo": existente_ref.id, # El ID que el frontend necesitará para reactivar
+                    "nombre": existente_data.get("nombre"),
+                    "message": f"El código de rubro '{rubro.codigo}' ya existe pero está inactivo."
+                }
+            )
+            
+            # (Este era el código viejo que reactivaba automáticamente)
+            # logger.info(f"Transaction: Reactivating document {existente_ref.id}")
+            # transaction.update(existente_ref, { ... })
+            # return existente_ref, "reactivated"
+        
         else: # Si está activo
+            # Devolvemos un 'detail' similar para que el frontend 
+            # sepa distinguir entre "activo" e "inactivo".
             logger.warning(f"Transaction: Conflict - Code {rubro.codigo} already active.")
             raise HTTPException(
                 status_code=status.HTTP_409_CONFLICT,
-                detail=f"El código de rubro '{rubro.codigo}' ya existe y está activo."
+                detail={
+                    "status": "EXISTE_ACTIVO",
+                    "id_inactivo": None, # No aplica
+                    "message": f"El código de rubro '{rubro.codigo}' ya existe y está activo."
+                }
             )
+        # --- FIN V12 ---
 
     # --- Creación Estándar ---
     logger.info(f"Transaction: Creating new document for code {rubro.codigo}")
@@ -75,7 +100,7 @@ def _transaccion_crear_rubro(
     logger.info(f"Transaction: Rubro document {nuevo_rubro_ref.id} set.")
 
     # Crear contador asociado
-    nuevo_contador_ref = contadores_ref.document(nuevo_rubro_ref.id) # Ya no usamos 'self.'
+    nuevo_contador_ref = contadores_ref.document(nuevo_rubro_ref.id) # Usar mismo ID
     datos_nuevo_contador = {'ultimo_valor': 0}
     transaction.set(nuevo_contador_ref, datos_nuevo_contador) # Guardar contador
     logger.info(f"Transaction: Counter document {nuevo_contador_ref.id} set.")
@@ -123,7 +148,7 @@ class RubroService:
         """
         logger.info(f"Attempting to create/reactivate rubro with code: {rubro.codigo}")
         try:
-            # --- INICIO: CORRECCIÓN TRANSACCIÓN (V10) ---
+            # --- (Lógica V10, sin cambios) ---
             
             # 1. Convertimos el modelo Pydantic a 'dict' ANTES de la llamada.
             rubro_data = rubro.model_dump()
@@ -138,7 +163,6 @@ class RubroService:
                 self.rubros_ref,    # La referencia a la colección de rubros
                 self.contadores_ref # La referencia a la colección de contadores
             )
-            # --- FIN: CORRECCIÓN TRANSACCIÓN (V10) ---
 
             rubro_final_doc = doc_ref.get() # Obtener el doc después de la transacción
             if not rubro_final_doc.exists:
@@ -170,8 +194,11 @@ class RubroService:
     def obtener_rubro_por_codigo(self, codigo: str) -> RubroModel:
         """Obtiene un rubro por su 'codigo' de negocio."""
         logger.info(f"Fetching rubro by code: {codigo}")
-        # Firestore necesita índice para consultas !=
-        query = self.rubros_ref.where("codigo", "==", codigo).limit(1)
+        
+        # --- INICIO V11: SINTAXIS MODERNA ---
+        query = self.rubros_ref.where(filter=FieldFilter("codigo", "==", codigo)).limit(1)
+        # --- FIN V11 ---
+        
         resultados = list(query.stream())
         if not resultados:
             logger.warning(f"Rubro code {codigo} not found.")
@@ -187,17 +214,17 @@ class RubroService:
         # Aplicar filtro si se especificó 'activos'
         if activos is True:
             logger.info("Applying filter: baja_logica == False")
-            # Firestore necesita índice para consultas where
-            query = query.where("baja_logica", "==", False)
+            # --- INICIO V11: SINTAXIS MODERNA ---
+            query = query.where(filter=FieldFilter("baja_logica", "==", False))
+            # --- FIN V11 ---
         elif activos is False:
             logger.info("Applying filter: baja_logica == True")
-            # Firestore necesita índice para consultas where
-            query = query.where("baja_logica", "==", True)
+            # --- INICIO V11: SINTAXIS MODERNA ---
+            query = query.where(filter=FieldFilter("baja_logica", "==", True))
+            # --- FIN V11 ---
         else:
              logger.info("No filter applied (fetching all).")
 
-        # Opcional: Añadir ordenamiento si se desea
-        # query = query.order_by("nombre", direction=firestore.Query.ASCENDING)
 
         try:
             docs = query.stream() # Ejecutar la consulta
@@ -209,7 +236,6 @@ class RubroService:
                     lista_rubros.append(rubro_model)
                 except Exception as validation_error:
                     logger.error(f"Validation error for doc ID {doc.id}: {validation_error}", exc_info=False)
-                    # Decidir si saltar el documento inválido o lanzar un error mayor
             logger.info(f"Firestore stream processed. Returning {len(lista_rubros)} valid documents.")
             return lista_rubros
         except Exception as e: # Capturar errores de Firestore al hacer stream
@@ -226,20 +252,18 @@ class RubroService:
 
         # Añadir log extra antes del get()
         logger.info(f"Fetching document with ID '{id}' before update...")
-        doc = doc_get() # Leer el documento existente
+        doc = doc_ref.get() # Leer el documento existente
         if not doc.exists:
             logger.warning(f"Update failed: Rubro ID {id} not found.")
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Rubro no encontrado para actualizar")
 
         # Preparar datos para actualizar, excluyendo valores no enviados (None)
-        # y asegurando que 'baja_logica: False' se envíe si está presente
         update_data = rubro_update.model_dump(exclude_unset=True) # exclude_unset es bueno para PATCH
 
         if not update_data:
              logger.warning(f"Update aborted: No data provided for rubro ID {id}.")
              raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="No hay datos para actualizar")
 
-        # Asegurar que baja_logica se guarde si viene en el payload (incluso si es False)
         if 'baja_logica' in update_data:
              pass
 
@@ -261,7 +285,6 @@ class RubroService:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Rubro no encontrado")
 
         current_data = doc.to_dict()
-        # Verificar si ya está inactivo (usando .get con default False)
         if current_data.get("baja_logica", False):
             logger.warning(f"Logical delete aborted: Rubro ID {id} already inactive.")
             raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="El rubro ya está dado de baja")

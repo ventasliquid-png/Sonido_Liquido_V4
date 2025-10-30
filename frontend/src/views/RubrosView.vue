@@ -49,7 +49,16 @@
       @confirmado="manejarEliminacion"
       @cancelado="confirmVisible = false"
     />
-  </div>
+
+    <ConfirmationModal v-if="store.confirmarReactivacionVisible"
+      :visible="store.confirmarReactivacionVisible"
+      titulo="Confirmar Reactivación"
+      :message="`El rubro '${store.nombreParaReactivar || ''}' ya existe y está inactivo. ¿Desea reactivarlo?`"
+      @update:visible="manejarCancelarReactivacion" 
+      @confirmado="manejarConfirmarReactivacion"
+      @cancelado="manejarCancelarReactivacion"
+    />
+    </div>
 </template>
 
 <script setup lang="ts">
@@ -118,9 +127,36 @@ function abrirModalEditar(rubro: RubroModel) { itemSeleccionadoParaClonar.value 
 function abrirModalEliminar(rubro: RubroModel) { itemSeleccionadoParaClonar.value = rubro; store.seleccionarRubro(rubro); confirmVisible.value = true; }
 function abrirModalClonar() { if (!itemSeleccionadoParaClonar.value) { notificationService.mostrarAdvertencia("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7)."); return; } store.seleccionarParaClonar(itemSeleccionadoParaClonar.value); formVisible.value = true; }
 function actualizarItemSeleccionado(rubro: RubroModel) { itemSeleccionadoParaClonar.value = rubro;}
-async function manejarGuardado(rubro: RubroModel) { const exito = await store.guardarRubro(rubro); if (exito) { formVisible.value = false; itemSeleccionadoParaClonar.value = null; }}
+
+async function manejarGuardado(rubro: RubroModel) { 
+  // store.guardarRubro ahora devuelve 'false' si abre el modal de reactivación
+  const exito = await store.guardarRubro(rubro); 
+  
+  // Solo cerramos el formulario si el guardado fue un éxito (creado o actualizado)
+  // Si 'exito' es falso (porque se abrió el modal de reactivación),
+  // el formulario de 'Nuevo Rubro' permanecerá abierto hasta que el usuario decida.
+  if (exito) { 
+    formVisible.value = false; 
+    itemSeleccionadoParaClonar.value = null; 
+  }
+}
+
 async function manejarEliminacion() { if (store.rubroSeleccionado?.id) { await store.eliminarRubro(store.rubroSeleccionado.id); } confirmVisible.value = false; itemSeleccionadoParaClonar.value = null; }
 function handleGlobalKeyDown(event: KeyboardEvent) { if (!formVisible.value && !confirmVisible.value) { if (event.key === 'F4') { event.preventDefault(); abrirModalNuevo(); } if (event.key === 'F7') { event.preventDefault(); abrirModalClonar(); } } }
+
+
+// --- INICIO V2: Handlers para el modal de reactivación ---
+async function manejarConfirmarReactivacion() {
+  await store.ejecutarReactivacion();
+  formVisible.value = false; // Cierra el formulario de 'Nuevo Rubro'
+}
+
+function manejarCancelarReactivacion() {
+  store.cancelarReactivacion();
+  formVisible.value = false; // Cierra el formulario de 'Nuevo Rubro'
+}
+// --- FIN V2 ---
+
 
 const getRowClass = (data: RubroModel) => {
     return data.baja_logica ? 'row-inactivo' : 'row-activo';
