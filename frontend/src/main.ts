@@ -1,4 +1,6 @@
-// frontend/src/main.ts (CON BLINDAJE PROFILÁCTICO)
+// frontend/src/main.ts (V12.3 - CON BANDERAS DE DEBUG)
+console.log('--- BANDERA 1: main.ts Ejecutando (Nivel 0) ---');
+
 // Importaciones estándar
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -8,8 +10,9 @@ import Aura from '@primevue/themes/aura';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import { createPinia } from 'pinia';
+import Tooltip from 'primevue/tooltip'; // Importación de Tooltip
 
-// Componentes Globales (Maniobra de Evasión)
+// Componentes Globales
 import Button from 'primevue/button';
 import Toolbar from 'primevue/toolbar';
 import Dialog from 'primevue/dialog';
@@ -19,7 +22,6 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Tag from 'primevue/tag';
 import Toast from 'primevue/toast';
-// import InputNumber from 'primevue/inputnumber'; // Descomentar si se usa
 
 // Servicio de Notificación
 import notificationService from './services/notificationService';
@@ -30,7 +32,10 @@ console.log(`--- [${new Date().toISOString()}] INICIANDO EJECUCIÓN main.ts ---`
 if (!document.getElementById('app')?.dataset.vueMounted) {
   console.log('--- main.ts: No hay instancia previa. Creando y montando App Vue...');
 
+  console.log('--- BANDERA 2: main.ts antes de createApp() ---');
   const app = createApp(App);
+  console.log('--- BANDERA 3: main.ts DESPUÉS de createApp() ---');
+
   const pinia = createPinia();
 
   app.use(pinia);
@@ -40,17 +45,18 @@ if (!document.getElementById('app')?.dataset.vueMounted) {
       }
   });
   app.use(ToastService);
+  app.directive('tooltip', Tooltip);
 
-  // Inicializar NotificationService DESPUÉS de app.use(ToastService)
+  // Inicializar NotificationService
   const primevueToastService = app.config.globalProperties.$toast;
   if (primevueToastService) {
       notificationService.initialize(primevueToastService);
-      console.log('--- main.ts: NotificationService Inicializado.'); // Log añadido
+      console.log('--- main.ts: NotificationService Inicializado.');
   } else {
       console.error("Error crítico: No se pudo obtener $toast para inicializar NotificationService.");
   }
-
-  // Registro Global
+  
+  // (Componentes globales que no registraste pero podrías necesitar)
   app.component('Button', Button);
   app.component('Toolbar', Toolbar);
   app.component('Dialog', Dialog);
@@ -60,39 +66,21 @@ if (!document.getElementById('app')?.dataset.vueMounted) {
   app.component('Column', Column);
   app.component('Tag', Tag);
   app.component('Toast', Toast);
-  // app.component('InputNumber', InputNumber); // Descomentar si se usa
-
-  // --- INICIO DE BLINDAJE PROFILÁCTICO (Doctrina Grok) ---
-  // Manejador de errores global de Vue.
-  // Captura errores de renderizado silenciosos (como TypeErrors en templates)
-  // y los fuerza a aparecer en la consola.
-  app.config.errorHandler = (err, instance, info) => {
-    console.error("--- ERROR GLOBAL DE VUE CAPTURADO ---");
-    console.error("Error:", err);
-    console.log("Instancia:", instance); // Log cambiado a console.log para mejor visibilidad del objeto
-    console.log("Información de Vue:", info); // Log cambiado a console.log
-    console.error("--------------------------------------");
-  };
-  // --- FIN DE BLINDAJE ---
-
+  
+  // --- Montaje de la App ---
   app.mount('#app');
+  console.log('--- BANDERA 4: main.ts DESPUÉS de app.mount() ---');
 
-  // Marcamos el div #app para que este script no se vuelva a ejecutar
-  try {
-      const appDiv = document.getElementById('app');
-      if (appDiv) {
-          appDiv.setAttribute('data-vue-mounted', 'true');
-          console.log('--- main.ts: Atributo data-vue-mounted establecido.');
-      } else {
-          console.error('--- main.ts: No se encontró #app para establecer data-vue-mounted.');
-      }
-  } catch (e) {
-      console.error('--- main.ts: Error al establecer data-vue-mounted:', e);
-  }
 
-} else {
-  console.warn(`--- [${new Date().toISOString()}] main.ts: ADVERTENCIA. Instancia de App ya montada detectada por data-vue-mounted. Se ha prevenido una re-ejecución.`);
+} else { 
+    console.warn('--- main.ts: DETECTADA INSTANCIA PREVIA DE VUE. Montaje abortado para prevenir HMR duplicado.');
 }
-// --- FIN DEL PROTOCOLO "SELLO ÚNICO" ---
+
+// (Código para setear data-vue-mounted)
+const appElement = document.getElementById('app');
+if (appElement && !appElement.dataset.vueMounted) {
+    appElement.dataset.vueMounted = 'true';
+    console.log('--- main.ts: Atributo data-vue-mounted establecido.');
+}
 
 console.log(`--- [${new Date().toISOString()}] FIN EJECUCIÓN main.ts ---`);

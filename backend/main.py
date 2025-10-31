@@ -1,43 +1,35 @@
-# backend/main.py (CON CONFIGURACIÓN CORS)
+# backend/main.py (V12.4 - Integración Final)
 
 from fastapi import FastAPI
-# --- INICIO: Añadir importaciones CORS ---
 from fastapi.middleware.cors import CORSMiddleware
-# --- FIN: Añadir importaciones CORS ---
 
-# Importa tus routers aquí (asegúrate que la ruta sea correcta)
-from app.modulos.rubros import router as rubros_router
-# from app.modulos.productos import router as productos_router # Ejemplo si tuvieras más
+# Importa tus routers aquí (Ambos)
+from app.modulos.rubros.router import router as rubros_router
+from app.modulos.subrubros.router import router as subrubros_router
+
 
 app = FastAPI(title="Sonido Líquido V4 API", version="0.1.0")
 
-# --- INICIO: Configuración CORS Middleware ---
-# Lista de orígenes permitidos. Para desarrollo, localhost:5173 es común.
-# En producción, deberías poner la URL real de tu frontend.
-# El asterisco '*' permite TODO origen, ÚTIL PARA DESARROLLO, pero INSEGURO para producción.
+# --- Configuración CORS ---
 origins = [
-    "http://localhost:5173", # Origen de tu frontend Vite
-    "http://127.0.0.1:5173", # A veces el navegador usa esta IP
-    # Podrías añadir la URL de producción aquí después:
-    # "https://tu-dominio-de-produccion.com",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
 ]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins, # Lista de orígenes permitidos
-    allow_credentials=True, # Permite cookies (si las usaras)
-    allow_methods=["*"],    # Permite todos los métodos (GET, POST, PUT, DELETE, etc.)
-    allow_headers=["*"],    # Permite todos los encabezados
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-# --- FIN: Configuración CORS Middleware ---
+# --- FIN CORS ---
 
-# Incluye los routers de tus módulos
-app.include_router(rubros_router.router, prefix="/rubros", tags=["Rubros"])
-# app.include_router(productos_router.router, prefix="/productos", tags=["Productos"]) # Ejemplo
+# Incluye los routers de tus módulos (Ambos)
+app.include_router(rubros_router, prefix="/rubros", tags=["Rubros"])
+app.include_router(subrubros_router, prefix="/subrubros", tags=["Sub-Rubros"])
 
-# Ruta raíz simple (opcional)
+
 @app.get("/")
 async def root():
     return {"message": "Bienvenido a la API de Sonido Líquido V4"}
-
-# (Puedes tener más configuraciones o lógica aquí si es necesario)

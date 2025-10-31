@@ -1,21 +1,22 @@
-<!-- RUTA: frontend/src/App.vue (AÑADIR :key) -->
 <template>
-  <div :key="'app-root'"> <!-- AÑADIDO :key -->
-    <Toast />
-    <header>
-      <h1 class="main-title">Sonido Líquido V4</h1>
-    </header>
-    <main class="main-content">
-      <RubrosView />
-    </main>
-  </div>
+  <Toast /> 
+  
+  <main>
+    <SubRubrosView />
+  </main>
 </template>
 
 <script setup lang="ts">
-import RubrosView from './views/RubrosView.vue';
-// Toast se asume global
+console.log('--- BANDERA 5: App.vue <script setup> Ejecutando ---');
+
+// Importamos el componente Toast
+import Toast from 'primevue/toast'; 
+// Importamos el nuevo módulo V12
+import SubRubrosView from '@/modulos/subrubros/views/SubRubrosView.vue';
 </script>
 
-<style>
-/* ... estilos globales ... */
+<style scoped>
+main {
+  padding: 1.5rem;
+}
 </style>
