@@ -1,92 +1,69 @@
 <template>
-  <nav class="tno-sidebar">
-    <h1 class="tno-titulo">Operación Patrón V2.3</h1>
-    <ul class="tno-lista">
-      <li>
-        <router-link to="/rubros" class="tno-enlace">
-          <i class="pi pi-tags"></i>
-          <span>Rubros</span>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/subrubros" class="tno-enlace">
-          <i class="pi pi-sitemap"></i>
-          <span>Sub-Rubros</span>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/productos" class="tno-enlace">
-          <i class="pi pi-box"></i>
-          <span>Productos</span>
-        </router-link>
-      </li>
-      </ul>
-  </nav>
+    <div class="card p-4">
+        <div class="text-xl font-bold mb-4">Operación Patrón V2.3</div>
+        <div class="menu-list">
+            
+            <router-link to="/rubros" class="menu-item" active-class="active">
+                <i class="pi pi-box mr-2"></i>
+                Rubros
+            </router-link>
+
+            <router-link to="/subrubros" class="menu-item" active-class="active">
+                <i class="pi pi-tags mr-2"></i>
+                Sub-Rubros
+            </router-link>
+
+            <router-link to="/productos" class="menu-item" active-class="active">
+                <i class="pi pi-shopping-bag mr-2"></i>
+                Productos
+            </router-link>
+
+            <router-link to="/unidades-medida" class="menu-item" active-class="active">
+                <i class="pi pi-balance-scale mr-2"></i>
+                Unidades de Medida
+            </router-link>
+            
+        </div>
+        <Toast position="top-right" />
+    </div>
 </template>
 
 <script setup lang="ts">
-// TNO (Tablero de Navegación de Obra) - Misión F1
-// Rol: Navegación principal.
+import { defineProps } from 'vue';
 import { RouterLink } from 'vue-router';
+import Toast from 'primevue/toast';
+
+// Props típicos para componentes de layout, aunque no se usen aquí.
+defineProps({
+    title: {
+        type: String,
+        default: 'Menú Principal'
+    }
+});
+
+// Nota: Los estilos canónicos deben ser importados o definidos globalmente.
+// Aquí se incluyen estilos mínimos para asegurar visibilidad si no hay estilos globales.
 </script>
 
 <style scoped>
-.tno-sidebar {
-  width: 250px;
-  background-color: #f8f9fa; /* Color de obra neutro */
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  border-right: 1px solid #dee2e6;
-  padding: 1.5rem;
-  z-index: 99; /* Asegura que esté sobre el contenido pero debajo de modales */
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    color: var(--text-color);
+    transition: background-color 0.2s;
 }
 
-.tno-titulo {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #343a40;
-  margin-bottom: 2rem;
+.menu-item:hover {
+    background-color: var(--surface-hover);
 }
 
-.tno-lista {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tno-lista li {
-  margin-bottom: 0.5rem;
-}
-
-.tno-enlace {
-  display: flex;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #495057;
-  transition: background-color 0.2s, color 0.2s;
-}
-
-.tno-enlace i {
-  margin-right: 0.75rem;
-  font-size: 1.1rem;
-}
-
-.tno-enlace span {
-  font-weight: 500;
-}
-
-.tno-enlace:hover {
-  background-color: #e9ecef;
-}
-
-/* Estilo para el enlace activo */
-.router-link-active,
-.router-link-exact-active {
-  background-color: #e0e7ff; /* Un color de acento sutil (Aura) */
-  color: #4f46e5; /* Color primario de Aura */
+.menu-item.active {
+    background-color: var(--primary-color);
+    color: var(--primary-color-text);
+    font-weight: bold;
 }
 </style>

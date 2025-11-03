@@ -1,35 +1,23 @@
-<template>
-  <Toast /> 
-
-  <TNO />
-
-  <main class="tno-contenido">
-    <router-view />
-  </main>
-</template>
-
 <script setup lang="ts">
-console.log('--- App.vue (Refactor TNO) <script setup> Ejecutando ---');
-
-// Importamos el componente Toast (Servicio Global)
-import Toast from 'primevue/toast'; 
-
-// Importamos el nuevo TNO (Tablero de Navegación de Obra)
-import TNO from '@/components/layout/TNO.vue';
-
-// Importamos el RouterView
 import { RouterView } from 'vue-router';
-
-// Las vistas específicas (SubRubrosView, RubrosView) ya no se importan aquí.
-// El Router (index.ts) gestiona su carga.
-
+import TNO from '@/components/layout/TNO.vue';
+import Toast from 'primevue/toast';
 </script>
 
+<template>
+  <div style="display: flex;">
+    <div style="width: 250px; padding: 20px; border-right: 1px solid var(--surface-border);">
+        <TNO />
+    </div>
+
+    <div style="flex-grow: 1; padding: 20px;">
+        <RouterView />
+    </div>
+    
+    <Toast position="top-right" />
+  </div>
+</template>
+
 <style scoped>
-/* El padding se mueve al contenedor de contenido para dejar el TNO fijo */
-.tno-contenido {
-  margin-left: 250px; /* Ancho exacto del .tno-sidebar */
-  padding: 1.5rem;
-  width: calc(100% - 250px); /* Ajuste del ancho restante */
-}
+/* Sin estilos aquí, se usan estilos globales o PrimeFlex */
 </style>

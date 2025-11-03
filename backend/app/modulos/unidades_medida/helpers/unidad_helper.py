@@ -1,4 +1,4 @@
-# backend/app/modulos/subrubros/helpers/subrubro_helper.py
+# backend/app/modulos/unidades_medida/helpers/unidad_helper.py
 from google.cloud import firestore
 from google.cloud.firestore_v1.base_query import FieldFilter
 
@@ -15,16 +15,16 @@ class DuplicadoInactivoException(DuplicadoException):
 # --- Fin Excepciones ---
 
 @firestore.transactional
-def _transaccion_crear_subrubro(transaction, subrubro_data: dict, db):
+def _transaccion_crear_unidad(transaction, unidad_data: dict, db):
     """
-    Helper transaccional (Patrón Rubros V12) para crear SubRubro.
-    Asegura unicidad de 'codigo_subrubro' (Doctrina ABR).
+    Helper transaccional (Patrón Rubros V12) para crear Unidad de Medida.
+    Asegura unicidad de 'codigo_unidad' (Doctrina ABR).
     """
     
-    codigo = subrubro_data.get('codigo_subrubro')
+    codigo = unidad_data.get('codigo_unidad')
     
-    # 1. Búsqueda de duplicados por 'codigo_subrubro'
-    query_ref = db.collection('subrubros').where(filter=FieldFilter("codigo_subrubro", "==", codigo))
+    # 1. Búsqueda de duplicados por 'codigo_unidad'
+    query_ref = db.collection('unidades_medida').where(filter=FieldFilter("codigo_unidad", "==", codigo))
     docs_existentes = query_ref.stream(transaction=transaction)
     
     duplicado_encontrado = None
@@ -47,7 +47,7 @@ def _transaccion_crear_subrubro(transaction, subrubro_data: dict, db):
             )
 
     # 3. No hay duplicados. Creación (Doctrina VIL).
-    nuevo_doc_ref = db.collection('subrubros').document()
-    transaction.create(nuevo_doc_ref, subrubro_data)
+    nuevo_doc_ref = db.collection('unidades_medida').document()
+    transaction.create(nuevo_doc_ref, unidad_data)
     
-    return nuevo_doc_ref.id, subrubro_data
+    return nuevo_doc_ref.id, unidad_data

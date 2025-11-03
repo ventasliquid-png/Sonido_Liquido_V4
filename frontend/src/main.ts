@@ -1,20 +1,23 @@
-// frontend/src/main.ts (Modificado)
-// frontend/src/main.ts (V12.4 - Misión F1 Integrada)
+// frontend/src/main.ts (ESTABILIZADO TAX-5)
 console.log('--- BANDERA 1: main.ts Ejecutando (Nivel 0) ---');
+
 // Importaciones estándar
 import { createApp } from 'vue';
 import App from './App.vue';
 import PrimeVue from 'primevue/config';
 import ToastService from 'primevue/toastservice';
-import Aura from '@primevue/themes/aura';
+// --- CORRECCIÓN CRÍTICA DE CSS Y THEMES ---
+// Se debe usar la importación directa, no la ruta fallida 'primevue/resources/themes/...'
+import Aura from '@primevue/themes/aura'; 
+// --- FIN CORRECCIÓN ---
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import { createPinia } from 'pinia';
-import Tooltip from 'primevue/tooltip'; // Importación de Tooltip
+import Tooltip from 'primevue/tooltip'; 
 
-// --- INICIO MISIÓN F1: TNO ---
-// Importar el router recién creado
-import router from './router'; // --- FIN MISIÓN F1 ---
+// --- INICIO MISION F1: TNO ---
+import router from './router'; 
+// --- FIN MISION F1 ---
 
 // Componentes Globales
 import Button from 'primevue/button';
@@ -26,6 +29,8 @@ import DataTable from 'primevue/datatable';
 import Column from 'primevue/column';
 import Tag from 'primevue/tag';
 import Toast from 'primevue/toast';
+// --- NUEVO COMPONENTE: Requerido por el nuevo ABM ---
+import InputNumber from 'primevue/inputnumber'; 
 
 // Servicio de Notificación
 import notificationService from './services/notificationService';
@@ -45,28 +50,28 @@ if (!document.getElementById('app')?.dataset.vueMounted) {
   app.use(pinia);
   app.use(PrimeVue, {
       theme: {
-          preset: Aura
+          preset: Aura // Uso del tema importado
       }
   });
   app.use(ToastService);
   app.directive('tooltip', Tooltip);
-
-  // --- INICIO MISIÓN F1: TNO ---
-  // Instalar el router en la aplicación Vue
+  
+  // Instalar el router
   app.use(router);
   console.log('--- main.ts: Misión F1 (TNO) -> vue-router instalado.');
-  // --- FIN MISIÓN F1 ---
-
-  // Inicializar NotificationService
+  
+  // --- CORRECCIÓN CRÍTICA DE NOTIFICATION SERVICE ---
+  // Se garantiza que el servicio esté listo antes de usarlo.
   const primevueToastService = app.config.globalProperties.$toast;
   if (primevueToastService) {
       notificationService.initialize(primevueToastService);
-      console.log('--- main.ts: NotificationService Inicializado.');
+      console.log('--- main.ts: NotificationService Inicializado (Corrección V2.3).');
   } else {
       console.error("Error crítico: No se pudo obtener $toast para inicializar NotificationService.");
   }
+  // --- FIN CORRECCIÓN ---
   
-  // (Componentes globales que no registraste pero podrías necesitar)
+  // Registro de Componentes Globales (Asegurando que Button/Dialog resuelvan)
   app.component('Button', Button);
   app.component('Toolbar', Toolbar);
   app.component('Dialog', Dialog);
@@ -76,7 +81,8 @@ if (!document.getElementById('app')?.dataset.vueMounted) {
   app.component('Column', Column);
   app.component('Tag', Tag);
   app.component('Toast', Toast);
-  
+  app.component('InputNumber', InputNumber); // Nuevo componente para ST9
+
   // --- Montaje de la App ---
   app.mount('#app');
   console.log('--- BANDERA 4: main.ts DESPUÉS de app.mount() ---');

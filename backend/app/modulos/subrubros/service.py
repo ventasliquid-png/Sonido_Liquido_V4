@@ -1,4 +1,3 @@
-# backend/app/modulos/subrubros/service.py (V12.7 - Corrección Async)
 from typing import List, Optional
 from fastapi import HTTPException, status
 from google.cloud.firestore_v1.base_query import FieldFilter
@@ -25,27 +24,28 @@ except Exception as e:
 
 
 class SubRubroService:
+    # CORRECCIÓN DE ESTABILIDAD: Asegurar que la instancia DB esté siempre disponible
+    def __init__(self, db_instance):
+        self.db = db_instance
     
     # Esta función NO es async, porque llama a la transacción (sync)
     def crear_subrubro(self, data: SubRubroModel) -> SubRubroModel:
-        if db is None:
+        if self.db is None: # Uso de self.db
               raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
-            # --- INICIO: CORRECCIÓN V12.6 (Patrón V11) ---
             # Convertimos a dict para evitar el error '_read_only' del decorador
             subrubro_dict = data.model_dump(exclude={'id'}, exclude_unset=True) 
             
             # Creamos el objeto de transacción
-            transaction = db.transaction() 
+            transaction = self.db.transaction() # Uso de self.db
             
             # Llamamos a la función helper (decorada)
             nuevo_subrubro = _transaccion_crear_subrubro(
                 transaction, # <-- Pasamos la transacción
                 subrubro_data=subrubro_dict,
-                db=db 
+                db=self.db # Uso de self.db 
             )
-            # --- FIN: CORRECCIÓN V12.6 ---
             
             return nuevo_subrubro
         
@@ -58,11 +58,11 @@ class SubRubroService:
 
     # Esta función NO es async (corrige el error 'object generator')
     def listar_subrubros(self, estado: str = 'activos') -> List[SubRubroModel]:
-        if db is None:
+        if self.db is None: # Uso de self.db
               raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
-            query = db.collection('subrubros')
+            query = self.db.collection('subrubros') # Uso de self.db
             if estado == 'activos':
                 query = query.where(filter=FieldFilter("baja_logica", "==", False))
             elif estado == 'inactivos':
@@ -77,14 +77,13 @@ class SubRubroService:
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al listar subrubros: {e}")
 
-    # --- INICIO: CORRECCIÓN V12.7 ---
     # Convertida a función síncrona (def) y 'await' eliminados
     def actualizar_subrubro(self, id: str, data: SubRubroUpdateModel) -> Optional[SubRubroModel]:
-        if db is None:
+        if self.db is None: # Uso de self.db
               raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
-            doc_ref = db.collection('subrubros').document(id)
+            doc_ref = self.db.collection('subrubros').document(id) # Uso de self.db
             update_data = data.model_dump(exclude_unset=True) 
             
             doc_ref.update(update_data) # <-- 'await' ELIMINADO
@@ -96,19 +95,17 @@ class SubRubroService:
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al actualizar: {e}")
 
-    # --- INICIO: CORRECCIÓN V12.7 ---
     # Convertida a función síncrona (def) y 'await' eliminado
-    # (Iba a dar el mismo error que 'actualizar')
     def baja_logica_subrubro(self, id: str) -> bool:
-        if db is None:
+        if self.db is None: # Uso de self.db
               raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
-            doc_ref = db.collection('subrubros').document(id)
+            doc_ref = self.db.collection('subrubros').document(id) # Uso de self.db
             doc_ref.update({"baja_logica": True}) # <-- 'await' ELIMINADO
             return True
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al dar de baja: {e}")
-    # --- FIN: CORRECCIÓN V12.7 ---
 
-subrubro_service = SubRubroService()
+# Instancia Singleton del Servicio
+subrubro_service = SubRubroService(db)

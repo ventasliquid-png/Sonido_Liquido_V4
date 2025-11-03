@@ -1,69 +1,92 @@
 # backend/app/modulos/productos/router.py
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, HTTPException, Depends, status
 from typing import List
-from .models import ProductoModel, ProductoUpdateModel # <-- Importa modelos v2.0
-from .service import producto_service, ProductoService # <-- Importa servicio v2.0
+from .models import ProductoModel, ProductoUpdateModel
+from .service import producto_service, ProductoService
 
-router = APIRouter(
+# --- Adherencia V12: Inyección de Dependencia del Servicio ---
+def get_producto_service():
+    if producto_service.db is None:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, 
+                            detail="Error crítico: Servicio de base de datos no disponible.")
+    return producto_service
+# --- Fin Adherencia V12 ---
+
+router_productos = APIRouter(
     prefix="/productos",
-    tags=["Productos"]
+    tags=["Productos"],
+    responses={404: {"description": "No encontrado"}}
 )
 
-# Inyección de Dependencia del Servicio
-async def get_service() -> ProductoService:
-    return producto_service
+@router_productos.post("/", 
+                        response_model=ProductoModel, 
+                        status_code=status.HTTP_201_CREATED,
+                        summary="Crear nuevo Producto (ABR V12)")
+def crear_producto(
+    data: ProductoModel, 
+    service: ProductoService = Depends(get_producto_service)
+):
+    """
+    Crea un nuevo producto.
+    Aplica la Doctrina ABR V12 (Anti-Duplicados) sobre `codigo_producto` y la gestión de contadores.
+    """
+    return service.crear_producto(data)
 
-@router.post("/", response_model=ProductoModel, status_code=status.HTTP_201_CREATED)
-async def crear_producto(
-    producto_data: ProductoModel, # <-- Pydantic v2.0 valida Decimal
-    service: ProductoService = Depends(get_service)):
-    sku_existente = await service.obtener_producto_por_sku(producto_data.sku)
-    if sku_existente:
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail=f"El SKU {producto_data.sku} ya existe."
-        )
-    return await service.crear_producto(producto_data)
+@router_productos.get("/", 
+                      response_model=List[ProductoModel],
+                      summary="Listar Productos (Filtro VIL)")
+def listar_productos(
+    estado: str = 'activos', 
+    rubro_id: str = None,
+    subrubro_id: str = None,
+    service: ProductoService = Depends(get_producto_service)
+):
+    """
+    Lista productos según la Doctrina VIL (Filtro de Tres Vías).
+    - 'activos' (default): Solo baja_logica = false
+    - 'inactivos': Solo baja_logica = true
+    - 'todos': Todos los registros
+    """
+    return service.listar_productos(estado=estado, rubro_id=rubro_id, subrubro_id=subrubro_id)
 
-@router.get("/", response_model=List[ProductoModel])
-async def listar_productos(
-    activos: bool = True, 
-    service: ProductoService = Depends(get_service)):
-    return await service.listar_productos(activos)
+@router_productos.get("/codigo/next", 
+                      summary="Obtener próximo código de Producto (Operación Contadores)",
+                      response_model=int)
+def obtener_siguiente_codigo(
+    service: ProductoService = Depends(get_producto_service)
+):
+    """
+    Genera y reserva el próximo código numérico para un nuevo producto.
+    """
+    return service.obtener_siguiente_codigo()
 
-@router.get("/id/{producto_id}", response_model=ProductoModel)
-async def obtener_producto_por_id(
-    producto_id: str, 
-    service: ProductoService = Depends(get_service)):
-    producto = await service.obtener_producto_por_id(producto_id)
-    if not producto:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Producto no encontrado")
-    return producto
+@router_productos.patch("/{id}", 
+                        response_model=ProductoModel,
+                        summary="Actualizar Producto (PATCH)")
+def actualizar_producto(
+    id: str, 
+    data: ProductoUpdateModel, 
+    service: ProductoService = Depends(get_producto_service)
+):
+    """
+    Actualiza parcialmente un producto (nombre, descripcion, etc.).
+    """
+    updated = service.actualizar_producto(id, data)
+    if not updated:
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+    return updated
 
-@router.get("/sku/{sku}", response_model=ProductoModel)
-async def obtener_producto_por_sku(
-    sku: str, 
-    service: ProductoService = Depends(get_service)):
-    producto = await service.obtener_producto_por_sku(sku)
-    if not producto:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Producto no encontrado")
-    return producto
-
-@router.patch("/{producto_id}", response_model=ProductoModel)
-async def actualizar_producto(
-    producto_id: str, 
-    producto_data: ProductoUpdateModel, # <-- Pydantic v2.0 valida Decimal
-    service: ProductoService = Depends(get_service)):
-    producto = await service.actualizar_producto(producto_id, producto_data)
-    if not producto:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Producto no encontrado")
-    return producto
-
-@router.delete("/{producto_id}", status_code=status.HTTP_204_NO_CONTENT)
-async def baja_logica_producto(
-    producto_id: str, 
-    service: ProductoService = Depends(get_service)):
-    exito = await service.baja_logica_producto(producto_id)
-    if not exito:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Producto no encontrado")
-    return
+@router_productos.delete("/{id}", 
+                         status_code=status.HTTP_204_NO_CONTENT,
+                         summary="Baja Lógica (Doctrina VIL)")
+def baja_logica_producto(
+    id: str, 
+    service: ProductoService = Depends(get_producto_service)
+):
+    """
+    Realiza una baja lógica (Doctrina VIL) del producto.
+    Establece baja_logica = true.
+    """
+    if not service.baja_logica_producto(id):
+        raise HTTPException(status_code=404, detail="Producto no encontrado")
+    return {}

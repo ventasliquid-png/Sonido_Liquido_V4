@@ -1,4 +1,3 @@
-# backend/app/modulos/rubros/service.py (V12.13 - Patrón SubRubros)
 from typing import List, Optional
 from fastapi import HTTPException, status
 from google.cloud.firestore_v1.base_query import FieldFilter
@@ -24,29 +23,27 @@ except Exception as e:
 
 
 class RubroService:
+    # CORRECCIÓN DE ESTABILIDAD: Asegurar que la instancia DB esté siempre disponible
+    def __init__(self, db_instance):
+        self.db = db_instance
     
     # --- CORREGIDO: Se aplica la Doctrina V12.13 (Patrón SubRubros) ---
     def crear_rubro(self, data: RubroModel) -> RubroModel:
-        if db is None:
+        if self.db is None:
               raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             rubro_dict = data.model_dump(exclude={'id'}, exclude_unset=True) 
             
-            # --- INICIO: CORRECCIÓN V12.13 ---
-            # Se aplica el patrón que SÍ FUNCIONA en SubRubros:
-            
             # 1. Se crea el objeto de transacción
-            transaction = db.transaction()
+            transaction = self.db.transaction()
             
             # 2. Se llama al helper DECORADO, pasándole la 'transaction'
-            #    (NO se usa .run() ni db.run_in_transaction)
             nuevo_rubro = _transaccion_crear_rubro(
-                transaction,              # <-- Argumento 1: La transacción
-                rubro_data=rubro_dict,    # Argumento 2
-                db=db                     # Argumento 3
+                transaction, 
+                rubro_data=rubro_dict, 
+                db=self.db
             )
-            # --- FIN: CORRECCIÓN V12.13 ---
             
             return nuevo_rubro
         
@@ -59,11 +56,11 @@ class RubroService:
 
     # --- Síncrono (def) y 'await' eliminado ---
     def listar_rubros(self, estado: str = 'activos') -> List[RubroModel]:
-        if db is None:
+        if self.db is None:
               raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
-            query = db.collection('rubros') 
+            query = self.db.collection('rubros') 
             if estado == 'activos':
                 query = query.where(filter=FieldFilter("baja_logica", "==", False))
             elif estado == 'inactivos':
@@ -80,11 +77,11 @@ class RubroService:
 
     # --- Síncrono (def) y 'await' eliminados ---
     def actualizar_rubro(self, id: str, data: RubroUpdateModel) -> Optional[RubroModel]:
-        if db is None:
+        if self.db is None:
               raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
-            doc_ref = db.collection('rubros').document(id) 
+            doc_ref = self.db.collection('rubros').document(id) 
             update_data = data.model_dump(exclude_unset=True) 
             
             doc_ref.update(update_data)
@@ -98,14 +95,15 @@ class RubroService:
 
     # --- Síncrono (def) y 'await' eliminado ---
     def baja_logica_rubro(self, id: str) -> bool:
-        if db is None:
+        if self.db is None:
               raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
-            doc_ref = db.collection('rubros').document(id) 
+            doc_ref = self.db.collection('rubros').document(id) 
             doc_ref.update({"baja_logica": True})
             return True
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al dar de baja: {e}")
 
-rubro_service = RubroService()
+# Instancia Singleton del Servicio
+rubro_service = RubroService(db)

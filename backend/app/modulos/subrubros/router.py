@@ -1,79 +1,91 @@
-# backend/app/modulos/subrubros/router.py (V12.9 - Corrección de Prefijo)
-from fastapi import APIRouter, HTTPException, status
+# backend/app/modulos/subrubros/router.py
+from fastapi import APIRouter, HTTPException, Depends, status
 from typing import List
 from .models import SubRubroModel, SubRubroUpdateModel
-from .service import subrubro_service
+from .service import subrubro_service, SubRubroService
 
-# --- INICIO: CORRECCIÓN V12.9 ---
-# Eliminamos el 'prefix' de aquí. main.py ya lo define.
-router = APIRouter(
-    tags=["Sub-Rubros"]
+# --- Adherencia V12: Inyección de Dependencia del Servicio ---
+def get_subrubro_service():
+    if subrubro_service.db is None:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, 
+                            detail="Error crítico: Servicio de base de datos no disponible.")
+    return subrubro_service
+# --- Fin Adherencia V12 ---
+
+router_subrubros = APIRouter(
+    prefix="/subrubros",
+    tags=["SubRubros"],
+    responses={404: {"description": "No encontrado"}}
 )
-# --- FIN: CORRECCIÓN V12.9 ---
 
+@router_subrubros.post("/", 
+                        response_model=SubRubroModel, 
+                        status_code=status.HTTP_201_CREATED,
+                        summary="Crear nuevo SubRubro (ABR V12)")
+def crear_subrubro(
+    data: SubRubroModel, 
+    service: SubRubroService = Depends(get_subrubro_service)
+):
+    """
+    Crea un nuevo subrubro.
+    Aplica la Doctrina ABR V12 (Anti-Duplicados) sobre `codigo_subrubro` y la gestión de contadores.
+    """
+    return service.crear_subrubro(data)
 
-# --- Endpoint de CREAR (POST) ---
-@router.post("/", response_model=SubRubroModel, status_code=status.HTTP_201_CREATED)
-def crear_subrubro(data: SubRubroModel):
+@router_subrubros.get("/", 
+                      response_model=List[SubRubroModel],
+                      summary="Listar SubRubros (Filtro VIL)")
+def listar_subrubros(
+    estado: str = 'activos', 
+    rubro_id: str = None, 
+    service: SubRubroService = Depends(get_subrubro_service)
+):
     """
-    Crea un nuevo sub-rubro.
-    Verifica duplicados activos o inactivos antes de crear.
+    Lista subrubros según la Doctrina VIL (Filtro de Tres Vías).
+    - 'activos' (default): Solo baja_logica = false
+    - 'inactivos': Solo baja_logica = true
+    - 'todos': Todos los registros
     """
-    try:
-        # La lógica de negocio (transacción, duplicados) está en el servicio
-        return subrubro_service.crear_subrubro(data)
-    except HTTPException as e:
-        # Si el servicio lanza una excepción HTTP (ej. 409 Conflict), la reenviamos
-        raise e
-    except Exception as e:
-        # Captura cualquier otro error inesperado
-        raise HTTPException(status_code=500, detail=f"Error en router al crear: {e}")
+    return service.listar_subrubros(estado=estado, rubro_id=rubro_id)
 
-# --- Endpoint de LISTAR (GET) ---
-@router.get("/", response_model=List[SubRubroModel])
-def listar_subrubros(estado: str = 'activos'):
+@router_subrubros.get("/codigo/next", 
+                      summary="Obtener próximo código de SubRubro (Operación Contadores)",
+                      response_model=int)
+def obtener_siguiente_codigo(
+    service: SubRubroService = Depends(get_subrubro_service)
+):
     """
-    Lista todos los sub-rubros.
-    Filtra por estado: 'activos' (default), 'inactivos', o 'todos'.
+    Genera y reserva el próximo código numérico para un nuevo subrubro.
     """
-    try:
-        return subrubro_service.listar_subrubros(estado)
-    except HTTPException as e:
-        raise e
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error en router al listar: {e}")
+    return service.obtener_siguiente_codigo()
 
-# --- Endpoint de ACTUALIZAR (PATCH) ---
-@router.patch("/{id}", response_model=SubRubroModel)
-def actualizar_subrubro(id: str, data: SubRubroUpdateModel):
+@router_subrubros.patch("/{id}", 
+                        response_model=SubRubroModel,
+                        summary="Actualizar SubRubro (PATCH)")
+def actualizar_subrubro(
+    id: str, 
+    data: SubRubroUpdateModel, 
+    service: SubRubroService = Depends(get_subrubro_service)
+):
     """
-    Actualiza un sub-rubro existente por su ID.
-    Solo actualiza los campos enviados en el body.
+    Actualiza parcialmente un subrubro (nombre o baja_logica).
     """
-    try:
-        actualizado = subrubro_service.actualizar_subrubro(id, data)
-        if actualizado is None:
-            raise HTTPException(status_code=404, detail="SubRubro no encontrado")
-        return actualizado
-    except HTTPException as e:
-        raise e
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error en router al actualizar: {e}")
+    updated = service.actualizar_subrubro(id, data)
+    if not updated:
+        raise HTTPException(status_code=404, detail="SubRubro no encontrado")
+    return updated
 
-
-# --- Endpoint de BAJA (DELETE) ---
-@router.delete("/{id}", response_model=dict)
-def baja_logica_subrubro(id: str):
+@router_subrubros.delete("/{id}", 
+                         status_code=status.HTTP_204_NO_CONTENT,
+                         summary="Baja Lógica (Doctrina VIL)")
+def baja_logica_subrubro(
+    id: str, 
+    service: SubRubroService = Depends(get_subrubro_service)
+):
     """
-    Realiza una baja lógica de un sub-rubro por su ID.
-    Establece 'baja_logica' = True.
+    Realiza una baja lógica (Doctrina VIL) del subrubro.
+    Establece baja_logica = true.
     """
-    try:
-        success = subrubro_service.baja_logica_subrubro(id)
-        if not success:
-            raise HTTPException(status_code=404, detail="SubRubro no encontrado al intentar dar de baja")
-        return {"id": id, "baja_logica": True, "status": "ok"}
-    except HTTPException as e:
-        raise e
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error en router al dar de baja: {e}")
+    if not service.baja_logica_subrubro(id):
+        raise HTTPException(status_code=404, detail="SubRubro no encontrado")
+    return {}

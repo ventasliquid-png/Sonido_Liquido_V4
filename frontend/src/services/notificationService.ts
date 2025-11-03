@@ -1,62 +1,73 @@
-// frontend/src/services/notificationService.ts (CORREGIDO CON NOMENCLATURA ESPAÑOL)
-import type { ToastServiceMethods } from 'primevue/toastservice';
-import type { ToastMessageOptions } from 'primevue/toast';
+// frontend/src/services/notificationService.ts (CANON V2.3)
+// Patrón: Singleton con Lazy Loading (Resuelve el error 'is not a function')
 
-/**
- * Servicio centralizado para mostrar notificaciones Toast.
- * NECESITA SER INICIALIZADO con la instancia de ToastService de PrimeVue.
- */
-class NotificationService {
-    private toast?: ToastServiceMethods; // Almacena la instancia de PrimeVue ToastService
+let toastInstance: any = null;
+
+const notificationService = {
 
     /**
-     * Inicializa el servicio con la instancia de ToastService de PrimeVue.
-     * DEBE llamarse en main.ts después de app.use(ToastService).
-     * @param service Instancia de ToastService obtenida globalmente en main.ts
+     * Inicializa la instancia del ToastService, debe llamarse una sola vez en main.ts.
+     * @param instance La instancia del $toast de PrimeVue.
      */
-    initialize(service: ToastServiceMethods): void {
-        if (!this.toast) {
-            console.log("NotificationService: Inicializado.");
-            this.toast = service;
+    initialize(instance: any) {
+        if (!toastInstance) {
+            toastInstance = instance;
+            console.log("NotificationService: ToastService inicializado.");
+        }
+    },
+
+    /**
+     * Retorna la instancia de toast. Lanza un error si no está inicializada.
+     */
+    getToastInstance() {
+        if (!toastInstance) {
+            console.error("CRÍTICO: Intentando usar NotificationService antes de inicializar.");
+            // Esto evita que la aplicación falle completamente, pero lanza la advertencia
+        }
+        return toastInstance;
+    },
+
+    // Métodos de conveniencia
+    showSuccess(summary: string, detail: string = 'Operación completada.') {
+        const toast = this.getToastInstance();
+        if (toast) {
+            toast.add({ severity: 'success', summary: summary, detail: detail, life: 3000 });
+        }
+    },
+    
+    showInfo(summary: string, detail: string) {
+        const toast = this.getToastInstance();
+        if (toast) {
+            toast.add({ severity: 'info', summary: summary, detail: detail, life: 3000 });
+        }
+    },
+    
+    showWarn(summary: string, detail: string) {
+        const toast = this.getToastInstance();
+        if (toast) {
+            toast.add({ severity: 'warn', summary: summary, detail: detail, life: 5000 });
+        }
+    },
+    
+    showError(summary: string, error: any) {
+        const toast = this.getToastInstance();
+        let detail = "Error desconocido.";
+
+        if (error && error.response && error.response.data && error.response.data.detail) {
+            detail = error.response.data.detail; // Errores FastAPI/HTTP
+        } else if (typeof error === 'string') {
+            detail = error;
+        } else if (error instanceof Error) {
+            detail = error.message;
+        }
+
+        if (toast) {
+            toast.add({ severity: 'error', summary: summary, detail: detail, life: 8000 });
         } else {
-            console.warn("NotificationService: Ya estaba inicializado.");
+             // Fallback de Consola si el toast no está montado
+             console.error(`ERROR: ${summary} - Detalle: ${detail}`, error);
         }
     }
+};
 
-    // Método privado para mostrar el toast, verifica inicialización
-    private mostrar(options: ToastMessageOptions): void {
-        if (!this.toast) {
-            console.error('NotificationService no inicializado. Notificación perdida:', options);
-            // Fallback MUY básico si todo falla (solo para depuración extrema)
-            // alert(`[${options.severity || 'info'}] ${options.summary}: ${options.detail}`);
-            return;
-        }
-        this.toast.add(options);
-    }
-
-    // --- Métodos Públicos con Nomenclatura Canónica (Español) ---
-
-    /** Muestra una notificación de éxito. */
-    mostrarExito(titulo: string, detalle?: string, duracion: number = 3000): void {
-        this.mostrar({ severity: 'success', summary: titulo, detail: detalle, life: duracion });
-    }
-
-    /** Muestra una notificación informativa. */
-    mostrarInfo(titulo: string, detalle?: string, duracion: number = 3000): void {
-        this.mostrar({ severity: 'info', summary: titulo, detail: detalle, life: duracion });
-    }
-
-    /** Muestra una notificación de advertencia. */
-    mostrarAdvertencia(titulo: string, detalle?: string, duracion: number = 5000): void {
-        this.mostrar({ severity: 'warn', summary: titulo, detail: detalle, life: duracion });
-    }
-
-    /** Muestra una notificación de error. */
-    mostrarError(titulo: string, detalle?: string, duracion: number = 7000): void {
-        this.mostrar({ severity: 'error', summary: titulo, detail: detalle, life: duracion });
-    }
-}
-
-// Exportamos una única instancia (Singleton)
-const notificationService = new NotificationService();
 export default notificationService;
