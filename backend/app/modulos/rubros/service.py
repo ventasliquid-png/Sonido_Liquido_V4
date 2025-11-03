@@ -1,4 +1,4 @@
-# backend/app/modulos/rubros/service.py (V12.3 - Patrón Blindado)
+# backend/app/modulos/rubros/service.py (V12.13 - Patrón SubRubros)
 from typing import List, Optional
 from fastapi import HTTPException, status
 from google.cloud.firestore_v1.base_query import FieldFilter
@@ -20,26 +20,34 @@ except Exception as e:
     print(f"Error: {e}")
     db = None 
 
-async def run_in_transaction(callable, **kwargs):
-    transaction = db.transaction()
-    return transaction.run(callable, **kwargs)
 # --- FIN: Conexión a DB Real ---
 
 
 class RubroService:
     
-    async def crear_rubro(self, data: RubroModel) -> RubroModel:
+    # --- CORREGIDO: Se aplica la Doctrina V12.13 (Patrón SubRubros) ---
+    def crear_rubro(self, data: RubroModel) -> RubroModel:
         if db is None:
-             raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
-            # NOTA: Usamos .model_dump() en Pydantic V2
             rubro_dict = data.model_dump(exclude={'id'}, exclude_unset=True) 
-            nuevo_rubro = await run_in_transaction(
-                _transaccion_crear_rubro, 
-                rubro_data=rubro_dict,
-                db=db 
+            
+            # --- INICIO: CORRECCIÓN V12.13 ---
+            # Se aplica el patrón que SÍ FUNCIONA en SubRubros:
+            
+            # 1. Se crea el objeto de transacción
+            transaction = db.transaction()
+            
+            # 2. Se llama al helper DECORADO, pasándole la 'transaction'
+            #    (NO se usa .run() ni db.run_in_transaction)
+            nuevo_rubro = _transaccion_crear_rubro(
+                transaction,              # <-- Argumento 1: La transacción
+                rubro_data=rubro_dict,    # Argumento 2
+                db=db                     # Argumento 3
             )
+            # --- FIN: CORRECCIÓN V12.13 ---
+            
             return nuevo_rubro
         
         except DuplicadoActivoException as e:
@@ -49,9 +57,10 @@ class RubroService:
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error interno del servidor: {e}")
 
-    async def listar_rubros(self, estado: str = 'activos') -> List[RubroModel]:
+    # --- Síncrono (def) y 'await' eliminado ---
+    def listar_rubros(self, estado: str = 'activos') -> List[RubroModel]:
         if db is None:
-             raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             query = db.collection('rubros') 
@@ -60,43 +69,43 @@ class RubroService:
             elif estado == 'inactivos':
                 query = query.where(filter=FieldFilter("baja_logica", "==", True))
             
-            docs = await query.stream()
+            docs = query.stream()
             lista = []
             for doc in docs:
-                # NOTA: Usamos .model_validate() en Pydantic V2
                 lista.append(RubroModel.model_validate(doc.to_dict())) 
             return lista
             
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al listar rubros: {e}")
 
-    async def actualizar_rubro(self, id: str, data: RubroUpdateModel) -> Optional[RubroModel]:
+    # --- Síncrono (def) y 'await' eliminados ---
+    def actualizar_rubro(self, id: str, data: RubroUpdateModel) -> Optional[RubroModel]:
         if db is None:
-             raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             doc_ref = db.collection('rubros').document(id) 
-            # NOTA: Usamos .model_dump() en Pydantic V2
             update_data = data.model_dump(exclude_unset=True) 
-            await doc_ref.update(update_data)
             
-            doc = await doc_ref.get()
+            doc_ref.update(update_data)
+            
+            doc = doc_ref.get()
             if doc.exists:
                 return RubroModel.model_validate(doc.to_dict())
             return None
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al actualizar: {e}")
 
-    async def baja_logica_rubro(self, id: str) -> bool:
+    # --- Síncrono (def) y 'await' eliminado ---
+    def baja_logica_rubro(self, id: str) -> bool:
         if db is None:
-             raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             doc_ref = db.collection('rubros').document(id) 
-            await doc_ref.update({"baja_logica": True})
+            doc_ref.update({"baja_logica": True})
             return True
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al dar de baja: {e}")
 
-# --- ¡ESTA ES LA LÍNEA QUE FALTABA Y CAUSABA EL IMPORT ERROR! ---
 rubro_service = RubroService()

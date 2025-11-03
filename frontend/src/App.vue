@@ -1,22 +1,35 @@
 <template>
   <Toast /> 
-  
-  <main>
-    <SubRubrosView />
+
+  <TNO />
+
+  <main class="tno-contenido">
+    <router-view />
   </main>
 </template>
 
 <script setup lang="ts">
-console.log('--- BANDERA 5: App.vue <script setup> Ejecutando ---');
+console.log('--- App.vue (Refactor TNO) <script setup> Ejecutando ---');
 
-// Importamos el componente Toast
+// Importamos el componente Toast (Servicio Global)
 import Toast from 'primevue/toast'; 
-// Importamos el nuevo módulo V12
-import SubRubrosView from '@/modulos/subrubros/views/SubRubrosView.vue';
+
+// Importamos el nuevo TNO (Tablero de Navegación de Obra)
+import TNO from '@/components/layout/TNO.vue';
+
+// Importamos el RouterView
+import { RouterView } from 'vue-router';
+
+// Las vistas específicas (SubRubrosView, RubrosView) ya no se importan aquí.
+// El Router (index.ts) gestiona su carga.
+
 </script>
 
 <style scoped>
-main {
+/* El padding se mueve al contenedor de contenido para dejar el TNO fijo */
+.tno-contenido {
+  margin-left: 250px; /* Ancho exacto del .tno-sidebar */
   padding: 1.5rem;
+  width: calc(100% - 250px); /* Ajuste del ancho restante */
 }
 </style>

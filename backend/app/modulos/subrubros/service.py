@@ -1,4 +1,4 @@
-# backend/app/modulos/subrubros/service.py (V12.6 - Patrón V11 Restaurado)
+# backend/app/modulos/subrubros/service.py (V12.7 - Corrección Async)
 from typing import List, Optional
 from fastapi import HTTPException, status
 from google.cloud.firestore_v1.base_query import FieldFilter
@@ -29,7 +29,7 @@ class SubRubroService:
     # Esta función NO es async, porque llama a la transacción (sync)
     def crear_subrubro(self, data: SubRubroModel) -> SubRubroModel:
         if db is None:
-             raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             # --- INICIO: CORRECCIÓN V12.6 (Patrón V11) ---
@@ -59,7 +59,7 @@ class SubRubroService:
     # Esta función NO es async (corrige el error 'object generator')
     def listar_subrubros(self, estado: str = 'activos') -> List[SubRubroModel]:
         if db is None:
-             raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             query = db.collection('subrubros')
@@ -77,33 +77,38 @@ class SubRubroService:
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al listar subrubros: {e}")
 
-    # Esta SÍ es async
-    async def actualizar_subrubro(self, id: str, data: SubRubroUpdateModel) -> Optional[SubRubroModel]:
+    # --- INICIO: CORRECCIÓN V12.7 ---
+    # Convertida a función síncrona (def) y 'await' eliminados
+    def actualizar_subrubro(self, id: str, data: SubRubroUpdateModel) -> Optional[SubRubroModel]:
         if db is None:
-             raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             doc_ref = db.collection('subrubros').document(id)
             update_data = data.model_dump(exclude_unset=True) 
-            await doc_ref.update(update_data)
             
-            doc = await doc_ref.get()
+            doc_ref.update(update_data) # <-- 'await' ELIMINADO
+            
+            doc = doc_ref.get() # <-- 'await' ELIMINADO
             if doc.exists:
                 return SubRubroModel.model_validate(doc.to_dict()) 
             return None
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al actualizar: {e}")
 
-    # Esta SÍ es async
-    async def baja_logica_subrubro(self, id: str) -> bool:
+    # --- INICIO: CORRECCIÓN V12.7 ---
+    # Convertida a función síncrona (def) y 'await' eliminado
+    # (Iba a dar el mismo error que 'actualizar')
+    def baja_logica_subrubro(self, id: str) -> bool:
         if db is None:
-             raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             doc_ref = db.collection('subrubros').document(id)
-            await doc_ref.update({"baja_logica": True})
+            doc_ref.update({"baja_logica": True}) # <-- 'await' ELIMINADO
             return True
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Error al dar de baja: {e}")
+    # --- FIN: CORRECCIÓN V12.7 ---
 
 subrubro_service = SubRubroService()

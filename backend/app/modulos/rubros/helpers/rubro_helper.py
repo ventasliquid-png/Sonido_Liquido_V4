@@ -1,6 +1,6 @@
-# backend/app/modulos/rubros/helpers/rubro_helper.py
+# backend/app/modulos/rubros/helpers/rubro_helper.py (V12.14)
 from google.cloud.firestore_v1.base_query import FieldFilter
-from google.cloud.firestore_v1 import Transaction
+from google.cloud.firestore_v1 import Transaction, transactional # <-- IMPORTANTE: Importar 'transactional'
 from ..models import RubroModel
 # Importar la instancia real de la DB
 # from core.database import db
@@ -19,7 +19,10 @@ class DuplicadoInactivoException(Exception):
         self.detail = {"status": "EXISTE_INACTIVO", "id_inactivo": id_inactivo, "campo": campo}
         super().__init__("Duplicado inactivo encontrado")
 
-# @firestore.transactional # Decorador aplicado por la función que llama
+# --- INICIO: CORRECCIÓN V12.14 ---
+# ¡EL DECORADOR ESTABA COMENTADO!
+@transactional
+# --- FIN: CORRECCIÓN V12.14 ---
 def _transaccion_crear_rubro(transaction: Transaction, rubro_data: dict, db):
     """
     Función helper que corre DENTRO de una transacción de Firestore.

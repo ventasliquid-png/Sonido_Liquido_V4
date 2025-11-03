@@ -1,6 +1,6 @@
-// frontend/src/main.ts (V12.3 - CON BANDERAS DE DEBUG)
+// frontend/src/main.ts (Modificado)
+// frontend/src/main.ts (V12.4 - Misión F1 Integrada)
 console.log('--- BANDERA 1: main.ts Ejecutando (Nivel 0) ---');
-
 // Importaciones estándar
 import { createApp } from 'vue';
 import App from './App.vue';
@@ -11,6 +11,10 @@ import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import { createPinia } from 'pinia';
 import Tooltip from 'primevue/tooltip'; // Importación de Tooltip
+
+// --- INICIO MISIÓN F1: TNO ---
+// Importar el router recién creado
+import router from './router'; // --- FIN MISIÓN F1 ---
 
 // Componentes Globales
 import Button from 'primevue/button';
@@ -46,6 +50,12 @@ if (!document.getElementById('app')?.dataset.vueMounted) {
   });
   app.use(ToastService);
   app.directive('tooltip', Tooltip);
+
+  // --- INICIO MISIÓN F1: TNO ---
+  // Instalar el router en la aplicación Vue
+  app.use(router);
+  console.log('--- main.ts: Misión F1 (TNO) -> vue-router instalado.');
+  // --- FIN MISIÓN F1 ---
 
   // Inicializar NotificationService
   const primevueToastService = app.config.globalProperties.$toast;
