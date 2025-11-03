@@ -1,69 +1,51 @@
 <template>
-    <div class="card p-4">
-        <div class="text-xl font-bold mb-4">Operación Patrón V2.3</div>
-        <div class="menu-list">
-            
-            <router-link to="/rubros" class="menu-item" active-class="active">
-                <i class="pi pi-box mr-2"></i>
-                Rubros
-            </router-link>
+  <div class="tno-layout">
+    <aside class="tno-sidebar">
+      <nav class="tno-menu">
+        
+        <router-link to="/">Rubros</router-link>
+        <router-link to="/subrubros">SubRubros</router-link>
+        <router-link to="/unidades-medida">Unidades de Medida</router-link>
+      
+      </nav>
+    </aside>
 
-            <router-link to="/subrubros" class="menu-item" active-class="active">
-                <i class="pi pi-tags mr-2"></i>
-                Sub-Rubros
-            </router-link>
-
-            <router-link to="/productos" class="menu-item" active-class="active">
-                <i class="pi pi-shopping-bag mr-2"></i>
-                Productos
-            </router-link>
-
-            <router-link to="/unidades-medida" class="menu-item" active-class="active">
-                <i class="pi pi-balance-scale mr-2"></i>
-                Unidades de Medida
-            </router-link>
-            
-        </div>
-        <Toast position="top-right" />
-    </div>
+    <main class="tno-content">
+      <router-view />
+    </main>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
-import { RouterLink } from 'vue-router';
-import Toast from 'primevue/toast';
-
-// Props típicos para componentes de layout, aunque no se usen aquí.
-defineProps({
-    title: {
-        type: String,
-        default: 'Menú Principal'
-    }
-});
-
-// Nota: Los estilos canónicos deben ser importados o definidos globalmente.
-// Aquí se incluyen estilos mínimos para asegurar visibilidad si no hay estilos globales.
+import { RouterLink, RouterView } from 'vue-router';
 </script>
 
 <style scoped>
-.menu-item {
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    margin-bottom: 0.5rem;
-    border-radius: 6px;
-    text-decoration: none;
-    color: var(--text-color);
-    transition: background-color 0.2s;
+/* Estilos de layout (Ajustar según su diseño) */
+.tno-layout {
+  display: flex;
+  min-height: 100vh;
 }
-
-.menu-item:hover {
-    background-color: var(--surface-hover);
+.tno-sidebar {
+  width: 220px;
+  background-color: #f4f4f4; /* (Color de ejemplo) */
+  border-right: 1px solid #ddd;
 }
-
-.menu-item.active {
-    background-color: var(--primary-color);
-    color: var(--primary-color-text);
-    font-weight: bold;
+.tno-content {
+  flex-grow: 1;
+  padding: 1rem;
+}
+.tno-menu a {
+  display: block;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: #333;
+}
+.tno-menu a:hover {
+  background-color: #eee;
+}
+.router-link-active {
+  font-weight: bold;
+  background-color: #e0e0e0;
 }
 </style>

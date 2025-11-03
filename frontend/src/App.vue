@@ -1,23 +1,23 @@
-<script setup lang="ts">
-import { RouterView } from 'vue-router';
-import TNO from '@/components/layout/TNO.vue';
-import Toast from 'primevue/toast';
-</script>
-
 <template>
-  <div style="display: flex;">
-    <div style="width: 250px; padding: 20px; border-right: 1px solid var(--surface-border);">
-        <TNO />
-    </div>
-
-    <div style="flex-grow: 1; padding: 20px;">
-        <RouterView />
-    </div>
-    
-    <Toast position="top-right" />
-  </div>
+  <Toast />
+  
+  <TNO />
 </template>
 
+<script setup lang="ts">
+// [INICIO] REPARACIÓN TAX-7 (Sello 2 - Jerarquía)
+
+// Importamos el Layout TNO (Contenedor)
+// Ruta asimilada del 'tree': frontend/src/components/layout/TNO.vue
+import TNO from '@/components/layout/TNO.vue'; 
+
+// Importamos el Toast (Servicio Global)
+import Toast from 'primevue/toast';
+
+// NO importamos RouterView aquí. Esa es la responsabilidad del TNO.
+// [FIN] REPARACIÓN TAX-7
+</script>
+
 <style scoped>
-/* Sin estilos aquí, se usan estilos globales o PrimeFlex */
+/* Estilos de App.vue (generalmente mínimos) */
 </style>

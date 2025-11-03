@@ -7,4 +7,4 @@ service-account-v4.json
 # Ignorar archivos de entorno y secretos
 .env
 *.env.*
-*credentials*.json
+*credentials*.jsonvenv/ 
