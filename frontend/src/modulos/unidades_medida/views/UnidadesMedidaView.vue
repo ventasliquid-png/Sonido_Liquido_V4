@@ -1,14 +1,14 @@
-﻿<template>
+<template>
     <div class="card">
                 <Toolbar class="mb-4">
             <template #start>
-                <Button label="Nuevo" icon="pi pi-plus" class="mr-2" @click="abrirDialogNuevo" />
+                <Button label="Nueva Unidad (F4)" icon="pi pi-plus" class="mr-2" @click="abrirDialogNuevo" />
             </template>
             <template #end>
-                        <SelectButton 
-                            v-model="filtroEstado" 
-                            :options="opcionesFiltro" 
-                            optionLabel="label" 
+                        <SelectButton
+                            v-model="filtroEstado"
+                            :options="opcionesFiltro"
+                            optionLabel="label"
                             optionValue="value"
                             dataKey="value"
                         />
@@ -18,7 +18,7 @@
                 <DataTable :value="listaFiltrada" :loading="store.isLoading" responsiveLayout="scroll">
             <Column field="codigo_unidad" header="Código" :sortable="true"></Column>
             <Column field="nombre" header="Nombre" :sortable="true"></Column>
-           
+
                         <Column field="baja_logica" header="Estado">
                 <template #body="slotProps">
                 <Tag :severity="slotProps.data.baja_logica ? 'danger' : 'success'">
@@ -30,12 +30,12 @@
                         <Column :exportable="false" style="min-width:12rem">
                 <template #body="slotProps">
                     <Button icon="pi pi-pencil" class="mr-2" v-tooltip.top="'Editar'" @click="abrirDialogEditar(slotProps.data)" />
-                    
-                    <Button 
+
+                    <Button
                         :icon="slotProps.data.baja_logica ? 'pi pi-check' : 'pi pi-trash'"
                     :severity="slotProps.data.baja_logica ? 'success' : 'danger'"
-                     v-tooltip.top="slotProps.data.baja_logica ? 'Reactivar' : 'Dar de Baja'"
-                        @click="confirmarCambioEstado(slotProps.data)" 
+                       v-tooltip.top="slotProps.data.baja_logica ? 'Reactivar' : 'Dar de Baja'"
+                        @click="confirmarCambioEstado(slotProps.data)"
                     />
                 </template>
             </Column>
@@ -49,12 +49,12 @@
             </template>
         </Dialog>
 
-                <ConfirmationModal 
+                <ConfirmationModal
             v-if="confirmVisible"
             :visible="confirmVisible"
             :titulo="confirmTitulo"
             :message="confirmMensaje"
-            @update:visible="confirmVisible = $event"
+            @update:visible="confirmVisible = "
         @confirmado="ejecutarCambioEstado"
             @cancelado="cancelarCambioEstado"
         />
@@ -63,11 +63,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+// CORRECCIÓN CANON V2.3: 'onUnmounted' importado
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useUnidadMedidaStore } from '../store/useUnidadMedidaStore';
 import type { UnidadMedidaModel } from '../models/unidadMedidaModel';
 import UnidadMedidaForm from '../components/UnidadMedidaForm.vue';
-import ConfirmationModal from '@/components/modals/ConfirmationModal.vue'; 
+import ConfirmationModal from '@/components/modals/ConfirmationModal.vue';
 
 // Importaciones de PrimeVue (Patrón DEOU)
 import Toolbar from 'primevue/toolbar';
@@ -115,6 +116,13 @@ const listaFiltrada = computed(() => {
 // --- Ciclo de Vida ---
 onMounted(() => {
     store.cargarDatos(); // (F4)
+    // CORRECCIÓN CANON V2.3: Listener F4 añadido
+    document.addEventListener('keydown', handleGlobalKeyDown);
+});
+
+// CORRECCIÓN CANON V2.3: Listener F4 añadido
+onUnmounted(() => {
+  document.removeEventListener('keydown', handleGlobalKeyDown);
 });
 
 // --- Funciones ---
@@ -153,7 +161,7 @@ async function guardar() {
     return; // Validación simple
     }
     await store.guardarUnidad(entidad.value);
-   
+
     // Si no hay error (detectado por isLoading), cerrar
     if (!store.isLoading) {
         cerrarDialog();
@@ -165,7 +173,8 @@ function confirmarCambioEstado(data: UnidadMedidaModel) {
     entidadParaCambio = data;
     const accion = data.baja_logica ? 'reactivar' : 'dar de baja';
     confirmTitulo.value = data.baja_logica ? 'Confirmar Reactivación' : 'Confirmar Baja';
-    
+    // CORRECCIÓN CANON V2.3: Mensaje de confirmación añadido
+    confirmMensaje.value = ¿Está seguro de  la unidad ""?;
     confirmVisible.value = true;
 }
 
@@ -182,5 +191,14 @@ function cancelarCambioEstado() {
     confirmTitulo.value = '';
     confirmMensaje.value = '';
 }
-</script>
 
+// CORRECCIÓN CANON V2.3: Handler F4 añadido
+function handleGlobalKeyDown(event: KeyboardEvent) { 
+    if (!dialogVisible.value && !confirmVisible.value) { 
+        if (event.key === 'F4') { 
+            event.preventDefault(); 
+            abrirDialogNuevo(); 
+        }
+    } 
+}
+</script>

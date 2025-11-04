@@ -2,20 +2,20 @@
   <div class="card">
     <Toolbar class="mb-4">
       <template #start>
-        <Button label="Nuevo Sub-Rubro" icon="pi pi-plus" class="mr-2" @click="abrirModalNuevo" v-tooltip.bottom="'F4 - Nuevo'"/>
+        <Button label="Nuevo Sub-Rubro (F4)" icon="pi pi-plus" class="mr-2" @click="abrirModalNuevo" v-tooltip.bottom="'F4 - Nuevo'"/>
       </template>
       <template #end>
-        <SelectButton 
-          v-model="filtroSeleccionado" 
-          :options="opcionesFiltro" 
-          optionLabel="label" 
-          optionValue="value" 
+        <SelectButton
+          v-model="filtroSeleccionado"
+          :options="opcionesFiltro"
+          optionLabel="label"
+          optionValue="value"
           @change="onFiltroChange"
           :allowEmpty="false"
         >
           <template #option="slotProps">
-             <i :class="[slotProps.option.icon, getFiltroClass(slotProps.option.value)]" style="margin-right: 4px;"></i>
-             <span :class="getFiltroClass(slotProps.option.value)">{{ slotProps.option.label }}</span>
+            <i :class="[slotProps.option.icon, getFiltroClass(slotProps.option.value)]" style="margin-right: 4px;"></i>
+            <span :class="getFiltroClass(slotProps.option.value)">{{ slotProps.option.label }}</span>
           </template>
         </SelectButton>
       </template>
@@ -30,11 +30,11 @@
       @eliminar-item="abrirModalEliminar"
     >
       <template #actions-prepend="slotProps">
-        <Button 
-          icon="pi pi-copy" 
-          class="p-button-rounded p-button-secondary" 
-          @click="abrirModalClonar(slotProps.data)" 
-          v-tooltip.bottom="'F7 - Clonar'" 
+        <Button
+          icon="pi pi-copy"
+          class="p-button-rounded p-button-secondary"
+          @click="abrirModalClonar(slotProps.data)"
+          v-tooltip.bottom="'F7 - Clonar'"
         />
       </template>
       <template #body-baja_logica="{ data }">
@@ -48,8 +48,8 @@
     <ConfirmationModal
       :visible="confirmVisible"
       titulo="Confirmar Baja"
-      :message="`¿Está seguro que desea dar de baja el sub-rubro '${store.subrubroSeleccionado?.nombre || ''}'?`"
-      @update:visible="confirmVisible = $event"
+      :message="¿Está seguro que desea dar de baja el sub-rubro ''?"
+      @update:visible="confirmVisible = "
       @confirmado="manejarEliminacion"
       @cancelado="confirmVisible = false"
     />
@@ -57,7 +57,7 @@
     <ConfirmationModal
       :visible="!!store.subrubroInactivoParaReactivar"
       titulo="Reactivar Sub-Rubro Detectado"
-      :message="`Se detectó un sub-rubro inactivo con el mismo ${store.subrubroInactivoParaReactivar?.campo}. ¿Desea reactivarlo?`"
+      :message="Se detectó un sub-rubro inactivo con el mismo . ¿Desea reactivarlo?"
       @confirmado="store.reactivarSubRubro"
       @cancelado="store.cancelarReactivacion"
     />
@@ -67,7 +67,7 @@
       :visible="formVisible"
       :subrubro="store.subrubroSeleccionado"
       :modo-clon="esModoClon"
-      @update:visible="formVisible = $event"
+      @update:visible="formVisible = "
       @guardar="manejarGuardado"
     />
   </div>
