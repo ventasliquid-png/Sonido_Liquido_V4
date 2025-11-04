@@ -1,6 +1,8 @@
-﻿import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import RubrosView from '../views/RubrosView.vue'
-import UnidadesMedidaView from '@/modulos/unidades_medida/views/UnidadesMedidaView.vue'
+// La importación del archivo (filesystem) SÍ usa guion bajo
+import UnidadesMedidaView from '@/modulos/unidades_medida/views/UnidadesMedidaView.vue' 
+import SubRubrosView from '@/modulos/subrubros/views/SubRubrosView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -16,7 +18,13 @@ const router = createRouter({
       component: RubrosView
     },
     {
-      path: '/unidades_medida',
+      path: '/subrubros',
+      name: 'subrubros',
+      component: SubRubrosView
+    },
+    {
+      // CORRECCIÓN: La ruta URL (path) debe usar guion medio para coincidir con el menú
+      path: '/unidades-medida', 
       name: 'unidades_medida',
       component: UnidadesMedidaView
     }

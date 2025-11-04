@@ -1,4 +1,4 @@
-// frontend/src/stores/useRubroStore.ts (VERSIÓN 2 - Lógica de "Preguntar")
+﻿// frontend/src/stores/useRubroStore.ts (VERSIÓN 2 - Lógica de "Preguntar")
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import type { RubroModel, RubroUpdateModel } from '@/models/rubroModel';
@@ -31,7 +31,7 @@ export const useRubroStore = defineStore('rubro', () => {
       rubros.value = data;
       console.log('Store: fetchRubros ejecutado, rubros cargados:', rubros.value.length);
     } catch (error) {
-      notificationService.mostrarError('Error al cargar rubros', (error as Error).message);
+      notificationService.showError('Error al cargar rubros', (error as Error).message);
     } finally {
       estadoCarga.value = false;
     }
@@ -91,13 +91,13 @@ export const useRubroStore = defineStore('rubro', () => {
           notificationService.mostrarAdvertencia('Error: Código duplicado', detail.message);
         } else {
           // Otro tipo de 409 (inesperado)
-          notificationService.mostrarError('Error de Conflicto', detail.message || 'Error desconocido');
+          notificationService.showError('Error de Conflicto', detail.message || 'Error desconocido');
         }
 
       } else {
         // Otro tipo de error (500, 404, etc.)
         const mensajeError = error.response?.data?.detail || error.message || 'Error desconocido';
-        notificationService.mostrarError('Error al guardar el rubro', mensajeError);
+        notificationService.showError('Error al guardar el rubro', mensajeError);
       }
       success = false;
     } finally {
@@ -114,7 +114,7 @@ export const useRubroStore = defineStore('rubro', () => {
   // --- INICIO V2: Nuevas acciones para el modal ---
   async function ejecutarReactivacion() {
     if (!idParaReactivar.value) {
-      notificationService.mostrarError('Error', 'No se encontró ID para reactivar.');
+      notificationService.showError('Error', 'No se encontró ID para reactivar.');
       return;
     }
 
@@ -140,7 +140,7 @@ export const useRubroStore = defineStore('rubro', () => {
 
     } catch (error: any) {
       const mensajeError = error.response?.data?.detail || error.message || 'Error desconocido';
-      notificationService.mostrarError('Error al reactivar el rubro', mensajeError);
+      notificationService.showError('Error al reactivar el rubro', mensajeError);
     } finally {
       // Cerrar y limpiar el modal
       cancelarReactivacion();
@@ -170,7 +170,7 @@ export const useRubroStore = defineStore('rubro', () => {
       notificationService.mostrarExito('Rubro dado de baja');
     } catch (error: any) {
         const mensajeError = error.response?.data?.detail || error.message || 'Error desconocido';
-      notificationService.mostrarError('Error al dar de baja', mensajeError);
+      notificationService.showError('Error al dar de baja', mensajeError);
     } finally {
       estadoCarga.value = false;
       seleccionarRubro(null);

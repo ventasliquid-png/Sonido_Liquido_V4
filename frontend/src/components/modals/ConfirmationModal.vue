@@ -1,74 +1,80 @@
-<template>
-  <Dialog
-    v-model:visible="dialogVisible"
-    modal
-    :header="props.titulo"
-    :style="{ width: '25rem' }"
-    @keydown.esc.prevent="cancelar"
-    @keydown.f10.prevent="confirmar"
-  >
-    <div class="flex items-center gap-4">
-      <i class="pi pi-exclamation-triangle text-4xl text-yellow-500"></i>
-            <p>{{ props.message }}</p> 
-    </div>
-    <template #footer>
-      <Button
-        label="Cancelar (Esc)"
-        icon="pi pi-times"
-        @click="cancelar"
-        text
-        severity="secondary"
-      ></Button>
-      <Button
-        label="Confirmar (F10)"
-        icon="pi pi-check"
-        @click="confirmar"
-        autofocus
-        severity="danger"
-      ></Button>
-    </template>
-  </Dialog>
+﻿<template>
+  <Dialog
+    v-model:visible="dialogVisible"
+    modal
+    :header="props.titulo"
+    :style="{ width: '30rem' }"
+    @update:visible="cerrar"
+  >
+    <div class="confirmation-content">
+      <i class="pi pi-exclamation-triangle mr-3" style="font-size: 2rem" />
+      <span v-html="props.message"></span>
+    </div>
+
+    <template #footer>
+      <Button
+        label="No"
+        icon="pi pi-times"
+        severity="secondary"
+        @click="cancelar"
+        :disabled="props.loading"
+      />
+      <Button
+        label="Sí"
+        icon="pi pi-check"
+        autofocus
+        @click="confirmar"
+        :loading="props.loading"
+      />
+    </template>
+  </Dialog>
 </template>
 
 <script setup lang="ts">
-import { computed, watch, onMounted, onUnmounted } from 'vue';
-// Los componentes PrimeVue se asumen globales
+import { ref, watch } from 'vue';
+import Dialog from 'primevue/dialog';
+import Button from 'primevue/button';
 
 interface Props {
-  visible: boolean;
-  titulo?: string;
-  // [REPARACIÓN TAX-7] Prop 'mensaje' renombrada a 'message'
-  message: string; 
+  visible: boolean;
+  titulo: string;
+  message: string;
+  loading?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  titulo: 'Confirmar Acción'
+  loading: false,
 });
 
 const emit = defineEmits(['update:visible', 'confirmado', 'cancelado']);
 
-const dialogVisible = computed({
-  get: () => props.visible,
-  set: (value) => emit('update:visible', value),
-});
+const dialogVisible = ref(props.visible);
 
-const confirmar = () => {
-  emit('confirmado');
-  dialogVisible.value = false;
-};
+watch(
+  () => props.visible,
+  (newVal) => {
+    dialogVisible.value = newVal;
+  },
+);
 
-const cancelar = () => {
-  emit('cancelado');
-  dialogVisible.value = false;
-};
+function cerrar(value: boolean) {
+  emit('update:visible', value);
+}
 
+function confirmar() {
+  emit('confirmado');
+  cerrar(false);
+}
+
+function cancelar() {
+  emit('cancelado');
+  cerrar(false);
+}
 </script>
 
 <style scoped>
-p {
-  margin: 0; 
-}
-.p-dialog .p-dialog-footer button {
-  margin-left: 0.5rem; 
+.confirmation-content {
+  display: flex;
+  align-items: center;
 }
 </style>

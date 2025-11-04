@@ -5,23 +5,27 @@ import type { SubRubroModel, SubRubroUpdateModel } from '../models/subRubroModel
 class SubRubroApiService {
     
     async crearSubRubro(data: SubRubroModel): Promise<SubRubroModel> {
+        // Endpoint corregido (POST /subrubros/) - Estaba correcto
         const response = await apiClient.post<SubRubroModel>('/subrubros/', data);
         return response.data;
     }
 
     async listarSubRubros(estado: string = 'activos'): Promise<SubRubroModel[]> {
         // Adaptado para Filtro de Tres Vías
-        const response = await apiClient.get<SubRubroModel[]>('/subrubros/', { params: { estado } });
+        // *** CORRECCIÓN: Endpoint alineado con el router del backend ***
+        const response = await apiClient.get<SubRubroModel[]>('/subrubros/lista', { params: { estado } });
         return response.data;
     }
 
     async actualizarSubRubro(id: string, data: SubRubroUpdateModel): Promise<SubRubroModel> {
-        const response = await apiClient.patch<SubRubroModel>(`/subrubros/${id}`, data);
+        // *** CORRECCIÓN: Método alineado con el router del backend (PATCH -> PUT) ***
+        const response = await apiClient.put<SubRubroModel>(/subrubros/, data);
         return response.data;
     }
 
     async bajaLogicaSubRubro(id: string): Promise<void> {
-        await apiClient.delete(`/subrubros/${id}`);
+        // Endpoint corregido (DELETE /subrubros/{id}) - Estaba correcto
+        await apiClient.delete(/subrubros/);
     }
 
     // --- FUNCIÓN ABR V12 ---
