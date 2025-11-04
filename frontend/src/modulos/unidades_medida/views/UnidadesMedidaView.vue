@@ -1,56 +1,47 @@
-<!-- frontend/src/modulos/unidades_medida/views/UnidadesMedidaView.vue -->
-<template>
+﻿<template>
     <div class="card">
-        <!-- 1. Toolbar (Patrón DEOU) -->
-        <Toolbar class="mb-4">
+                <Toolbar class="mb-4">
             <template #start>
-                <!-- NOTE: El botón se ve porque el componente Button está registrado globalmente. -->
                 <Button label="Nuevo" icon="pi pi-plus" class="mr-2" @click="abrirDialogNuevo" />
             </template>
             <template #end>
-                <!-- Filtro de Tres Vías (Doctrina VIL) -->
-                <SelectButton 
-                    v-model="filtroEstado" 
-                    :options="opcionesFiltro" 
-                    optionLabel="label" 
-                    optionValue="value"
-                    dataKey="value"
-                />
+                        <SelectButton 
+                            v-model="filtroEstado" 
+                            :options="opcionesFiltro" 
+                            optionLabel="label" 
+                            optionValue="value"
+                            dataKey="value"
+                        />
             </template>
         </Toolbar>
 
-        <!-- 2. DataTable (Patrón DEOU) -->
-        <DataTable :value="listaFiltrada" :loading="store.isLoading" responsiveLayout="scroll">
+                <DataTable :value="listaFiltrada" :loading="store.isLoading" responsiveLayout="scroll">
             <Column field="codigo_unidad" header="Código" :sortable="true"></Column>
             <Column field="nombre" header="Nombre" :sortable="true"></Column>
-            
-            <!-- Columna Estado (Doctrina VIL) -->
-            <Column field="baja_logica" header="Estado">
+           
+                        <Column field="baja_logica" header="Estado">
                 <template #body="slotProps">
-                    <Tag :severity="slotProps.data.baja_logica ? 'danger' : 'success'">
+                <Tag :severity="slotProps.data.baja_logica ? 'danger' : 'success'">
                         {{ slotProps.data.baja_logica ? 'INACTIVO' : 'ACTIVO' }}
                     </Tag>
                 </template>
             </Column>
 
-            <!-- Columna Acciones (Patrón DEOU F7, F10) -->
-            <Column :exportable="false" style="min-width:12rem">
+                        <Column :exportable="false" style="min-width:12rem">
                 <template #body="slotProps">
                     <Button icon="pi pi-pencil" class="mr-2" v-tooltip.top="'Editar'" @click="abrirDialogEditar(slotProps.data)" />
                     
                     <Button 
                         :icon="slotProps.data.baja_logica ? 'pi pi-check' : 'pi pi-trash'"
-                        :severity="slotProps.data.baja_logica ? 'success' : 'danger'"
-                        v-tooltip.top="slotProps.data.baja_logica ? 'Reactivar' : 'Dar de Baja'"
+                    :severity="slotProps.data.baja_logica ? 'success' : 'danger'"
+                     v-tooltip.top="slotProps.data.baja_logica ? 'Reactivar' : 'Dar de Baja'"
                         @click="confirmarCambioEstado(slotProps.data)" 
                     />
                 </template>
             </Column>
         </DataTable>
 
-        <!-- 3. Dialog (Formulario) (Patrón DEOU) -->
-        <!-- NOTE: El v-model:visible resuelve el error de prop faltante para Dialog -->
-        <Dialog v-model:visible="dialogVisible" :header="dialogHeader" :modal="true" class="p-fluid">
+                <Dialog v-model:visible="dialogVisible" :header="dialogHeader" :modal="true" class="p-fluid">
             <UnidadMedidaForm v-model="entidad" :submitted="submitted" />
             <template #footer>
                 <Button label="Cancelar" icon="pi pi-times" severity="secondary" @click="cerrarDialog" />
@@ -58,11 +49,14 @@
             </template>
         </Dialog>
 
-        <!-- 4. Confirmation Modal (Doctrina VIL) -->
-        <!-- NOTE: La ref debe ser correcta para evitar el Missing required prop: "visible" -->
-        <ConfirmationModal 
-            ref="confirmationModal"
-            @confirmar="ejecutarCambioEstado"
+                <ConfirmationModal 
+            v-if="confirmVisible"
+            :visible="confirmVisible"
+            :titulo="confirmTitulo"
+            :message="confirmMensaje"
+            @update:visible="confirmVisible = $event"
+        @confirmado="ejecutarCambioEstado"
+            @cancelado="cancelarCambioEstado"
         />
 
     </div>
@@ -100,9 +94,12 @@ const dialogVisible = ref(false);
 const dialogHeader = ref('');
 const submitted = ref(false);
 const entidad = ref<UnidadMedidaModel>(crearEntidadVacia());
-// CORRECCIÓN CRÍTICA: La ref debe ser tipada correctamente para que Vue la resuelva.
-const confirmationModal = ref<InstanceType<typeof ConfirmationModal> | null>(null); 
 
+// State para el modal de confirmación
+const confirmVisible = ref(false);
+const confirmTitulo = ref('');
+const confirmMensaje = ref('');
+let entidadParaCambio: UnidadMedidaModel | null = null;
 
 // --- Getters ---
 const listaFiltrada = computed(() => {
@@ -123,23 +120,23 @@ onMounted(() => {
 // --- Funciones ---
 function crearEntidadVacia(): UnidadMedidaModel {
     return {
-        codigo_unidad: '',
-        nombre: '',
-        baja_logica: false
+    codigo_unidad: '',
+    nombre: '',
+    baja_logica: false
     };
 }
 
 function abrirDialogNuevo() {
     entidad.value = crearEntidadVacia();
     dialogHeader.value = "Nueva Unidad de Medida";
-    submitted.value = false;
+submitted.value = false;
     dialogVisible.value = true;
 }
 
 function abrirDialogEditar(data: UnidadMedidaModel) {
     entidad.value = { ...data };
     dialogHeader.value = "Editar Unidad de Medida";
-    submitted.value = false;
+submitted.value = false;
     dialogVisible.value = true;
 }
 
@@ -153,10 +150,10 @@ function cerrarDialog() {
 async function guardar() {
     submitted.value = true;
     if (!entidad.value.nombre || !entidad.value.codigo_unidad) {
-        return; // Validación simple
+    return; // Validación simple
     }
     await store.guardarUnidad(entidad.value);
-    
+   
     // Si no hay error (detectado por isLoading), cerrar
     if (!store.isLoading) {
         cerrarDialog();
@@ -164,19 +161,26 @@ async function guardar() {
 }
 
 // (F10) Cambiar Estado
-let entidadParaCambio: UnidadMedidaModel | null = null;
-
 function confirmarCambioEstado(data: UnidadMedidaModel) {
     entidadParaCambio = data;
     const accion = data.baja_logica ? 'reactivar' : 'dar de baja';
-    // Se asegura que la ref no sea null antes de llamar al método.
-    confirmationModal.value?.abrir(`¿Está seguro de ${accion} la unidad "${data.nombre}"?`); 
+    confirmTitulo.value = data.baja_logica ? 'Confirmar Reactivación' : 'Confirmar Baja';
+    
+    confirmVisible.value = true;
 }
 
 function ejecutarCambioEstado() {
     if (entidadParaCambio) {
-        store.cambiarEstadoUnidad(entidadParaCambio);
-        entidadParaCambio = null;
+    store.cambiarEstadoUnidad(entidadParaCambio);
     }
+    cancelarCambioEstado();
+}
+
+function cancelarCambioEstado() {
+    confirmVisible.value = false;
+    entidadParaCambio = null;
+    confirmTitulo.value = '';
+    confirmMensaje.value = '';
 }
 </script>
+

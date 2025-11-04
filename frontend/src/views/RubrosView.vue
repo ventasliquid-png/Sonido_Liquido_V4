@@ -12,10 +12,11 @@
           optionLabel="label"
           optionValue="value"
           aria-labelledby="basic"
-          :pt="selectButtonPassThrough" @change="onFiltroChange"
+          :pt="selectButtonPassThrough" 
+          @change="onFiltroChange"
         />
       </template>
-      </Toolbar>
+    </Toolbar>
 
     <TablaDatos
       :datos="rubrosFiltrados"
@@ -44,7 +45,7 @@
     <ConfirmationModal v-if="confirmVisible && store.rubroSeleccionado"
       :visible="confirmVisible"
       titulo="Confirmar Baja"
-      :message="`¿Está seguro que desea dar de baja el rubro '${store.rubroSeleccionado?.nombre || ''}'?`"
+      :message="'Esta seguro que desea dar de baja el rubro ' + (store.rubroSeleccionado?.nombre || '') + '?'"
       @update:visible="confirmVisible = $event"
       @confirmado="manejarEliminacion"
       @cancelado="confirmVisible = false"
@@ -53,12 +54,12 @@
     <ConfirmationModal v-if="store.confirmarReactivacionVisible"
       :visible="store.confirmarReactivacionVisible"
       titulo="Confirmar Reactivación"
-      :message="`El rubro '${store.nombreParaReactivar || ''}' ya existe y está inactivo. ¿Desea reactivarlo?`"
-      @update:visible="manejarCancelarReactivacion" 
+      :message="'El rubro ' + (store.nombreParaReactivar || '') + ' ya existe y esta inactivo. Desea reactivarlo?'"
+      @update:visible="manejarCancelarReactivacion"
       @confirmado="manejarConfirmarReactivacion"
       @cancelado="manejarCancelarReactivacion"
     />
-    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -72,7 +73,7 @@ import Toolbar from 'primevue/toolbar';
 import Button from 'primevue/button';
 import Tag from 'primevue/tag';
 import SelectButton from 'primevue/selectbutton';
-import type { SelectButtonPassThroughOptions } from 'primevue/selectbutton'; // Importar tipos PT
+import type { SelectButtonPassThroughOptions } from 'primevue/selectbutton'; 
 import notificationService from '@/services/notificationService';
 
 const store = useRubroStore();
@@ -83,7 +84,7 @@ const itemSeleccionadoParaClonar = ref<RubroModel | null>(null);
 type FiltroEstado = 'activos' | 'inactivos' | 'todos';
 const filtroEstadoSeleccionado = ref<FiltroEstado>('activos');
 const opcionesFiltroEstado = ref([
-    { label: 'Activos', value: 'activos', colorClass: 'filter-pt-activo' }, // Añadir clase para PT
+    { label: 'Activos', value: 'activos', colorClass: 'filter-pt-activo' }, 
     { label: 'Inactivos', value: 'inactivos', colorClass: 'filter-pt-inactivo' },
     { label: 'Todos', value: 'todos', colorClass: 'filter-pt-todos' }
 ]);
@@ -125,16 +126,19 @@ onUnmounted(() => {
 function abrirModalNuevo() { itemSeleccionadoParaClonar.value = null; store.seleccionarRubro(null); formVisible.value = true;}
 function abrirModalEditar(rubro: RubroModel) { itemSeleccionadoParaClonar.value = rubro; store.seleccionarRubro(rubro); formVisible.value = true; }
 function abrirModalEliminar(rubro: RubroModel) { itemSeleccionadoParaClonar.value = rubro; store.seleccionarRubro(rubro); confirmVisible.value = true; }
-function abrirModalClonar() { if (!itemSeleccionadoParaClonar.value) { notificationService.mostrarAdvertencia("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7)."); return; } store.seleccionarParaClonar(itemSeleccionadoParaClonar.value); formVisible.value = true; }
+function abrirModalClonar() { 
+  if (!itemSeleccionadoParaClonar.value) { 
+    // [REPARACIÓN TAX-7] API Canónica V2.3
+    notificationService.showWarn("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7)."); 
+    return; 
+  } 
+  store.seleccionarParaClonar(itemSeleccionadoParaClonar.value); 
+  formVisible.value = true; 
+}
 function actualizarItemSeleccionado(rubro: RubroModel) { itemSeleccionadoParaClonar.value = rubro;}
 
 async function manejarGuardado(rubro: RubroModel) { 
-  // store.guardarRubro ahora devuelve 'false' si abre el modal de reactivación
   const exito = await store.guardarRubro(rubro); 
-  
-  // Solo cerramos el formulario si el guardado fue un éxito (creado o actualizado)
-  // Si 'exito' es falso (porque se abrió el modal de reactivación),
-  // el formulario de 'Nuevo Rubro' permanecerá abierto hasta que el usuario decida.
   if (exito) { 
     formVisible.value = false; 
     itemSeleccionadoParaClonar.value = null; 
@@ -144,35 +148,26 @@ async function manejarGuardado(rubro: RubroModel) {
 async function manejarEliminacion() { if (store.rubroSeleccionado?.id) { await store.eliminarRubro(store.rubroSeleccionado.id); } confirmVisible.value = false; itemSeleccionadoParaClonar.value = null; }
 function handleGlobalKeyDown(event: KeyboardEvent) { if (!formVisible.value && !confirmVisible.value) { if (event.key === 'F4') { event.preventDefault(); abrirModalNuevo(); } if (event.key === 'F7') { event.preventDefault(); abrirModalClonar(); } } }
 
-
-// --- INICIO V2: Handlers para el modal de reactivación ---
 async function manejarConfirmarReactivacion() {
   await store.ejecutarReactivacion();
-  formVisible.value = false; // Cierra el formulario de 'Nuevo Rubro'
+  formVisible.value = false; 
 }
 
 function manejarCancelarReactivacion() {
   store.cancelarReactivacion();
-  formVisible.value = false; // Cierra el formulario de 'Nuevo Rubro'
+  formVisible.value = false; 
 }
-// --- FIN V2 ---
-
 
 const getRowClass = (data: RubroModel) => {
     return data.baja_logica ? 'row-inactivo' : 'row-activo';
 };
 
-// --- NUEVO: Configuración Passthrough (PT) para SelectButton ---
 const selectButtonPassThrough = computed<SelectButtonPassThroughOptions>(() => ({
     button: ({ context, props: buttonProps }) => {
-        // Encontrar la opción correspondiente en nuestras 'opcionesFiltroEstado'
         const option = opcionesFiltroEstado.value.find(opt => opt.value === buttonProps.value);
-        // Devolver un objeto con la clase de color si la opción se encontró
         return option ? { class: [option.colorClass] } : {};
     }
 }));
-// --- FIN PT ---
-
 </script>
 
 <style scoped>
@@ -184,8 +179,6 @@ const selectButtonPassThrough = computed<SelectButtonPassThroughOptions>(() => (
 :deep(.p-datatable .p-datatable-tbody > tr.row-activo) { color: #1a5d2b; }
 :deep(.p-datatable .p-datatable-tbody > tr.row-inactivo) { color: #7a2a33; }
 
-/* --- NUEVO: Estilos PT para SelectButton --- */
-/* Aplicar color al botón CUANDO ESTÁ SELECCIONADO (.p-highlight) */
 :deep(.p-selectbutton .p-button.filter-pt-activo.p-highlight) {
     background: #28a745 !important;
     border-color: #28a745 !important;
@@ -201,18 +194,4 @@ const selectButtonPassThrough = computed<SelectButtonPassThroughOptions>(() => (
     border-color: #007bff !important;
     color: #ffffff !important;
 }
-
-/* Opcional: Estilos para botones NO seleccionados (mantener default o ajustar) */
-:deep(.p-selectbutton .p-button:not(.p-highlight)) {
-   /* background: #f8f9fa; */
-   /* border-color: #dee2e6; */
-   /* color: #495057; */
-}
-/* Opcional: Estilo hover para no seleccionados */
-:deep(.p-selectbutton .p-button:not(.p-highlight):hover) {
-    /* background: #e9ecef; */
-    /* border-color: #dee2e6; */
-    /* color: #495057; */
-}
-
 </style>
