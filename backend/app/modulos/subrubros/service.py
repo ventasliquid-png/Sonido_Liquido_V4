@@ -31,7 +31,7 @@ class SubRubroService:
     # Esta función NO es async, porque llama a la transacción (sync)
     def crear_subrubro(self, data: SubRubroModel) -> SubRubroModel:
         if self.db is None: # Uso de self.db
-              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+                raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             # Convertimos a dict para evitar el error '_read_only' del decorador
@@ -40,14 +40,20 @@ class SubRubroService:
             # Creamos el objeto de transacción
             transaction = self.db.transaction() # Uso de self.db
             
-            # Llamamos a la función helper (decorada)
-            nuevo_subrubro = _transaccion_crear_subrubro(
+            # === CORRECCIÓN DE ERROR 500 (Respuesta de Tupla) ===
+            # El helper devuelve una tupla (doc_id, subrubro_data_dict)
+            doc_id, subrubro_data_dict = _transaccion_crear_subrubro(
                 transaction, # <-- Pasamos la transacción
                 subrubro_data=subrubro_dict,
                 db=self.db # Uso de self.db 
             )
             
-            return nuevo_subrubro
+            # Asignamos el ID de Firestore al dict ANTES de validar el modelo
+            subrubro_data_dict['id'] = doc_id 
+            
+            # Validar y retornar el SubRubroModel completo
+            return SubRubroModel.model_validate(subrubro_data_dict)
+            # === FIN DE CORRECCIÓN ===
         
         except DuplicadoActivoException as e:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail=e.detail)
@@ -59,7 +65,7 @@ class SubRubroService:
     # Esta función NO es async (corrige el error 'object generator')
     def listar_subrubros(self, estado: str = 'activos') -> List[SubRubroModel]:
         if self.db is None: # Uso de self.db
-              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+                raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             query = self.db.collection('subrubros') # Uso de self.db
@@ -80,7 +86,7 @@ class SubRubroService:
     # Convertida a función síncrona (def) y 'await' eliminados
     def actualizar_subrubro(self, id: str, data: SubRubroUpdateModel) -> Optional[SubRubroModel]:
         if self.db is None: # Uso de self.db
-              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+                raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             doc_ref = self.db.collection('subrubros').document(id) # Uso de self.db
@@ -98,7 +104,7 @@ class SubRubroService:
     # Convertida a función síncrona (def) y 'await' eliminado
     def baja_logica_subrubro(self, id: str) -> bool:
         if self.db is None: # Uso de self.db
-              raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
+                raise HTTPException(status_code=503, detail="Servicio de base de datos no disponible")
         
         try:
             doc_ref = self.db.collection('subrubros').document(id) # Uso de self.db

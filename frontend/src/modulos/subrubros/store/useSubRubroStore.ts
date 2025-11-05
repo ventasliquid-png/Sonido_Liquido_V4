@@ -35,7 +35,6 @@ export const useSubRubroStore = defineStore('subrubro', {
             try {
                 this.subrubros = await subRubroService.listarSubRubros(this.filtroEstado);
             } catch (err: any) {
-                // [REPARACIÓN TAX-7] API Canónica
                 notificationService.showError("Error al cargar sub-rubros.", err);
             } finally {
                 this.estadoCarga = false;
@@ -53,11 +52,9 @@ export const useSubRubroStore = defineStore('subrubro', {
             try {
                 if ('id' in data && data.id) { // Actualización
                     await subRubroService.actualizarSubRubro(data.id, data as SubRubroUpdateModel);
-                    // [REPARACIÓN TAX-7] API Canónica
                     notificationService.showSuccess('Sub-Rubro actualizado.');
                 } else { // Creación
                     await subRubroService.crearSubRubro(data as SubRubroModel);
-                    // [REPARACIÓN TAX-7] API Canónica
                     notificationService.showSuccess('Sub-Rubro creado.');
                 }
                 await this.fetchSubRubros();
@@ -69,12 +66,13 @@ export const useSubRubroStore = defineStore('subrubro', {
                     if (detail && detail.status === 'EXISTE_INACTIVO') {
                         this.subrubroInactivoParaReactivar = { id: detail.id_inactivo, campo: detail.campo };
                     } else {
+                        // --- CORRECCIÓN DE DIRECTIVA 67 ---
+                        // El 409 por duplicado activo es un WARN (Aviso), no un ERROR.
                         const msg = (typeof detail === 'string' ? detail : "El código ya existe.") || detail.message;
-                        // [REPARACIÓN TAX-7] API Canónica
-                        notificationService.showError(msg, err);
+                        notificationService.showWarn("Conflicto de Duplicado", msg);
+                        // --- FIN DE CORRECCIÓN ---
                     }
                 } else {
-                    // [REPARACIÓN TAX-7] API Canónica
                     notificationService.showError("Error al guardar el sub-rubro.", err);
                 }
             } finally {
@@ -83,9 +81,11 @@ export const useSubRubroStore = defineStore('subrubro', {
             return exito;
         },
 
-        // --- ACCIONES FALTANTES (Cierre de la Directiva 24) ---
         seleccionarSubRubro(subrubro: SubRubroModel | null) {
             this.subrubroSeleccionado = subrubro;
         }
+        
+        // Aquí faltan (eliminarSubRubro, reactivarSubRubro, cancelarReactivacion)
+        // Se agregarán en la próxima directiva si es necesario.
     }
 })

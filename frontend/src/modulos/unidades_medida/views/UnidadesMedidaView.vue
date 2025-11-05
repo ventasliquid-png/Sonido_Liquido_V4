@@ -54,7 +54,7 @@
             :visible="confirmVisible"
             :titulo="confirmTitulo"
             :message="confirmMensaje"
-            @update:visible="confirmVisible = "
+            @update:visible="confirmVisible = $event"
         @confirmado="ejecutarCambioEstado"
             @cancelado="cancelarCambioEstado"
         />
@@ -63,7 +63,6 @@
 </template>
 
 <script setup lang="ts">
-// CORRECCIÓN CANON V2.3: 'onUnmounted' importado
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useUnidadMedidaStore } from '../store/useUnidadMedidaStore';
 import type { UnidadMedidaModel } from '../models/unidadMedidaModel';
@@ -116,11 +115,9 @@ const listaFiltrada = computed(() => {
 // --- Ciclo de Vida ---
 onMounted(() => {
     store.cargarDatos(); // (F4)
-    // CORRECCIÓN CANON V2.3: Listener F4 añadido
     document.addEventListener('keydown', handleGlobalKeyDown);
 });
 
-// CORRECCIÓN CANON V2.3: Listener F4 añadido
 onUnmounted(() => {
   document.removeEventListener('keydown', handleGlobalKeyDown);
 });
@@ -162,7 +159,6 @@ async function guardar() {
     }
     await store.guardarUnidad(entidad.value);
 
-    // Si no hay error (detectado por isLoading), cerrar
     if (!store.isLoading) {
         cerrarDialog();
     }
@@ -173,8 +169,8 @@ function confirmarCambioEstado(data: UnidadMedidaModel) {
     entidadParaCambio = data;
     const accion = data.baja_logica ? 'reactivar' : 'dar de baja';
     confirmTitulo.value = data.baja_logica ? 'Confirmar Reactivación' : 'Confirmar Baja';
-    // CORRECCIÓN CANON V2.3: Mensaje de confirmación añadido
-    confirmMensaje.value = ¿Está seguro de  la unidad ""?;
+    // CORRECCIÓN: Sintaxis de mensaje (Canon V2.3)
+    confirmMensaje.value = `Esta seguro de ${accion} la unidad "${data.nombre}"?`;
     confirmVisible.value = true;
 }
 
@@ -192,7 +188,6 @@ function cancelarCambioEstado() {
     confirmMensaje.value = '';
 }
 
-// CORRECCIÓN CANON V2.3: Handler F4 añadido
 function handleGlobalKeyDown(event: KeyboardEvent) { 
     if (!dialogVisible.value && !confirmVisible.value) { 
         if (event.key === 'F4') { 

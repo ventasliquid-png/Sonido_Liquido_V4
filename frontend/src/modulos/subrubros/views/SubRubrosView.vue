@@ -48,8 +48,8 @@
     <ConfirmationModal
       :visible="confirmVisible"
       titulo="Confirmar Baja"
-      :message="¿Está seguro que desea dar de baja el sub-rubro ''?"
-      @update:visible="confirmVisible = "
+      :message="`¿Está seguro que desea dar de baja el sub-rubro '${store.subrubroSeleccionado?.nombre || ''}'?`"
+      @update:visible="confirmVisible = $event"
       @confirmado="manejarEliminacion"
       @cancelado="confirmVisible = false"
     />
@@ -57,7 +57,7 @@
     <ConfirmationModal
       :visible="!!store.subrubroInactivoParaReactivar"
       titulo="Reactivar Sub-Rubro Detectado"
-      :message="Se detectó un sub-rubro inactivo con el mismo . ¿Desea reactivarlo?"
+      :message="`Se detectó un sub-rubro inactivo con el mismo ${store.subrubroInactivoParaReactivar?.campo}. ¿Desea reactivarlo?`"
       @confirmado="store.reactivarSubRubro"
       @cancelado="store.cancelarReactivacion"
     />
@@ -67,7 +67,7 @@
       :visible="formVisible"
       :subrubro="store.subrubroSeleccionado"
       :modo-clon="esModoClon"
-      @update:visible="formVisible = "
+      @update:visible="formVisible = $event"
       @guardar="manejarGuardado"
     />
   </div>
