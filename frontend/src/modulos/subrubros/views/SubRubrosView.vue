@@ -26,8 +26,8 @@
       :columnas="columnas"
       :cargando="store.estadoCarga"
       :rowStyle="rowStyle"
-      @editar-item="abrirModalEditar"
-      @eliminar-item="abrirModalEliminar"
+      :showReactivateButton="true"
+      :showDeleteButton="false"
     >
       <template #actions-prepend="slotProps">
         <Button
@@ -35,6 +35,32 @@
           class="p-button-rounded p-button-secondary"
           @click="abrirModalClonar(slotProps.data)"
           v-tooltip.bottom="'F7 - Clonar'"
+        />
+      </template>
+
+      <template #actions="slotProps">
+        <Button
+          v-if="!slotProps.data.baja_logica"
+          icon="pi pi-pencil"
+          class="p-button-rounded p-button-success"
+          @click="abrirModalEditar(slotProps.data)"
+          v-tooltip.bottom="'Editar'"
+        />
+
+        <Button
+          v-if="!slotProps.data.baja_logica"
+          icon="pi pi-trash"
+          class="p-button-rounded p-button-danger"
+          @click="abrirModalEliminar(slotProps.data)"
+          v-tooltip.bottom="'Dar de Baja'"
+        />
+
+        <Button
+          v-if="slotProps.data.baja_logica"
+          icon="pi pi-check"
+          class="p-button-rounded p-button-warning"
+          @click="abrirModalReactivarDirecto(slotProps.data)"
+          v-tooltip.bottom="'Reactivar'"
         />
       </template>
       <template #body-baja_logica="{ data }">
@@ -48,18 +74,27 @@
     <ConfirmationModal
       :visible="confirmVisible"
       titulo="Confirmar Baja"
-      :message="`Â¿EstÃ¡ seguro que desea dar de baja el sub-rubro '${store.subrubroSeleccionado?.nombre || ''}'?`"
+      :message="`¿Está seguro que desea dar de baja el sub-rubro '${itemParaAccion?.nombre || ''}'?`"
       @update:visible="confirmVisible = $event"
       @confirmado="manejarEliminacion"
-      @cancelado="confirmVisible = false"
+      @cancelado="cancelarModalAccion"
+    />
+
+    <ConfirmationModal
+      :visible="confirmReactivarDirectoVisible"
+      titulo="Confirmar Reactivación"
+      :message="`¿Está seguro que desea reactivar el sub-rubro '${itemParaAccion?.nombre || ''}'?`"
+      @update:visible="confirmReactivarDirectoVisible = $event"
+      @confirmado="manejarReactivarDirecto"
+      @cancelado="cancelarModalAccion"
     />
 
     <ConfirmationModal
       :visible="!!store.subrubroInactivoParaReactivar"
       titulo="Reactivar Sub-Rubro Detectado"
-      :message="`Se detectÃ³ un sub-rubro inactivo con el mismo ${store.subrubroInactivoParaReactivar?.campo}. Â¿Desea reactivarlo?`"
-      @confirmado="store.reactivarSubRubro"
-      @cancelado="store.cancelarReactivacion"
+      :message="`Se detectó un sub-rubro inactivo con el mismo ${store.subrubroInactivoParaReactivar?.campo}. ¿Desea reactivarlo (los datos nuevos se sobrescribirán)?`"
+      @confirmado="manejarConfirmarReactivacionABR"
+      @cancelado="manejarCancelarReactivacionABR"
     />
 
     <SubRubroForm
@@ -76,10 +111,10 @@
 <script setup lang="ts">
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useSubRubroStore } from '../store/useSubRubroStore';
-import type { SubRubroModel } from '../models/subRubroModel';
+import type { SubRubroModel, SubRubroUpdateModel } from '../models/subRubroModel';
 import TablaDatos from '@/components/TablaDatos.vue';
 import ConfirmationModal from '@/components/modals/ConfirmationModal.vue';
-import SubRubroForm from '../components/SubRubroForm.vue'; // Adaptado
+import SubRubroForm from '../components/SubRubroForm.vue';
 import Toolbar from 'primevue/toolbar';
 import Button from 'primevue/button';
 import Tag from 'primevue/tag';
@@ -88,16 +123,19 @@ import Tooltip from 'primevue/tooltip';
 
 const store = useSubRubroStore();
 const formVisible = ref(false);
-const confirmVisible = ref(false);
 const esModoClon = ref(false);
 
+const itemParaAccion = ref<SubRubroModel | null>(null);
+const confirmVisible = ref(false);
+const confirmReactivarDirectoVisible = ref(false);
+
 const columnas = [
-    { field: 'codigo_subrubro', header: 'CÃ³digo', sortable: true }, // Adaptado
+    { field: 'codigo_subrubro', header: 'Código', sortable: true },
     { field: 'nombre', header: 'Nombre', sortable: true },
     { field: 'baja_logica', header: 'Estado' },
 ];
 
-// --- DOCTRINA: Filtro de Tres VÃ­as ---
+// --- DOCTRINA: Filtro de Tres Vías ---
 const filtroSeleccionado = ref(store.filtroEstado);
 const opcionesFiltro = ref([
     { label: 'Activos', value: 'activos', icon: 'pi pi-check-circle' },
@@ -119,10 +157,10 @@ const rowStyle = (data: SubRubroModel) => {
     return data.baja_logica ? { color: 'var(--red-600)', 'font-style': 'italic' } : { color: 'var(--text-color)'};
 };
 
-// --- LÃ³gica de Modales ---
+// --- Lógica de Modales ---
 function abrirModalNuevo() {
   esModoClon.value = false;
-  store.seleccionarSubRubro(null); // Limpia
+  store.seleccionarSubRubro(null);
   formVisible.value = true;
 }
 function abrirModalEditar(subrubro: SubRubroModel) {
@@ -130,40 +168,69 @@ function abrirModalEditar(subrubro: SubRubroModel) {
   store.seleccionarSubRubro(subrubro);
   formVisible.value = true;
 }
+
 function abrirModalEliminar(subrubro: SubRubroModel) {
-  store.seleccionarSubRubro(subrubro);
+  itemParaAccion.value = subrubro; 
   confirmVisible.value = true;
+}
+
+function abrirModalReactivarDirecto(subrubro: SubRubroModel) {
+  itemParaAccion.value = subrubro; 
+  confirmReactivarDirectoVisible.value = true;
+}
+
+function cancelarModalAccion() {
+  itemParaAccion.value = null;
+  confirmVisible.value = false;
+  confirmReactivarDirectoVisible.value = false;
+}
+
+async function manejarEliminacion() {
+  if (itemParaAccion.value?.id) {
+    await store.eliminarSubRubro(itemParaAccion.value.id);
+  }
+  cancelarModalAccion();
+}
+
+async function manejarReactivarDirecto() {
+    if (itemParaAccion.value?.id) {
+        await store.reactivarSubRubro(itemParaAccion.value.id);
+    }
+    cancelarModalAccion();
 }
 
 // --- DOCTRINA F7 (Clonar) ---
 function abrirModalClonar(subrubro: SubRubroModel) {
-  const clon = { ...subrubro, id: null, codigo_subrubro: '' }; // Borra ID y Codigo
+  const clon = { ...subrubro, id: null, codigo_subrubro: '' };
   store.seleccionarSubRubro(clon);
   esModoClon.value = true;
   formVisible.value = true;
 }
 
-// --- LÃ³gica de Acciones ---
+// --- Lógica de Acciones ---
 async function manejarGuardado(subrubro: SubRubroModel | SubRubroUpdateModel) {
   const exito = await store.guardarSubRubro(subrubro);
   if (exito) {
-    formVisible.value = false; // Cierra el modal solo si el guardado fue exitoso
+    formVisible.value = false;
   }
-}
-async function manejarEliminacion() {
-  if (store.subrubroSeleccionado?.id) {
-    await store.eliminarSubRubro(store.subrubroSeleccionado.id);
-  }
-  confirmVisible.value = false;
 }
 
-// --- DOCTRINA F4 (Alta RÃ¡pida) ---
+async function manejarConfirmarReactivacionABR() {
+  await store.reactivarSubRubro();
+  formVisible.value = false;
+}
+
+function manejarCancelarReactivacionABR() {
+  store.cancelarReactivacion();
+  formVisible.value = false;
+}
+
+// --- DOCTRINA F4 (Alta Rápida) ---
 const handleKeyDown = (event: KeyboardEvent) => {
-  if (event.key === 'F4') {
+  if (event.key === 'F4' && !formVisible.value && !confirmVisible.value && !confirmReactivarDirectoVisible.value) {
     event.preventDefault();
     abrirModalNuevo();
   }
-  // F7 (Clonar) se maneja a nivel de fila, no global
 };
 
 onMounted(() => {
