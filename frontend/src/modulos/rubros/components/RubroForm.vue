@@ -42,8 +42,10 @@
 
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue';
-import type { RubroModel } from '@/models/rubroModel';
-import notificationService from '@/services/notificationService';
+// --- INICIO REPARACIÓN G-R-14 ---
+import type { RubroModel } from '../models/rubroModel'; // Ruta relativa corregida
+import notificationService from '@/services/notificationService'; // Ruta global (correcta)
+// --- FIN REPARACIÓN G-R-14 ---
 
 // --- Props y Emits ---
 const props = defineProps<{
@@ -122,34 +124,31 @@ function enviarFormulario() {
   const nombreTrimmed = capitalize((formData.value.nombre || '').trim());
 
   // --- Validación F10 ---
+  // --- INICIO REPARACIÓN G-R-14 (Canon API Inglés) ---
   if (!codigoTrimmed) {
-    notificationService.mostrarAdvertencia("Validación Fallida", "El campo 'Código' es requerido.");
+    notificationService.showWarn("Validación Fallida", "El campo 'Código' es requerido.");
     return;
   }
    if (codigoTrimmed.length > 3) { // Añadir validación de longitud si no la hace el InputText
-    notificationService.mostrarAdvertencia("Validación Fallida", "El campo 'Código' no puede exceder los 3 caracteres.");
+    notificationService.showWarn("Validación Fallida", "El campo 'Código' no puede exceder los 3 caracteres.");
     return;
   }
   if (!nombreTrimmed) {
-    notificationService.mostrarAdvertencia("Validación Fallida", "El campo 'Nombre' es requerido.");
+    notificationService.showWarn("Validación Fallida", "El campo 'Nombre' es requerido.");
     return;
   }
    if (nombreTrimmed.length > 30) { // Añadir validación de longitud
-    notificationService.mostrarAdvertencia("Validación Fallida", "El campo 'Nombre' no puede exceder los 30 caracteres.");
+    notificationService.showWarn("Validación Fallida", "El campo 'Nombre' no puede exceder los 30 caracteres.");
     return;
   }
   // --- Fin Validación F10 ---
 
   // --- Validación Anti-Duplicados (F7) ---
-  // Si estamos en modo clon (detectado por el flag 'esClonado') y el código sigue vacío
-  // (aunque la validación anterior ya lo cubre, es una doble verificación semántica)
-  // O si el código no ha cambiado respecto al original (en este caso, forzamos que sea distinto de vacío)
   if (esClonado.value && !codigoTrimmed) {
-      notificationService.mostrarAdvertencia("Validación Clon", "Debe ingresar un nuevo Código para el rubro clonado.");
-      return;
+     notificationService.showWarn("Validación Clon", "Debe ingresar un nuevo Código para el rubro clonado.");
+     return;
   }
-  // Podríamos añadir una validación más estricta si el nombre tampoco cambió,
-  // pero forzar un código nuevo diferente del original (que ahora es vacío) es suficiente.
+  // --- FIN REPARACIÓN G-R-14 ---
   // --- FIN Validación Anti-Duplicados ---
 
   // Crear copia limpia para emitir (asegurando tipos correctos)

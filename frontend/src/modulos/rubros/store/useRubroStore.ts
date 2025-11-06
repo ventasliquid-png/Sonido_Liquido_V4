@@ -1,17 +1,24 @@
-// frontend/src/stores/useRubroStore.ts (VERSIÓN 2.1 - API Notificaciones Corregida)
+// frontend/src/modulos/rubros/store/useRubroStore.ts (VERSIÓN 2.3.2 - Doctrina VIL + Reactivación Directa)
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
-import type { RubroModel, RubroUpdateModel } from '@/models/rubroModel';
-import { rubroApiService } from '@/services/rubroService';
+// --- INICIO REPARACIÓN G-R-11 (Refactorización) ---
+import type { RubroModel, RubroUpdateModel } from '../models/rubroModel';
+import { rubroApiService } from '../services/rubroService';
+// Componentes globales (rutas @/) no cambian
 import notificationService from '@/services/notificationService';
+// --- FIN REPARACIÓN G-R-11 ---
 
 export const useRubroStore = defineStore('rubro', () => {
   // --- Estado ---
   const rubros = ref<RubroModel[]>([]);
   const rubroSeleccionado = ref<RubroModel | null>(null);
   const estadoCarga = ref<boolean>(false);
+  
+  // --- INICIO DOCTRINA VIL (Filtro de Tres Vías) ---
+  const filtroEstado = ref<string>('activos');
+  // --- FIN DOCTRINA VIL ---
 
-  // --- INICIO V2: Estado para el modal de reactivación ---
+  // --- INICIO V2: Estado para el modal de reactivación (ABR) ---
   const confirmarReactivacionVisible = ref(false);
   const idParaReactivar = ref<string | null>(null);
   const nombreParaReactivar = ref<string | null>(null);
@@ -22,12 +29,15 @@ export const useRubroStore = defineStore('rubro', () => {
   const todosLosRubros = computed(() => rubros.value);
 
   // --- Acciones ---
+  
+  // --- INICIO DOCTRINA VIL (Filtro de Tres Vías) ---
   async function fetchRubros() {
     estadoCarga.value = true;
     try {
-      const { data } = await rubroApiService.getAll(undefined);
+      // Se pasa el 'filtroEstado' del store al backend
+      const { data } = await rubroApiService.getAll(filtroEstado.value);
       rubros.value = data;
-      console.log('Store: fetchRubros ejecutado, rubros cargados:', rubros.value.length);
+      console.log(`Store: fetchRubros ejecutado [${filtroEstado.value}], rubros cargados: ${rubros.value.length}`);
     } catch (error) {
       notificationService.showError('Error al cargar rubros', (error as Error).message);
     } finally {
@@ -35,7 +45,12 @@ export const useRubroStore = defineStore('rubro', () => {
     }
   }
 
-  // --- INICIO V2: MODIFICADO guardarRubro ---
+  function setFiltroEstado(estado: string) {
+    filtroEstado.value = estado;
+    fetchRubros(); // Vuelve a cargar los datos con el nuevo filtro
+  }
+  // --- FIN DOCTRINA VIL ---
+
   async function guardarRubro(rubro: RubroModel): Promise<boolean> {
     estadoCarga.value = true;
     let success = false;
@@ -54,7 +69,6 @@ export const useRubroStore = defineStore('rubro', () => {
         } else {
           await fetchRubros();
         }
-        // CORRECCIÓN DIRECTIVA 70: API Estandarizada
         notificationService.showSuccess('Rubro actualizado');
         success = true;
 
@@ -64,23 +78,20 @@ export const useRubroStore = defineStore('rubro', () => {
 
         if (response.status === 201) { // Creado
           rubros.value.push(response.data);
-          // CORRECCIÓN DIRECTIVA 70: API Estandarizada
           notificationService.showSuccess('Rubro creado exitosamente');
           success = true;
         }
       }
     } catch (error: any) {
-      // --- AQUI MANEJAMOS EL 409 ---
       if (error.response?.status === 409 && error.response.data.detail) {
         const detail = error.response.data.detail;
 
         if (detail.status === "EXISTE_INACTIVO") {
           idParaReactivar.value = detail.id_inactivo;
-          nombreParaReactivar.value = detail.nombre;
+          nombreParaReactivar.value = rubro.nombre; 
           confirmarReactivacionVisible.value = true;
 
         } else if (detail.status === "EXISTE_ACTIVO") {
-          // CORRECCIÓN DIRECTIVA 70: API Estandarizada
           notificationService.showWarn('Error: Código duplicado', detail.message);
         } else {
           notificationService.showError('Error de Conflicto', detail.message || 'Error desconocido');
@@ -94,17 +105,20 @@ export const useRubroStore = defineStore('rubro', () => {
     } finally {
       estadoCarga.value = false;
       if (success) {
-        seleccionarRubro(null); // Limpiar selección solo si fue exitoso
+        seleccionarRubro(null);
+        await fetchRubros();
       }
     }
     return success;
   }
-  // --- FIN V2: MODIFICADO guardarRubro ---
 
 
-  // --- INICIO V2: Nuevas acciones para el modal ---
-  async function ejecutarReactivacion() {
-    if (!idParaReactivar.value) {
+  // --- INICIO REPARACIÓN DOCTRINAL (DEOU V2) ---
+  // Modificado para aceptar un ID opcional (para Reactivación Directa)
+  async function ejecutarReactivacion(id: string | null = null) {
+    const idTarget = id || idParaReactivar.value; // Usa el ID de la fila o el del ABR
+    
+    if (!idTarget) {
       notificationService.showError('Error', 'No se encontró ID para reactivar.');
       return;
     }
@@ -115,47 +129,41 @@ export const useRubroStore = defineStore('rubro', () => {
         baja_logica: false
       };
 
-      const { data: updatedRubro } = await rubroApiService.update(idParaReactivar.value, updatePayload);
-
-      const index = rubros.value.findIndex(r => r.id === updatedRubro.id);
-      if (index !== -1) {
-        rubros.value[index] = updatedRubro;
-      } else {
-        await fetchRubros(); // Recargar todo si no se encontró
-      }
-      // CORRECCIÓN DIRECTIVA 70: API Estandarizada
+      // REPARACIÓN G-R-11: El 'rubroApiService' ya no existe en 'delete',
+      // pero el 'update' sí devuelve el objeto actualizado.
+      const { data: updatedRubro } = await rubroApiService.update(idTarget, updatePayload);
+      
+      await fetchRubros(); // Recargar la lista actual
       notificationService.showSuccess('Rubro reactivado');
 
     } catch (error: any) {
       const mensajeError = error.response?.data?.detail || error.message || 'Error desconocido';
       notificationService.showError('Error al reactivar el rubro', mensajeError);
     } finally {
-      cancelarReactivacion();
+      // Si estábamos en un ABR, cerramos todo. Si fue directo, esto no hace nada.
+      cancelarReactivacionABR(); 
       estadoCarga.value = false;
     }
   }
 
-  function cancelarReactivacion() {
+  // Esta función es solo para el flujo ABR (conflicto 409)
+  function cancelarReactivacionABR() {
     confirmarReactivacionVisible.value = false;
     idParaReactivar.value = null;
     nombreParaReactivar.value = null;
     seleccionarRubro(null); // Limpiar el formulario
   }
-  // --- FIN V2 ---
+  // --- FIN REPARACIÓN DOCTRINAL ---
 
 
   async function eliminarRubro(id: string) {
     estadoCarga.value = true;
     try {
-      const { data: rubroDadoDeBaja } = await rubroApiService.delete(id);
-      const index = rubros.value.findIndex(r => r.id === rubroDadoDeBaja.id);
-      if (index !== -1) {
-        rubros.value[index] = rubroDadoDeBaja;
-      } else {
-        await fetchRubros();
-      }
-      // CORRECCIÓN DIRECTIVA 70: API Estandarizada
+      // REPARACIÓN G-R-11: La API 'delete' (corregida en G-R-04) ahora devuelve 204 (void)
+      await rubroApiService.delete(id);
+      await fetchRubros(); 
       notificationService.showSuccess('Rubro dado de baja');
+
     } catch (error: any) {
         const mensajeError = error.response?.data?.detail || error.message || 'Error desconocido';
       notificationService.showError('Error al dar de baja', mensajeError);
@@ -192,11 +200,16 @@ export const useRubroStore = defineStore('rubro', () => {
     seleccionarRubro,
     seleccionarParaClonar,
 
+    // --- INICIO VIL ---
+    filtroEstado,
+    setFiltroEstado,
+    // --- FIN VIL ---
+
     // --- INICIO V2: Exportar estado y acciones del modal ---
     confirmarReactivacionVisible,
     nombreParaReactivar,
     ejecutarReactivacion,
-    cancelarReactivacion,
+    cancelarReactivacion: cancelarReactivacionABR, // Renombrado para claridad
     // --- FIN V2 ---
   };
 });

@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import RubrosView from '../views/RubrosView.vue'
+// REPARACIÓN G-R-09: Apuntar a la nueva ruta modular
+import RubrosView from '@/modulos/rubros/views/RubrosView.vue'
 // La importación del archivo (filesystem) SÍ usa guion bajo
-import UnidadesMedidaView from '@/modulos/unidades_medida/views/UnidadesMedidaView.vue' 
+import UnidadesMedidaView from '@/modulos/unidades_medida/views/UnidadesMedidaView.vue'
 import SubRubrosView from '@/modulos/subrubros/views/SubRubrosView.vue'
 
 const router = createRouter({
@@ -24,7 +25,7 @@ const router = createRouter({
     },
     {
       // CORRECCIÓN: La ruta URL (path) debe usar guion medio para coincidir con el menú
-      path: '/unidades-medida', 
+      path: '/unidades-medida',
       name: 'unidades_medida',
       component: UnidadesMedidaView
     }

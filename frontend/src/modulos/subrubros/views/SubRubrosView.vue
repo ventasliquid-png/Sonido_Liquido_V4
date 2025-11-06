@@ -6,7 +6,7 @@
       </template>
       <template #end>
         <SelectButton
-          v-model="filtroSeleccionado"
+          v-model="store.filtroEstado"
           :options="opcionesFiltro"
           optionLabel="label"
           optionValue="value"
@@ -21,60 +21,63 @@
       </template>
     </Toolbar>
 
-    <TablaDatos
-      :datos="store.listaSubRubros"
-      :columnas="columnas"
-      :cargando="store.estadoCarga"
+    <DataTable 
+      :value="store.listaSubRubros" 
+      :loading="store.estadoCarga" 
       :rowStyle="rowStyle"
-      :showReactivateButton="true"
-      :showDeleteButton="false"
+      responsiveLayout="scroll"
     >
-      <template #actions-prepend="slotProps">
-        <Button
-          icon="pi pi-copy"
-          class="p-button-rounded p-button-secondary"
-          @click="abrirModalClonar(slotProps.data)"
-          v-tooltip.bottom="'F7 - Clonar'"
-        />
-      </template>
+      <Column field="codigo_subrubro" header="CÃ³digo" :sortable="true"></Column>
+      <Column field="nombre" header="Nombre" :sortable="true"></Column>
 
-      <template #actions="slotProps">
-        <Button
-          v-if="!slotProps.data.baja_logica"
-          icon="pi pi-pencil"
-          class="p-button-rounded p-button-success"
-          @click="abrirModalEditar(slotProps.data)"
-          v-tooltip.bottom="'Editar'"
-        />
+      <Column field="baja_logica" header="Estado">
+        <template #body="slotProps">
+          <Tag :severity="slotProps.data.baja_logica ? 'danger' : 'success'">
+            {{ slotProps.data.baja_logica ? 'INACTIVO' : 'ACTIVO' }}
+          </Tag>
+        </template>
+      </Column>
 
-        <Button
-          v-if="!slotProps.data.baja_logica"
-          icon="pi pi-trash"
-          class="p-button-rounded p-button-danger"
-          @click="abrirModalEliminar(slotProps.data)"
-          v-tooltip.bottom="'Dar de Baja'"
-        />
+      <Column :exportable="false" style="min-width:12rem">
+        <template #body="slotProps">
+          <Button
+            icon="pi pi-copy"
+            class="p-button-rounded p-button-secondary mr-2"
+            @click="abrirModalClonar(slotProps.data)"
+            v-tooltip.bottom="'F7 - Clonar'"
+          />
+        
+          <Button
+            v-if="!slotProps.data.baja_logica"
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-success mr-2"
+            @click="abrirModalEditar(slotProps.data)"
+            v-tooltip.bottom="'Editar'"
+          />
 
-        <Button
-          v-if="slotProps.data.baja_logica"
-          icon="pi pi-check"
-          class="p-button-rounded p-button-warning"
-          @click="abrirModalReactivarDirecto(slotProps.data)"
-          v-tooltip.bottom="'Reactivar'"
-        />
-      </template>
-      <template #body-baja_logica="{ data }">
-        <Tag
-          :value="data.baja_logica ? 'Inactivo' : 'Activo'"
-          :severity="data.baja_logica ? 'danger' : 'success'"
-        />
-      </template>
-    </TablaDatos>
+          <Button
+            v-if="!slotProps.data.baja_logica"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger mr-2"
+            @click="abrirModalEliminar(slotProps.data)"
+            v-tooltip.bottom="'Dar de Baja'"
+          />
+
+          <Button
+            v-if="slotProps.data.baja_logica"
+            icon="pi pi-check"
+            class="p-button-rounded p-button-warning mr-2"
+            @click="abrirModalReactivarDirecto(slotProps.data)"
+            v-tooltip.bottom="'Reactivar'"
+          />
+        </template>
+      </Column>
+    </DataTable>
 
     <ConfirmationModal
       :visible="confirmVisible"
       titulo="Confirmar Baja"
-      :message="`¿Está seguro que desea dar de baja el sub-rubro '${itemParaAccion?.nombre || ''}'?`"
+      :message="`Â¿EstÃ¡ seguro que desea dar de baja el sub-rubro '${itemParaAccion?.nombre || ''}'?`"
       @update:visible="confirmVisible = $event"
       @confirmado="manejarEliminacion"
       @cancelado="cancelarModalAccion"
@@ -82,8 +85,8 @@
 
     <ConfirmationModal
       :visible="confirmReactivarDirectoVisible"
-      titulo="Confirmar Reactivación"
-      :message="`¿Está seguro que desea reactivar el sub-rubro '${itemParaAccion?.nombre || ''}'?`"
+      titulo="Confirmar ReactivaciÃ³n"
+      :message="`Â¿EstÃ¡ seguro que desea reactivar el sub-rubro '${itemParaAccion?.nombre || ''}'?`"
       @update:visible="confirmReactivarDirectoVisible = $event"
       @confirmado="manejarReactivarDirecto"
       @cancelado="cancelarModalAccion"
@@ -92,7 +95,7 @@
     <ConfirmationModal
       :visible="!!store.subrubroInactivoParaReactivar"
       titulo="Reactivar Sub-Rubro Detectado"
-      :message="`Se detectó un sub-rubro inactivo con el mismo ${store.subrubroInactivoParaReactivar?.campo}. ¿Desea reactivarlo (los datos nuevos se sobrescribirán)?`"
+      :message="`Se detectÃ³ un sub-rubro inactivo con el mismo ${store.subrubroInactivoParaReactivar?.campo}. Â¿Desea reactivarlo (los datos nuevos se sobrescribirÃ¡n)?`"
       @confirmado="manejarConfirmarReactivacionABR"
       @cancelado="manejarCancelarReactivacionABR"
     />
@@ -112,7 +115,7 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { useSubRubroStore } from '../store/useSubRubroStore';
 import type { SubRubroModel, SubRubroUpdateModel } from '../models/subRubroModel';
-import TablaDatos from '@/components/TablaDatos.vue';
+// REPARACIÃ“N G-S-09: Se elimina 'TablaDatos' y se aÃ±aden los nativos
 import ConfirmationModal from '@/components/modals/ConfirmationModal.vue';
 import SubRubroForm from '../components/SubRubroForm.vue';
 import Toolbar from 'primevue/toolbar';
@@ -120,6 +123,8 @@ import Button from 'primevue/button';
 import Tag from 'primevue/tag';
 import SelectButton from 'primevue/selectbutton';
 import Tooltip from 'primevue/tooltip';
+import DataTable from 'primevue/datatable'; // <-- ImportaciÃ³n nativa
+import Column from 'primevue/column';     // <-- ImportaciÃ³n nativa
 
 const store = useSubRubroStore();
 const formVisible = ref(false);
@@ -130,12 +135,12 @@ const confirmVisible = ref(false);
 const confirmReactivarDirectoVisible = ref(false);
 
 const columnas = [
-    { field: 'codigo_subrubro', header: 'Código', sortable: true },
+    { field: 'codigo_subrubro', header: 'CÃ³digo', sortable: true },
     { field: 'nombre', header: 'Nombre', sortable: true },
     { field: 'baja_logica', header: 'Estado' },
 ];
 
-// --- DOCTRINA: Filtro de Tres Vías ---
+// --- DOCTRINA: Filtro de Tres VÃ­as ---
 const filtroSeleccionado = ref(store.filtroEstado);
 const opcionesFiltro = ref([
     { label: 'Activos', value: 'activos', icon: 'pi pi-check-circle' },
@@ -143,7 +148,8 @@ const opcionesFiltro = ref([
     { label: 'Todos', value: 'todos', icon: 'pi pi-list' }
 ]);
 const onFiltroChange = () => {
-    store.setFiltroEstado(filtroSeleccionado.value);
+    // El v-model actualiza 'store.filtroEstado'
+    store.setFiltroEstado(store.filtroEstado);
 };
 const getFiltroClass = (value: string) => {
     return {
@@ -157,7 +163,7 @@ const rowStyle = (data: SubRubroModel) => {
     return data.baja_logica ? { color: 'var(--red-600)', 'font-style': 'italic' } : { color: 'var(--text-color)'};
 };
 
-// --- Lógica de Modales ---
+// --- LÃ³gica de Modales ---
 function abrirModalNuevo() {
   esModoClon.value = false;
   store.seleccionarSubRubro(null);
@@ -207,7 +213,7 @@ function abrirModalClonar(subrubro: SubRubroModel) {
   formVisible.value = true;
 }
 
-// --- Lógica de Acciones ---
+// --- LÃ³gica de Acciones ---
 async function manejarGuardado(subrubro: SubRubroModel | SubRubroUpdateModel) {
   const exito = await store.guardarSubRubro(subrubro);
   if (exito) {
@@ -225,7 +231,7 @@ function manejarCancelarReactivacionABR() {
   formVisible.value = false;
 }
 
-// --- DOCTRINA F4 (Alta Rápida) ---
+// --- DOCTRINA F4 (Alta RÃ¡pida) ---
 const handleKeyDown = (event: KeyboardEvent) => {
   if (event.key === 'F4' && !formVisible.value && !confirmVisible.value && !confirmReactivarDirectoVisible.value) {
     event.preventDefault();
