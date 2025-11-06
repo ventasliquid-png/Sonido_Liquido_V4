@@ -35,7 +35,7 @@
         </template>
       </Column>
 
-      <Column :exportable="false" style="min-width:12rem">
+      <Column :exportable="false" style="min-width:14rem">
         <template #body="slotProps">
           <Button
             icon="pi pi-copy"
@@ -43,15 +43,13 @@
             @click="abrirModalClonar(slotProps.data)"
             v-tooltip.bottom="'F7 - Clonar'"
           />
-        
           <Button
             v-if="!slotProps.data.baja_logica"
             icon="pi pi-pencil"
-            class="p-button-rounded p-button-success mr-2"
+            class="p-button-rounded p-button-info mr-2"
             @click="abrirModalEditar(slotProps.data)"
             v-tooltip.bottom="'Editar'"
           />
-
           <Button
             v-if="!slotProps.data.baja_logica"
             icon="pi pi-trash"
@@ -59,7 +57,6 @@
             @click="abrirModalEliminar(slotProps.data)"
             v-tooltip.bottom="'Dar de Baja'"
           />
-
           <Button
             v-if="slotProps.data.baja_logica"
             icon="pi pi-check"
@@ -111,7 +108,6 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useRubroStore } from '../store/useRubroStore';
 import type { RubroModel } from '../models/rubroModel';
-// REPARACIÓN G-R-20: Se elimina 'TablaDatos' y se añaden los nativos
 import ConfirmationModal from '@/components/modals/ConfirmationModal.vue';
 import RubroForm from '../components/RubroForm.vue';
 import Toolbar from 'primevue/toolbar';
@@ -119,17 +115,18 @@ import Button from 'primevue/button';
 import Tag from 'primevue/tag';
 import SelectButton from 'primevue/selectbutton';
 import Tooltip from 'primevue/tooltip'; 
-import DataTable from 'primevue/datatable'; // <-- Importación nativa
-import Column from 'primevue/column';     // <-- Importación nativa
+import DataTable from 'primevue/datatable'; 
+import Column from 'primevue/column';     
 import type { SelectButtonPassThroughOptions } from 'primevue/selectbutton'; 
+import notificationService from '@/services/notificationService';
 
 const store = useRubroStore();
 const formVisible = ref(false);
-const itemSeleccionadoParaClonar = ref<RubroModel | null>(null); // Para F7 (Clonar)
+const itemSeleccionadoParaClonar = ref<RubroModel | null>(null); 
 
-const confirmVisible = ref(false); // Modal Baja
-const confirmReactivarDirectoVisible = ref(false); // Modal Reactivar
-const itemSeleccionadoParaAccion = ref<RubroModel | null>(null); // Ítem para Baja o Reactivar
+const confirmVisible = ref(false); 
+const confirmReactivarDirectoVisible = ref(false); 
+const itemSeleccionadoParaAccion = ref<RubroModel | null>(null); 
 
 type FiltroEstado = 'activos' | 'inactivos' | 'todos';
 
@@ -206,7 +203,6 @@ async function manejarReactivarDirecto() {
 
 
 function abrirModalClonar() { 
-  // REPARACIÓN G-R-20: 'itemSeleccionadoParaClonar' es la fuente de verdad para F7
   if (!itemSeleccionadoParaClonar.value) { 
     notificationService.showWarn("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7)."); 
     return; 
@@ -215,7 +211,6 @@ function abrirModalClonar() {
   formVisible.value = true; 
 }
 function actualizarItemSeleccionado(rubro: RubroModel) { 
-  // REPARACIÓN G-R-20: Se debe capturar el 'ver-item' (clic/foco) de la tabla
   itemSeleccionadoParaClonar.value = rubro;
 }
 
@@ -228,7 +223,7 @@ async function manejarGuardado(rubro: RubroModel) {
 }
 
 function handleGlobalKeyDown(event: KeyboardEvent) { 
-  if (!formVisible.value && !confirmVisible.value && !confirmReactivarDirectoVisible.value) { 
+  if (!formVisible.value && !confirmVisible.value && !store.confirmarReactivacionVisible) { 
     if (event.key === 'F4') { 
       event.preventDefault(); 
       abrirModalNuevo(); 

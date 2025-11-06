@@ -5,7 +5,8 @@
         <router-link to="/">Rubros</router-link>
         <router-link to="/subrubros">SubRubros</router-link>
         <router-link to="/unidades-medida">Unidades de Medida</router-link>
-      </nav>
+        <router-link to="/condiciones-iva">Condiciones IVA</router-link>
+        </nav>
     </aside>
 
     <main class="tno-content">
@@ -15,7 +16,6 @@
 </template>
 
 <script setup lang="ts">
-// Importaciones canónicas para TNO
 import { RouterLink, RouterView } from 'vue-router';
 </script>
 
@@ -43,7 +43,7 @@ import { RouterLink, RouterView } from 'vue-router';
 .tno-menu a:hover {
   background-color: #eee;
 }
-/* Clase 'router-link-active' se aplica automáticamente al enlace activo */
+/* REPARACIÓN: router-link-active es la clase doctrinal correcta */
 .router-link-active {
   font-weight: bold;
   background-color: #e0e0e0;
