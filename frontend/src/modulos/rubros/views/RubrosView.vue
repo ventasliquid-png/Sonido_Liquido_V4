@@ -4,148 +4,101 @@
       <template #start>
         <Button label="Nuevo Rubro (F4)" icon="pi pi-plus" class="mr-2" @click="abrirModalNuevo" v-tooltip.bottom="'F4 - Nuevo'"/>
       </template>
-
       <template #end>
-        <SelectButton
-          v-model="store.filtroEstado" 
-          :options="opcionesFiltroEstado"
-          optionLabel="label"
-          optionValue="value"
-          aria-labelledby="basic"
-          :pt="selectButtonPassThrough" 
-          @change="onFiltroChange"
-        />
+        <SelectButton v-model="store.filtroEstado" :options="opcionesFiltroEstado" optionLabel="label" optionValue="value" aria-labelledby="basic" :pt="selectButtonPassThrough" @change="onFiltroChange"/>
       </template>
     </Toolbar>
 
-    <DataTable 
-      :value="store.todosLosRubros" 
-      :loading="store.estadoCarga" 
-      :rowClass="getRowClass"
-      responsiveLayout="scroll"
-    >
+    <DataTable :value="store.todosLosRubros" :loading="store.estadoCarga" :rowClass="getRowClass" responsiveLayout="scroll">
       <Column field="codigo" header="Código" :sortable="true"></Column>
       <Column field="nombre" header="Nombre" :sortable="true"></Column>
-
       <Column field="baja_logica" header="Activo">
         <template #body="slotProps">
-          <Tag :severity="slotProps.data.baja_logica ? 'danger' : 'success'">
-            {{ slotProps.data.baja_logica ? 'INACTIVO' : 'ACTIVO' }}
-          </Tag>
+          <Tag :severity="slotProps.data.baja_logica ? 'danger' : 'success'">{{ slotProps.data.baja_logica ? 'INACTIVO' : 'ACTIVO' }}</Tag>
         </template>
       </Column>
-
       <Column :exportable="false" style="min-width:14rem">
         <template #body="slotProps">
-          <Button
-            icon="pi pi-copy"
-            class="p-button-rounded p-button-secondary mr-2"
-            @click="abrirModalClonar(slotProps.data)"
-            v-tooltip.bottom="'F7 - Clonar'"
-          />
-          <Button
-            v-if="!slotProps.data.baja_logica"
-            icon="pi pi-pencil"
-            class="p-button-rounded p-button-info mr-2"
-            @click="abrirModalEditar(slotProps.data)"
-            v-tooltip.bottom="'Editar'"
-          />
-          <Button
-            v-if="!slotProps.data.baja_logica"
-            icon="pi pi-trash"
-            class="p-button-rounded p-button-danger mr-2"
-            @click="abrirModalEliminar(slotProps.data)"
-            v-tooltip.bottom="'Dar de Baja'"
-          />
-          <Button
-            v-if="slotProps.data.baja_logica"
-            icon="pi pi-check"
-            class="p-button-rounded p-button-warning mr-2"
-            @click="abrirModalReactivarDirecto(slotProps.data)"
-            v-tooltip.bottom="'Reactivar'"
-          />
+          <Button icon="pi pi-copy" class="p-button-rounded p-button-secondary mr-2" @click="abrirModalClonar(slotProps.data)" v-tooltip.bottom="'F7 - Clonar'"/>
+          <Button v-if="!slotProps.data.baja_logica" icon="pi pi-pencil" class="p-button-rounded p-button-info mr-2" @click="abrirModalEditar(slotProps.data)" v-tooltip.bottom="'Editar'"/>
+          <Button v-if="!slotProps.data.baja_logica" icon="pi pi-trash" class="p-button-rounded p-button-danger mr-2" @click="abrirModalEliminar(slotProps.data)" v-tooltip.bottom="'Dar de Baja'"/>
+          <Button v-if="slotProps.data.baja_logica" icon="pi pi-check" class="p-button-rounded p-button-warning mr-2" @click="abrirModalReactivarDirecto(slotProps.data)" v-tooltip.bottom="'Reactivar'"/>
         </template>
       </Column>
     </DataTable>
 
-    <RubroForm v-if="formVisible"
+    <Dialog
       :visible="formVisible"
-      :rubro="store.rubroSeleccionado"
-      @update:visible="formVisible = $event"
-      @guardar="manejarGuardado"
-    />
+      modal
+      :header="formTitle"
+      :style="{ width: '30rem' }"
+      @update:visible="cerrarModal"
+      @keydown.esc.prevent="cerrarModal"
+      @keydown.f10.prevent="guardarFormulario" >
+      <RubroForm v-if="formVisible"
+        v-model="formData"
+        :esEdicion="esEdicion"
+        :esClonado="esClonado"
+        @guardar="guardarFormulario" />
+      
+      <template #footer>
+        <Button label="Cancelar (Esc)" icon="pi pi-times" @click="cerrarModal" text />
+        <Button label="Guardar (F10/Enter)" icon="pi pi-check" @click="guardarFormulario" />
+      </template>
+    </Dialog>
 
-    <ConfirmationModal v-if="confirmVisible"
-      :visible="confirmVisible"
-      titulo="Confirmar Baja"
-      :message="'¿Está seguro que desea dar de baja el rubro ' + (itemSeleccionadoParaAccion?.nombre || '') + '?'"
-      @update:visible="confirmVisible = $event"
-      @confirmado="manejarEliminacion"
-      @cancelado="cancelarModalAccion"
-    />
-    
-    <ConfirmationModal
-      :visible="confirmReactivarDirectoVisible"
-      titulo="Confirmar Reactivación"
-      :message="`¿Está seguro que desea reactivar el rubro '${itemSeleccionadoParaAccion?.nombre || ''}'?`"
-      @update:visible="confirmReactivarDirectoVisible = $event"
-      @confirmado="manejarReactivarDirecto"
-      @cancelado="cancelarModalAccion"
-    />
-
-    <ConfirmationModal v-if="store.confirmarReactivacionVisible"
-      :visible="store.confirmarReactivacionVisible"
-      titulo="Confirmar Reactivación (ABR)"
-      :message="'El rubro ' + (store.nombreParaReactivar || '') + ' ya existe y está inactivo. ¿Desea reactivarlo?'"
-      @update:visible="manejarCancelarReactivacionABR"
-      @confirmado="manejarConfirmarReactivacionABR"
-      @cancelado="manejarCancelarReactivacionABR"
-    />
+    <ConfirmationModal v-if="confirmVisible" :visible="confirmVisible" titulo="Confirmar Baja" :message="'¿Está seguro que desea dar de baja el rubro ' + (itemSeleccionadoParaAccion?.nombre || '') + '?'" @update:visible="confirmVisible = $event" @confirmado="manejarEliminacion" @cancelado="cancelarModalAccion" />
+    <ConfirmationModal :visible="confirmReactivarDirectoVisible" titulo="Confirmar Reactivación" :message="`¿Está seguro que desea reactivar el rubro '${itemSeleccionadoParaAccion?.nombre || ''}'?`" @update:visible="confirmReactivarDirectoVisible = $event" @confirmado="manejarReactivarDirecto" @cancelado="cancelarModalAccion" />
+    <ConfirmationModal v-if="store.confirmarReactivacionVisible" :visible="store.confirmarReactivacionVisible" titulo="Confirmar Reactivación (ABR)" :message="'El rubro ' + (store.nombreParaReactivar || '') + ' ya existe y está inactivo. ¿Desea reactivarlo?'" @update:visible="manejarCancelarReactivacionABR" @confirmado="manejarConfirmarReactivacionABR" @cancelado="manejarCancelarReactivacionABR" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, computed } from 'vue';
+// (Importaciones... sin cambios)
+import { ref, onMounted, onUnmounted, computed } from 'vue'; 
 import { useRubroStore } from '../store/useRubroStore';
 import type { RubroModel } from '../models/rubroModel';
 import ConfirmationModal from '@/components/modals/ConfirmationModal.vue';
-import RubroForm from '../components/RubroForm.vue';
+import RubroForm from '../components/RubroForm.vue'; 
 import Toolbar from 'primevue/toolbar';
 import Button from 'primevue/button';
 import Tag from 'primevue/tag';
 import SelectButton from 'primevue/selectbutton';
 import Tooltip from 'primevue/tooltip'; 
 import DataTable from 'primevue/datatable'; 
-import Column from 'primevue/column';     
+import Column from 'primevue/column'; 
+import Dialog from 'primevue/dialog'; 
 import type { SelectButtonPassThroughOptions } from 'primevue/selectbutton'; 
 import notificationService from '@/services/notificationService';
 
+// (Todo el <script setup> es idéntico al v10.2... sin cambios)
 const store = useRubroStore();
 const formVisible = ref(false);
-const itemSeleccionadoParaClonar = ref<RubroModel | null>(null); 
+const getInitialFormData = (): RubroModel => ({
+  id: null, codigo: '', nombre: '', baja_logica: false,
+});
+const formData = ref<RubroModel>(getInitialFormData());
+const esEdicion = ref(false);
+const esClonado = ref(false);
 
+const formTitle = computed(() => {
+    if (esEdicion.value) return 'Editar Rubro';
+    if (esClonado.value) return 'Clonar Rubro (Nuevo Código Requerido)';
+    return 'Nuevo Rubro';
+});
+
+const itemSeleccionadoParaClonar = ref<RubroModel | null>(null); 
 const confirmVisible = ref(false); 
 const confirmReactivarDirectoVisible = ref(false); 
 const itemSeleccionadoParaAccion = ref<RubroModel | null>(null); 
 
 type FiltroEstado = 'activos' | 'inactivos' | 'todos';
-
 const opcionesFiltroEstado = ref([
     { label: 'Activos', value: 'activos', colorClass: 'filter-pt-activo' }, 
     { label: 'Inactivos', value: 'inactivos', colorClass: 'filter-pt-inactivo' },
     { label: 'Todos', value: 'todos', colorClass: 'filter-pt-todos' }
 ]);
-
-const onFiltroChange = (event: any) => {
-    console.log('Filtro cambiado a:', event.value);
-    store.setFiltroEstado(event.value);
-}
-
-const columnas = [
-    { field: 'codigo', header: 'Código', sortable: true },
-    { field: 'nombre', header: 'Nombre', sortable: true },
-    { field: 'baja_logica', header: 'Activo' },
-];
+const onFiltroChange = (event: any) => { store.setFiltroEstado(event.value); }
 
 onMounted(() => {
   store.fetchRubros(); 
@@ -156,15 +109,36 @@ onUnmounted(() => {
   document.removeEventListener('keydown', handleGlobalKeyDown);
 });
 
+function cerrarModal() {
+  formVisible.value = false;
+  formData.value = getInitialFormData();
+}
+
 function abrirModalNuevo() { 
-  itemSeleccionadoParaClonar.value = null; 
-  store.seleccionarRubro(null); 
+  formData.value = getInitialFormData();
+  esEdicion.value = false;
+  esClonado.value = false;
   formVisible.value = true;
 }
 
 function abrirModalEditar(rubro: RubroModel) { 
   itemSeleccionadoParaClonar.value = rubro; 
-  store.seleccionarRubro(rubro); 
+  formData.value = { ...rubro };
+  esEdicion.value = true;
+  esClonado.value = false;
+  formVisible.value = true; 
+}
+
+function abrirModalClonar(rubroAF7: RubroModel | null = null) {
+  const rubroBase = rubroAF7 || itemSeleccionadoParaClonar.value;
+  if (!rubroBase) { 
+    notificationService.showWarn("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7)."); 
+    return; 
+  }
+  store.seleccionarParaClonar(rubroBase); 
+  formData.value = { ...store.rubroSeleccionado };
+  esEdicion.value = false;
+  esClonado.value = true;
   formVisible.value = true; 
 }
 
@@ -174,18 +148,15 @@ function abrirModalEliminar(rubro: RubroModel) {
   store.seleccionarRubro(rubro); 
   confirmVisible.value = true; 
 }
-
 function abrirModalReactivarDirecto(rubro: RubroModel) {
   itemSeleccionadoParaAccion.value = rubro;
   confirmReactivarDirectoVisible.value = true;
 }
-
 function cancelarModalAccion() {
   itemSeleccionadoParaAccion.value = null;
   confirmVisible.value = false;
   confirmReactivarDirectoVisible.value = false;
 }
-
 async function manejarEliminacion() { 
   if (itemSeleccionadoParaAccion.value?.id) { 
     await store.eliminarRubro(itemSeleccionadoParaAccion.value.id); 
@@ -193,7 +164,6 @@ async function manejarEliminacion() {
   cancelarModalAccion();
   itemSeleccionadoParaClonar.value = null; 
 }
-
 async function manejarReactivarDirecto() {
     if (itemSeleccionadoParaAccion.value?.id) {
         await store.ejecutarReactivacion(itemSeleccionadoParaAccion.value.id);
@@ -201,23 +171,37 @@ async function manejarReactivarDirecto() {
     cancelarModalAccion();
 }
 
-
-function abrirModalClonar() { 
-  if (!itemSeleccionadoParaClonar.value) { 
-    notificationService.showWarn("Acción Inválida", "Seleccione un rubro de la tabla primero para clonar (F7)."); 
-    return; 
-  } 
-  store.seleccionarParaClonar(itemSeleccionadoParaClonar.value); 
-  formVisible.value = true; 
-}
-function actualizarItemSeleccionado(rubro: RubroModel) { 
-  itemSeleccionadoParaClonar.value = rubro;
-}
-
-async function manejarGuardado(rubro: RubroModel) { 
-  const exito = await store.guardarRubro(rubro); 
+async function guardarFormulario() {
+  const codigoTrimmed = (formData.value.codigo || '').trim().toUpperCase();
+  const nombreTrimmed = (formData.value.nombre || '').trim();
+  if (!codigoTrimmed) {
+    notificationService.showWarn("Validación Fallida", "El campo 'Código' es requerido.");
+    return;
+  }
+  if (codigoTrimmed.length > 3) {
+    notificationService.showWarn("Validación Fallida", "El campo 'Código' no puede exceder los 3 caracteres.");
+    return;
+  }
+  if (!nombreTrimmed) {
+    notificationService.showWarn("Validación Fallida", "El campo 'Nombre' es requerido.");
+    return;
+  }
+  if (nombreTrimmed.length > 30) {
+    notificationService.showWarn("Validación Fallida", "El campo 'Nombre' no puede exceder los 30 caracteres.");
+    return;
+  }
+  if (esClonado.value && !codigoTrimmed) {
+      notificationService.showWarn("Validación Clon", "Debe ingresar un nuevo Código para el rubro clonado.");
+      return;
+  }
+  const dataToEmit: RubroModel = {
+    ...formData.value,
+    codigo: codigoTrimmed,
+    nombre: nombreTrimmed,
+  };
+  const exito = await store.guardarRubro(dataToEmit); 
   if (exito) { 
-    formVisible.value = false; 
+    cerrarModal(); 
     itemSeleccionadoParaClonar.value = null; 
   }
 }
@@ -234,22 +218,18 @@ function handleGlobalKeyDown(event: KeyboardEvent) {
     } 
   } 
 }
-
-// Flujo ABR (Conflicto 409)
 async function manejarConfirmarReactivacionABR() {
-  await store.ejecutarReactivacion(); // Llama sin ID, usará el 'idParaReactivar'
-  formVisible.value = false; 
+  await store.ejecutarReactivacion(); 
+  cerrarModal(); 
 }
-
 function manejarCancelarReactivacionABR() {
   store.cancelarReactivacion();
-  formVisible.value = false; 
+  cerrarModal(); 
 }
 
 const getRowClass = (data: RubroModel) => {
     return data.baja_logica ? 'row-inactivo' : 'row-activo';
 };
-
 const selectButtonPassThrough = computed<SelectButtonPassThroughOptions>(() => ({
     button: ({ context, props: buttonProps }) => {
         const option = opcionesFiltroEstado.value.find(opt => opt.value === buttonProps.value);
@@ -259,6 +239,7 @@ const selectButtonPassThrough = computed<SelectButtonPassThroughOptions>(() => (
 </script>
 
 <style scoped>
+/* (Estilos... sin cambios, v10.1 corregido) */
 .card { padding: 1rem; }
 :deep(.p-datatable .p-datatable-tbody > tr > td:last-child .p-button) { margin-right: 0.25rem; }
 :deep(.p-datatable .p-datatable-tbody > tr > td:last-child .p-button:last-child) { margin-right: 0; }
